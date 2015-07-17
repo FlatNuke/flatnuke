@@ -1,0 +1,74 @@
+html, body {
+	background: #ffffff;
+	padding: 10;
+	font-family: Sans-Serif;
+	color: #000000;
+	text-align: center;
+}
+
+font {
+	font-size: 11px;
+}
+
+a:visited, a:link, a:active {
+	text-decoration: none;
+	color: #686868;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #0072ff;
+}
+
+.p {text-align:left;}
+
+#FN-setup-box {
+	width:60%;
+	min-width:600px;
+	border:1px solid #ddd;
+	background:#F3F3F3 url(../../images/fn_setup.png) no-repeat;
+	background-position: 20px 20px;
+}
+
+#FN-setup {
+	padding: 20px 10px 10px 190px;
+	min-height:320px;
+}
+
+#FN-setup-footer {
+	text-align:right;
+	padding:15px;
+}
+
+#FN-setup h1, #FN-setup h3 {
+	margin:1;
+	text-align:left;
+	font-weight:normal;
+	color:#4F4F4F;
+}
+
+#FN-setup img {
+	margin:5px;
+}
+
+.FN-link {
+	background-color:#ddd;
+	border:1px solid #bbb;
+	padding:4px;
+}
+
+table,td,tr {
+	padding:5px;
+}
+
+.FN-control-ok {
+	background-color:#00ff00;
+}
+
+.FN-control-no {
+	background-color:#FF0000;
+}
+
+.FN-control-warning {
+	background-color:#FFFF00;
+}

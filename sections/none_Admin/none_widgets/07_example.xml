@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget>
+	<info>
+		<id_name>example1</id_name>
+		<description>General description of this widget</description>
+		<version>YYYYMMDD</version>
+	</info>
+	<author>
+		<name>My Name</name>
+		<mail>my.email@address.ext</mail>
+		<website>http://my.website.ext</website>
+	</author>
+	<translations>
+		<title>Title</title>
+		<title-it>Italian Title</title-it>
+		<title-en>English Title</title-en>
+		<subtitle>Subitle</subtitle>
+		<subtitle-it>Italian Subitle</subtitle-it>
+		<subtitle-en>English Subitle</subtitle-en>
+	</translations>
+</widget>

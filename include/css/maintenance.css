@@ -1,0 +1,41 @@
+#FN-maint-structure {
+	padding: 2em;
+}
+
+#FN-maint-box {
+	background-color: #F0F0F0;
+	max-width: 250px;
+	padding: 10px;
+	border: 1px solid #999999;
+}
+
+#FN-maint-text {
+	color: #cc0000;
+	font-size: 1em;
+}
+
+.FN-maint-label {
+	font-size: 1em;
+}
+
+.FN-maint-input {
+	border: 0.5px solid #333333;
+	color: gray;
+	font-size: 1em;
+}
+
+.FN-maint-submit {
+	border: 0.5px solid #111;
+	color: #111;
+	font-size: 1em;
+}
+
+#FN-maint-alert {
+	padding: 1em;
+	color: red;
+	background-color: yellow;
+	border: 3px solid red;
+	text-align: center;
+	font-weight: bold;
+	font-size: larger;
+}

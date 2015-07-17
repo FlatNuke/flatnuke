@@ -1,0 +1,23 @@
+#fnpreview {
+	overflow: auto;
+	max-height: 300px;
+	visibility: visible;
+	background-color: #F0F0F0;
+	border: 2px solid;
+	padding: 5px;
+	border-top-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+	border-bottom-color: #666666;
+	border-right-color: #666666;
+	width: 100%;
+}
+
+#fncopyright {
+	position: absolute;
+	background-color: #FFFBA6;
+	margin: -20%;
+	display: block;
+	visibility: hidden;
+	border: 1px solid #D7162C;
+	padding: 5px;
+}

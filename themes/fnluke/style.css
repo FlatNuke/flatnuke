@@ -1,0 +1,260 @@
+/*
+ * Bootstrap integration with FN
+ * Theme 1 : Luke
+ * by Alfredo Cosco
+ */
+
+/*Generic*/
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 980px) {
+}
+
+/*Bootstrap elements*/
+/* -------------------------------------------------- */
+
+.list-group .glyphicon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+
+.list-group a:hover .glyphicon-chevron-right {
+  opacity: .5;
+}
+
+.list-group .active .glyphicon-chevron-right,
+.list-group .active a:hover .glyphicon-chevron-right {
+  opacity: 1;
+}
+
+/*---------------------------------
+  logo
+---------------------------------*/
+
+#topmenu {
+
+}
+
+#topleft {
+
+	
+}
+
+#topright {
+
+}
+
+#bann {
+
+}
+
+#bann2 {
+
+}
+
+/*---------------------------------
+  menu
+---------------------------------*/
+
+
+#portalTabs {
+
+}
+
+#portalTabs ul {
+
+}
+
+#portalTabs li {
+
+}
+
+#portalTabs li a {
+
+}
+
+#portalTabs a {
+
+}
+
+#portalTabs li.selected {
+
+}
+
+#portalTabs li.selected a {
+
+}
+
+#portalTabs li a:hover { 
+
+}
+
+/*---------------------------------
+  flatnuke block menu
+---------------------------------*/
+
+.blockmenuc {
+
+}
+
+.blockmenu a {
+
+}
+
+.blockmenu a:hover {
+
+}
+
+.blockmenu .mysel a {
+
+}
+
+/*---------------------------------
+  flatnuke body structure
+---------------------------------*/
+
+#fnpage {
+
+}
+
+#fnmotd {
+
+}
+
+#fnleftcolumn {
+
+}
+
+#fnrightcolumn {
+
+}
+
+#fnfooter {
+
+}
+
+
+/*---------------------------------
+  blocks
+---------------------------------*/
+
+.block {
+	background: #efefef url("images/imgblock.png") no-repeat bottom right;
+	margin-bottom: 1em;
+	text-align: left;
+	border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    border: 1px solid #e5e5e5;
+}
+
+.blocktitle {
+	height: 25px;
+	margin-bottom: 5px;
+}
+
+.blocktitle .inside {
+	float: right;
+	padding: 0px;
+	margin: 0px;
+	width: 23px;
+	height: 25px;
+}
+	
+.blocktitle .title {
+	font-family: arial,sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 15px;
+	margin-left: 15px;
+	margin-right: 15px;
+
+}
+
+.blockcontent {
+	margin: 3px;
+	padding: 15px;
+	padding-bottom:30px;
+}
+
+.blocktop {
+
+}
+
+/*---------------------------------
+  sections
+---------------------------------*/
+
+.section h1 {
+
+}
+
+.section {
+	text-align: justify;
+}
+
+.section span {
+
+}
+
+.sectioncontent {
+
+}
+
+/*---------------------------------
+  flatnuke elements
+---------------------------------*/
+
+.comment {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-color: #d5d6d7;
+}
+
+.avatar{
+	float:left;
+	border:0;
+	padding:10px;
+	max-width:100px;
+	/*border='0' align='left' hspace='10' vspace='5' style='max-width:100px'*/
+}
+
+.centeredDiv {
+	text-align:center;
+}
+
+.motd{
+	float:left;
+}
+
+.ffinput {
+	width: 20px;
+}
+
+.footer-image{
+	border:0;
+}
+
+.fn-read-icon{}
+
+.fn-print-icon{}
+
+/*---------------------------------
+  common html elements
+---------------------------------*/
+
+a:visited, a:link, a:active {
+
+}
+
+a:hover {
+
+}
+
+img {
+
+}

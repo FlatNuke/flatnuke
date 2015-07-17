@@ -1,0 +1,1 @@
+<div style="text-align: center;"><b><br><a href="javascript:history.back()"><?php echo _RETURN;?></a></b></div>

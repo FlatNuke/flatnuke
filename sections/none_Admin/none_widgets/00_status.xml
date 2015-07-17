@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget>
+	<info>
+		<id_name>dashboard_right_now</id_name>
+		<description>Display some informations about&lt;br/&gt;the current status of your site.</description>
+		<version>20100228</version>
+	</info>
+	<author>
+		<name>Marco Segato</name>
+		<mail>marco.segato@gmail.com</mail>
+		<website>http://marcosegato.altervista.org</website>
+	</author>
+	<translations>
+		<title>Right Now</title>
+		<title-it>Stato attuale</title-it>
+		<title-en>Right Now</title-en>
+		<subtitle>At a Glance</subtitle>
+		<subtitle-it>In un colpo d'occhio</subtitle-it>
+		<subtitle-en>At a Glance</subtitle-en>
+	</translations>
+</widget>

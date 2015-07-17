@@ -1,0 +1,66 @@
+.rating{
+	width:80px;
+	height:16px;
+	margin:0;
+	padding:0;
+	list-style:none;
+	clear:both;
+	position:relative;
+	background: url(../../images/rating.png) no-repeat 0 0;
+}
+.fnrating_000 {background-position:0 0}
+.fnrating_025 {background-position:0 -16px}
+.fnrating_050 {background-position:0 -32px}
+.fnrating_075 {background-position:0 -48px}
+.fnrating_100 {background-position:0 -64px}
+.fnrating_125 {background-position:0 -80px}
+.fnrating_150 {background-position:0 -96px}
+.fnrating_175 {background-position:0 -112px}
+.fnrating_200 {background-position:0 -128px}
+.fnrating_225 {background-position:0 -144px}
+.fnrating_250 {background-position:0 -160px}
+.fnrating_275 {background-position:0 -176px}
+.fnrating_300 {background-position:0 -192px}
+.fnrating_325 {background-position:0 -208px}
+.fnrating_350 {background-position:0 -224px}
+.fnrating_375 {background-position:0 -240px}
+.fnrating_400 {background-position:0 -256px}
+.fnrating_425 {background-position:0 -272px}
+.fnrating_450 {background-position:0 -288px}
+.fnrating_475 {background-position:0 -304px}
+.fnrating_500 {background-position:0 -320px}
+
+ul.rating li {
+	cursor: pointer;
+ /*ie5 mac doesn't like it if the list is floated\*/
+	float:left;
+	/* end hide*/
+	text-indent:-999em;
+}
+ul.rating li a {
+	position:absolute;
+	left:0;
+	top:0;
+	width:16px;
+	height:16px;
+	text-decoration:none;
+	z-index: 200;
+}
+ul.rating li.star_1 a {left:0}
+ul.rating li.star_2 a {left:16px;}
+ul.rating li.star_3 a {left:32px;}
+ul.rating li.star_4 a {left:48px;}
+ul.rating li.star_5 a {left:64px;}
+ul.rating li a:hover {
+	z-index:2;
+	width:80px;
+	height:16px;
+	overflow:hidden;
+	left:0;	
+	background: url(../../images/rating.png) no-repeat 0 0
+}
+ul.rating li.star_1 a:hover {background-position:0 -336px;}
+ul.rating li.star_2 a:hover {background-position:0 -352px;}
+ul.rating li.star_3 a:hover {background-position:0 -368px;}
+ul.rating li.star_4 a:hover {background-position:0 -384px;}
+ul.rating li.star_5 a:hover {background-position:0 -400px;}

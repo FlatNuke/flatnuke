@@ -1,0 +1,67 @@
+/*
+--------------------------------------------------------------------
+FLATCALENDAR - Calendar block for FlatNuke (http://www.flatnuke.org)
+--------------------------------------------------------------------
+
+Author:		Marco Segato
+Website:	http://marcosegato.altervista.org/
+email:		segatom (at) users.sourceforge.net
+
+Author:		Giovanni Piller Cottrer
+Website:	http://gigasoft.altervista.org
+email:		giovanni.piller (at) gmail.com
+
+Version:	0.9 - 20060807
+
+License:	GNU General Public License 2
+
+*/
+
+.calendar {
+	width: 100%;
+	text-align: center;
+}
+
+/*.row {
+	width: 100%;
+	float: left;
+}*/
+
+.day, .blankDay, .currDay, .heading, .month {
+	width: 11%;
+	float: left;
+	margin: 1px;
+	border: 1px solid rgb(255,255,255);
+	font-size: smaller;
+}
+
+.day {
+	border: 1px solid #D2D2D2;
+}
+
+.day:hover {
+	background-color: #EEEEEE;
+	border: 1px solid #AAAAAA;
+}
+
+.currDay {
+	color: #FFFFFF;
+	background-color: red;
+	border: 1px solid #AAAAAA;
+	font-weight: bold;
+}
+
+.heading {
+	width: 11%;
+	float: left;
+	margin: 1px;
+	border: 1px solid #D2D2D2;
+	background-color: #CCCCCC;
+}
+
+.month {
+	width: 98%;
+	text-align: left;
+	vertical-align: middle;
+}
+

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget>
+	<info>
+		<id_name>access_stats</id_name>
+		<description>Display accessing statistics&lt;br/&gt;for your Flatnuke website.</description>
+		<version>20130303</version>
+	</info>
+	<author>
+		<name>Marco Segato</name>
+		<mail>marco.segato@gmail.com</mail>
+		<website>http://marcosegato.altervista.org</website>
+	</author>
+	<translations>
+		<title>Accessing Statistics</title>
+		<title-it>Statistiche di accesso</title-it>
+		<title-en>Accessing Statistics</title-en>
+		<subtitle>Subitle</subtitle>
+		<subtitle-it>I tuoi visitatori</subtitle-it>
+		<subtitle-en>Your visitors</subtitle-en>
+	</translations>
+</widget>

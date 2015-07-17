@@ -1,0 +1,889 @@
+-------------------------------------------------------------------------------
+XX/XX/XXXX XX:XX    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato  <marco.segato@gmail.com>,
+                    Aldo Boccacci <zorba_@tin.it>
+
+flatnuke-4.0.0 ()
+	Add: themes are now using Bootstrap, a powerful front-end framework
+	Change: Flatnuke moves to Unicode standard encoding UTF-8
+	Fix: fixed security bug when accessing Admin section
+	Fix: fixed XSS bug (tnx to Canberk Bolat by Mavituna Security)
+	Fix: fixed XSS bug (tnx to Dennis Kelly by Risk Based Security)
+	Fix: fixed XSS bug and Script Injection bug (tnx to Juri Gianni)
+
+	Roberto Balbi <roberto.balbi@email.it>
+	- Add: social links on header only news view
+	- Add: auto subscribe to handled topics
+	- Change: management icons behavior in forum and news sections
+	- Change: removed obsolete or unused functions, checks and parameters
+	- Change: conversion to UTF-8
+	- Change: show only tags for current news section
+	- Fix: link to user profile in download sections
+	- Fix: editor plugins availables also to news moderators
+	- Fix: unwanted strip of htmlentities
+	- Fix: redirection to correct parent section
+	- Fix: many conversion of special characters to html entities
+	- Fix: conversion problem of 3.1.0 upgrade script
+	- Fix: section tags list count when editing news (and rebuild corrects
+	       tags_list.php)
+	- Fix: upload screenshot in download section
+	- Fix: check for security code in log files
+	- Fix: rename and deletion of sections containing a dot in the name
+
+	Alfredo Cosco <orazio.nelson@gmail.com>
+	- Add: introduced htaccess file for Apache Server configs
+	- Change: moved Flatnuke source code to HTML5 standards
+	- Change: new absolutely fabulous theme for admin dashboard
+
+	dan
+	- Add: introduced permalink for read news link
+
+-------------------------------------------------------------------------------
+17/08/2013 10:32    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Aldo Boccacci <zorba_@tin.it>
+
+flatnuke-3.1.2 (Revenge of the Maya)
+
+	Roberto Balbi <roberto.balbi@email.it>
+	- Add: fd_show_section_header() re-definable
+	- Add: upgrade.php converts short tags of old Flatnuke files
+	- Change: get_news_date() replaced by get_news_time()
+	- Change: log files with full tags
+	- Change: show logs without php header
+	- Fix: hide and top behavior in forum and news
+	- Fix: ctype_* bug(?) for small value
+	- Fix: glob may returns boolean false instead of an empty array in some systems
+
+-------------------------------------------------------------------------------
+03/03/2013 11:43    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Aldo Boccacci <zorba_@tin.it>
+
+flatnuke-3.1.1 (Revenge of the Maya)
+	Add: including jQuery, a fast, small, and feature-rich JavaScript library
+	Add: switched gallery to Lightbox 2 library
+	Add: link to download all the pictures from a gallery (thanks to Ignazio Coco)
+	Add: captcha required to add comments to the gallery
+	Add: new widget to display accessing statistics in the dashboard
+	Change: removed AHAH library and substituted with jQuery
+	Fix: fixed gallery thumbnails creation with PHP 5.4
+
+	Roberto Balbi <roberto.balbi@email.it>
+	Fix: tons of little bug fixes (thank you!)
+
+-------------------------------------------------------------------------------
+07/02/2013 20:58    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Aldo Boccacci <zorba_@tin.it>
+
+flatnuke-3.1.0 (Revenge of the Maya)
+	Add: support for short_open_tag = Off
+	Add: Gravatar support through libravatar.org API
+	Add: compatibility with PHP 5.3 version, removed deprecated functions
+	Add: Flatnuke goes social (early API release)
+	Fix: restore dynamically build page's title
+	Fix: many bug fixes
+	Fix: removed lots of deprecated functions
+	Fix: fixed LFI to RCE bug in setup procedure (thanks to Jakub Galczyk)
+	Fix: fixed XSS bug in setup procedure (thanks to Jakub Galczyk)
+	Fix: fixed SimpleXML namespaces management
+
+	Roberto Balbi <roberto.balbi@email.it>
+	Change: make translations W3C compliant
+	Fix: fixed registered users' listing
+	Fix: fixed management of users' profile created before 3.0.0 version
+
+-------------------------------------------------------------------------------
+23/10/2011 15:04    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Aldo Boccacci <zorba_@tin.it>
+
+flatnuke-3.0.0 (alba)
+
+	Add: New automatic setup procedure (graphics by Lorenzo Caporale)
+	Add: Early support for remote check on Flatnuke updates
+	Add: Now working on lighttpd web-servers http://www.lighttpd.net/
+	Add: Flatnuke dashboard substitute Administration Panel
+	Add: Empower Flatnuke dashboard wih widgets
+	Add: Manage central blocks (both top and bottom) with Flatnuke
+	Add: Request captcha to register new users, sumbit news and comments
+	Add: Flatnews: the new news' manager
+	Add: new functions fn_mkdir(), create_fn_constants()
+	Add: support for CKeditor
+	Add: new tags block
+	Add: possibility to create top level sections from login block
+	Add: support for safe_mode=on
+	Add: library RSS Feed Generator by Vagharshak Tozalakyan
+	     (http://www.phpclasses.org/package/2957-PHP-Generate-RSS-2-0-feeds.html)
+	Add: support for metatag "noindex"
+	Add: links for editing motd and blocks
+	Add: Contact section by Marco Segato (renamed in none_Email)
+	Add: new functions OpenNewsHeader and CloseNewsHeader for themes
+	Change: Improved listing users on admin panel
+	Change: Directory /misc renamed to /var
+	Change: none_Backend and none_Headlines sections removed
+	Change: performance improvements
+	Change: improved "Archivio News" section
+	Fix: Fixed various W3C errors
+	Fix: Fixed control on duplicated mail addresses (thanks to ZEBDEMON)
+
+	Lorenzo Caporale <piercolone@gmail.com>
+	Change: CSS usage for maintenance mode
+
+	Alfredo Cosco <orazio.nelson@gmail.com>:
+	Add: Flatnuke dashboard (graphics by Lorenzo Caporale)
+	Add: Manage plugins from dashboard
+
+	Roberto Balbi <roberto.balbi@email.it>
+	Change: updated french translation
+
+-------------------------------------------------------------------------------
+04/05/2009 21:33    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato <segatom@users.sourceforge.net>
+
+flatnuke-2.7.2 (eagle)
+
+	Change: Redirect to the self page when changing language (idea from Jack Overfull)
+	Fix: Prevent posting blank comments
+	Fix: Display button management for sections in homepage
+	Fix: Hide sections list if the current section is displayed as homepage
+	Fix: Moved saving comments from verify.php to Flatnuke main engine
+	Fix: Fixed security bug http://www.securityfocus.com/bid/34486
+
+	Alessandro Vernassa <speleoalex@gmail.com>
+	Fix: patch for preventing warnings in non xhtml themes
+
+	Lorenzo Caporale <piercolone@gmail.com>
+	Add: New layout for missing pages and access denied
+
+	Ignazio Coco <ignazio.coco@gmail.com>
+	Change: Better blocks layout management by themes
+
+-------------------------------------------------------------------------------
+10/10/2008 22:02    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato <segatom@users.sourceforge.net>
+
+flatnuke-2.7.1 (eagle)
+
+	Add: New 'include/autoexec.d' folder to automatically run PHP scripts
+	Add: Manage FdPlus configuration from administration panel
+	Add: View online IM status of members
+	Add: Password recovery by e-mail
+	Add: Use all the digits you want to order sections, blocks or files
+	Add: New links to scroll up/down on news pages
+	Add: New spam/ban checks on URL referers (idea from Expo)
+	Add: New 'include/blacklists/referers.php' blacklist
+	Add: SEO contents improvements
+	Add: Improved anti-spam engine
+	Change: Removed deprecated file footer.php
+	Change: Print improvements
+	Change: Choose easily to print the list of subsections on top or boottom
+	Fix: Fixed creating new sections' dirs
+	Fix: Fixed loading only XML files as news
+	Fix: Fixed Flatnuke-Fast-News feature (rebuild your bookmarks)
+	Fix: Updated sample sections
+	Fix: Fixed hiding email address when users look at others' profile
+	Fix: Fixed printing unexistant news category image
+	Fix: Fixed CRSF bug on verify.php letting to comment from remote
+	Fix: Fixed XML-RPC protocol getting old news and UTF-8 encoding
+	Fix: Fixed problems on deleting some news' comments
+	Fix: Automatically recover statistics
+
+	Aldo Boccacci <zorba_@tin.it>:
+	Add: Some IM and presentation fields in userprofile
+	Change: Upgrade to fdplus 0.8
+	Change: FCKeditor for managing news and MOTD
+
+	Alfredo Cosco <orazio.nelson@gmail.com>:
+	Add: English and French INSTALL translation
+	Fix: Fixed slashes on title's page
+	Fix: Fixed namespace on XHTML DTD
+
+	Giovanni Forte <blazar@digitalinferno.it>
+	Fixed: Fixed copyright/preview boxes creation
+
+-------------------------------------------------------------------------------
+21/11/2007 21:52    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato <segatom@users.sourceforge.net>
+
+flatnuke-2.7 (eagle)
+
+	Add: Site search uses Ajax technology
+	Add: New preview function also for proposed news
+	Add: Theme can have its own footer images (put them in theme's 'images/validate' directory)
+	Add: Look at where other users live with Google Maps
+	Add: New Flatnuke administration panel
+	Add: robots.txt improves web crawlers' management
+	Add: Dynamically build page's title by the news/section you're reading
+	Add: Customize sections' meta tags (idea from Remer)
+	Add: New configuration variable $sitedescription to describe site's contents (thanks to Remer)
+	Change: AHAH library upgrade (v1.1.3)
+	Change: Nautica theme update to theme engine v1
+	Change: Gallery upgrade (v0.8)
+	Change: Spam filters improved (some code from Michele Tartara)
+	Fix: Fixed possibility to register usernames with dot "." inside
+	Fix: Fixed RSS generation with XML-RPC engine (thanks to Alfredo Cosco)
+	Fix: Fixed load_php_code() usage (thanks to Alfredo Cosco)
+	Fix: Fixed various XSS bug (thanks to Mattia Meleleo and kingoftheworld92)
+	Fix: Fixed CSRF bug on verify.php (thanks to Mattia Meleleo)
+	Fix: Fixed CSRF bug on index.php (thanks to The_RaV[3]N and RBT-4 guys)
+
+	Aldo Boccacci <zorba_@tin.it>:
+	Add: new functions: list_users(), list_admins(), check_mail(), check_username()
+	Add: new functions: load_user_view_permissions(),load_user_edit_permissions()
+	                    save_user_view_permissions(),save_user_edit_permissions()
+	Add: new functions: fn_is_system_dir(), fn_die(), get_mod(), get_file_var()
+	Add: mail registration for new users (with spam filter for email addresses)
+	Add: plugin for searching users
+	Change: user profiles moved to misc/users/ and saved in xml format
+	Change: users can hide their e-mail addresses
+	Change: improved section admin panel
+	Change: now are listed also the files present in sections
+
+	Michele Tartara <mikyt@users.sourceforge.net>
+	Add: Gallery generates RSS 2.0 feeds
+
+	Giovanni Forte <contact@blazar.it>
+	Change: Flatcry theme upgrade (v1.2)
+
+-------------------------------------------------------------------------------
+12/06/2007 09:05    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato <segatom@users.sourceforge.net>
+
+flatnuke-2.6.1 (ants)
+
+	Fix: Some errors on flatcry theme fixed
+	Change: foot_news.php removed (deprecated)
+	Fix: Fixed bug making admins to delete a file by deleting a user
+	Fix: foot_news.php completely deprecated (some code from Alfredo Cosco)
+
+	Aldo Boccacci <zorba_@tin.it>:
+	Add: summary of the thread when replying to a post (idea from Alfredo Cosco aka capitanonelson)
+	Add: new function: print_subsections($mod)
+	Change: variable $forum_moderators moved from forum/flatforum.php to config.php
+	Fix: Login now works also on Windows servers
+	Fix: Bbcodes now don't move the page
+	Fix: Added a scrollbar for preview of long posts/news
+
+	Alfredo Cosco <orazio.nelson@gmail.com>:
+	Change: Reorganized view of news' archive
+
+-------------------------------------------------------------------------------
+04/05/2007 08:55    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato <segatom@users.sourceforge.net>
+
+flatnuke-2.6 (ants)
+
+	Add: Link to delete one single comment of a news (idea from Andrea Biondo)
+	Add: Links to change on the fly the language of the site (some code from Aldo Boccacci)
+	Add: New theme engine version: v1
+	Add: New JS addLoadEvent() to manage more than one javascript at window.onload()
+	Add: xmlrpc engine supports metaWeblog API
+	Add: edit and insert news now use the same interface
+	Add: Installation and Setup utility
+	Change: Gallery upgrade (v0.7)
+	Change: foot_news.php is obsolete and deprecated now!
+	Change: footer.php is obsolete and deprecated now!
+	Change: New preview function
+	Change: Javascripts reorganized (bbcodes_editor, news_preview, module_copyrights)
+	Change: Removed butterfly old theme
+	Fix: Fixed RSS' text layout
+	Fix: Build on-the-fly some system directories if not available
+	Fix: Removed RSS update after simple file editing
+	Fix: Fixed text layout on news proposed by guests or members
+
+	Aldo Boccacci <zorba_@tin.it>:
+	Add: Flatforum, the new forum
+	Add: section none_Login
+	Add: functions is_blocked_ip($ip), is_spam()
+	Add: functions gt_fn_dir($dir), save_user_profile()
+	Add: integration of FCKeditor for sections editing
+	Change: new emoticons from PhpBB and PBLang
+	Change: Spam filter for comments in news
+	Change: new bbcode panel
+
+	Giovanni Piller Cottrer <giovanni.piller@gmail.com>:
+	Change: Revisited block for searching contents on the site
+
+	Lorenzo Caporale <piercolone@libero.it>:
+	Add: New languages icons
+	Change: New bbcode icons
+	Change: New favicon image
+
+	sssputnik <sssputnik@yahoo.it>:
+	Add: French translation
+
+	Giovanni Forte <giovanniforte@digitalinferno.it>
+	Add: New default theme Flatcry
+
+	Thanks to Alfredo 'capitanonelson' Cosco for pointing out so many errors.
+
+-------------------------------------------------------------------------------
+16/10/2006 22:11    Simone Vellei <simone_vellei@users.sourceforge.net>,
+                    Marco Segato <segatom@users.sourceforge.net>
+
+flatnuke-2.5.8.1 (butterfly)
+
+	* flatnuke:
+
+	Add: Flatnuke FastNews link
+	Fix: Fixed various XSS bugs
+
+-------------------------------------------------------------------------------
+22/09/2006 21:38	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.8 (butterfly)
+
+	* flatnuke:
+
+	Add: Hack to support PNG transparencies in IE
+	Add: Strong concurrent read/write manager
+	Add: New headlines functions web semantic-based
+	Add: Support for home page section choice in config.php
+	Add: first changes for the new theme engine
+	Add: list_section(): now you can create your menu inside the theme
+	Add: FlatNuke Fast News
+	Add: Marco Segato as new co-author
+	Add: Aldo Boccacci CVS write permission
+	Change: Better textarea size
+	Fix: Fixed bug in statistics
+
+	Marco Segato <segatom@users.sourceforge.net>
+	Add: Load automatically javascript scripts
+	Add: New gallery (v0.6)
+	Add: New function load_php_code() (idea from Aldo Boccacci)
+	Add: Improved managing cookies' life on login/logout
+	Add: Support for single (sub)section image identifier
+	Add: Load automatically CSS sheets
+	Change: Reorganized the view of news' details (contribute from JLorenz)
+	Change: Improved administration tools in sections' footer
+	Change: New calendar block (v0.9.1) (in collaboration with Giovanni Piller Cottrer)
+	Change: News are now managed as all other standard sections
+	Change: XHTML support in the code
+	Fix: Fixed remote avatar usage
+	Fix: Fixed bug that prevented proposing news by registered users
+	Fix: Fixed bug in avatar choice
+	Fix: Security fix for possible HTML injection in login form
+	Fix: Security fix in gallery with images upload function
+
+	Lorenzo Caporale <piercolone@libero.it>:
+	Change: New level layout in login block
+
+	Aldo Boccacci <zorba_@tin.it>:
+	Add: Fdplus (v0.7), the new download manager
+	Add: New functions: is_admin(), is_user(), is_guest(), get_username(), load_userprofile()
+	Add: New functions: user_can_view_section(), user_can_edit_section()
+	Add: New functions: check_path(), check_var()
+	Add: New function fnwrite() to write a file under control
+	Add: Possibility to load external code on login block
+	Add: New search engine
+	Add: Added blacklist for preventing spam in refer
+	Add: support for accesskey
+	Add: reguser variable in config.php
+	Add: Added possibility to dinamically set the variable $theme with the cookie "usertheme",
+	     and the variable $lang with the cookie userlang
+	Add: Added possibility to redefine functions view_section(), edit_content(), create_menu(), create_blocks()
+	     and create_news()
+	Change: Admins visits are no more tracked in statistics
+	Fix: Fixed functions for managing XML files
+	Fix: Fixed usage of '+' char in files' name
+	Fix: Fixed cookie set on linux
+	Fix: Accessibility improvements
+
+	Alessandro Alfonsi <aalex@ferrara.linux.it>:
+	Add: Possibility to close the site in 'maintenance mode'
+
+	Andrea Biondo <andrearobot@hotmail.com>
+	Add: New function to mask email addresses
+
+	Paulo Silva <correasilva@portugalmail.pt>
+	Add: Portuguese translation
+
+-------------------------------------------------------------------------------
+18/01/2006 21:28	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.7 (butterfly)
+
+	* flatnuke:
+
+	Add: tag2html() function
+	Add: New gallery concept
+	Add: Wikipedia TAG as BBCode
+	Add: sanitize library by http://www.owasp.org/
+	Add: function getparam() to retreive and sanitize GET, POST, COOKIE,
+	     SERVER, ecc parameters
+	Add: Added favicon.ico
+	Add: get_fn_version() to retreive curret Flatnuke version
+	Change: Now login and logout uses HTTP_REFERER to return to the
+		previuos location
+	Fix: Fixed bug in Gallery section without images
+	Fix: Fidex path disclosure in forum/profile
+	Fix: Fixed bug with "quale" and "user" parameters.
+	Fix: Fixed RSS parsing
+	Fix: fixed bug spoofing user name in comments
+	Remove: Removed possibility to directly insert HTML code into news
+		and comments (only admins can do it)
+
+	Marco Segato <segatom@users.sourceforge.net>
+	Add: New poll (v2.5)
+	Add: New gallery (v0.5)
+	Add: New footer for news' details with lots of related
+	     informations (idea and parts of code from
+	     Loris Modena <corsi@wooowfast.it>)
+	Add: is_alphanumeric(), get_file_extension(), fnsanitize() functions
+	Add: BBCodes support in news and comments (parts of code from
+	     Giovanni Piller Cottrer <giovanni.piller@gmail.com>)
+	Add: support for more than one CSS stylesheet in themes
+	Change: Updated translations
+	Change: Footer reviewed (also added page time generation)
+	Change: keywords' site moved into config.php (patch from
+		Gianluca Romanin <j_zar@openjay.org>)
+	Change: all lists used were subsituted by arrays
+	Fix: Fixed bug in Download section (ID bug 000003)
+	Fix: Fixed path disclosure bug in sections (null byte)
+	Fix: Fixed bug with non-existant sections or files (a warning will displayed)
+	Fix: Fixed null-link bug for news-search of untitled news
+	Fix: Fixed printing the gallery section
+	Fix: Fixed the use of blanks characters in filenames
+
+	Alessandro Vernassa <speleoalex@gmail.com>
+	Add: New site-map section
+	Fix: Fixed edit_content() function to display textarea in the right way
+
+	Bjorn Splinter <insites@gmail.com>
+	Change: Updated german translation
+	Fix: Fixed BBCodes functions
+
+	Aldo Boccacci <zorba_@tin.it>
+	Add: New useronline block (v0.2)
+	Add: New function rawurlencodepath() to make a link W3C compliant
+	Fix: Accessibility improvements
+
+	Alfredo Cosco <orazio.nelson@gmail.com>
+	Fix: Fixed the use of apostrophes in filenames
+
+	* forum:
+	Change: valid users' names can only be alphanumeric
+	Fix: Lots of security fixes
+
+	Marco Segato <segatom@users.sourceforge.net>
+	Add: added registration agreement terms (taken & modified from http://www.phpbb.com/)
+	Change: Updated help file with the contribute of Massimiliano
+		aka 'Hermes' <infohermes@gmail.com>
+	Fix: Members' profiles security upgrade
+	Fix: Empty avatar image fixed (graphic by Lorenzo Caporale <piercolone@libero.it>)
+	Fix: Fixed possibility to execute some code thru avatar's url
+	Fix: Prevent displaying too large avatar images that could brake page
+	     structure
+	Fix: Removed all unused <font class=normal> tags (hint by Alessandro
+	     Vernassa)
+	Remove: Removed possibility to insert images in forum topics due to
+	        security issues
+
+-------------------------------------------------------------------------------
+08/08/2005 19:07	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.6 (butterfly)
+
+	* flatnuke:
+
+	Fix: Display "Data" on comment only if there is a tag data.
+	Fix: Fixed stat() in index.php
+	Fix: Fixed possible variable conflicts in blocks programming
+	Fix: Fixed some bugs in users registration
+	Remove: Removed block "Validato"
+
+	Marco Segato <segatom@users.sourceforge.net>
+	Add: New poll (v2.4)
+	Add: New gallery (v0.4.1)
+	Fix: Some accessibility adjustments on footer, module_copyright() and login block
+	Fix: Mask file extension when inserted into a section
+	Fix: Fixed path disclosure bug in sections
+
+	Alessandro Balsamo <alessandro.balsamo@gmail.com>:
+	Change: No more tables in news
+
+	* forum:
+
+	Giovanni Piller <giovanni.piller@gmail.com>:
+	Fix: Better javascript emoticon management
+
+-------------------------------------------------------------------------------
+20/07/2005 19:39	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.5 (butterfly)
+
+	* flatnuke:
+
+	Change: Renamed some writeable files
+	Fix: & in &amp; in various files
+	Fix: RSS link in forum footer
+	Remove: Removed $siteurl from config file
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Add: New gallery (v0.4)
+	Add: New poll (v2.3)
+	Add: API documentation inserted into code
+	Add: SourceForge [1197373] bug resolved (bug in managing translations)
+	Add: Display data on comments
+	Add: New function fnlog() applied in FlatNuke core
+	Change: Footer reviewed
+	Fix: Updated FlatNuke, Punto-Informatico, Ziobudda headlines' URL (ID bug 000001)
+	Fix: bug in cookies' security (ID bug 000002)
+
+	Aldo Boccacci <zorba_@tin.it>:
+	Add: New block showing users online
+	Change: Improved accessibility
+	Fix: Download section browsing
+
+	* forum:
+
+	Alessandro Balsamo <alessandro.balsamo@gmail.com>:
+	Add: New emoticons
+
+	Lorenzo Caporale <piercolone@libero.it>:
+	Add: New avatars
+
+-------------------------------------------------------------------------------
+05/06/2005 15:26	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.4 (butterfly)
+
+	* flatnuke:
+
+	Add: Aggiunta funzione fnlog(zone,txt) per creare file di log
+	Add: Aggiunta funzione module_copyright(...) per moduli esterni
+	Add: Inserita data di post anche sulla lettura della news
+	Add: Supporto per qualsiasi formato immagine come argomento news
+	Change: Foglio di stile del tema butterfly
+	Fix: Corretto bug in segnalazione news da utente ospite
+	Fix: Corretto bug nel riordinamento della sezione Download
+	Fix: Corretto bug generazione foglio RSS
+	Fix: Corretto bug referer nelle statistiche
+	Fix: Corretto bug loop in foot_news.php
+	Fix: Corretto bug accesso diretto a print.php
+	Fix: Corretto bug su accesso none_Search
+	Fix: Corretto bug su accesso diretto thumb.php
+
+	* forum:
+
+	Fix: Corretto bug in registrazione primo utente come admin
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Fix: Supporto per l'inserimento di immagini nei post del forum
+	Fix: Corretto bug accesso diretto a help
+	Fix: Corretto bug accesso diretto a footer
+
+-------------------------------------------------------------------------------
+02/04/2005 12:19	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.3 (butterfly)
+
+	* flatnuke:
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Add: nuovo motore generazione RSS
+
+	* forum:
+
+	Fix: corretti alcuni bug nell'autenticazione
+
+-------------------------------------------------------------------------------
+02/01/2005 23:43	Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.2 (butterfly)
+
+	* forum:
+
+	Fix: corretti vari bug nella registrazione
+
+-------------------------------------------------------------------------------
+27/11/2004 10:05        Simone Vellei   <simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5.1 (butterfly)
+
+	* flatnuke:
+
+	Fix: corretto bug CloseBlock
+	Fix: corretto bug segnalazione news
+	Fix: corretto bug stampa file in sezioni
+	Fix: corretto bug </div> in stampa
+	Fix: corretto bug spazi in sottosezioni
+	Add: inserita nota in README per uso livelli
+
+-------------------------------------------------------------------------------
+20/11/2004 14:42	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+flatnuke-2.5 (butterfly)
+
+	* flatnuke:
+
+	Add: supporto livello utenti (Access Control List)
+	Add: supporto per più amministratori
+	Add: il primo utente che si registra sarà amministratore
+	Add: supporto per permessi a sezioni
+	Add: cancella news chiede conferma
+	Add: supporto per titoli blocchi con spazi
+	Add: verifica supporto per librerie GD in galleria
+	Add: modifica livello sezione online
+	Change: restyling del blocco login (wow!)
+	Change: restyling tema default
+	Change: riscritta html_entity_decode() per PHP < 4.3
+	Change: una sezione può anche non contenere section.php
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Change: aggiornamento galleria immagini
+
+
+	* forum:
+
+	Add: cancella post rimanda a pagina di cancellazione
+	Add: visualizzazione livello degli utenti
+	Add: cancella account e post richiedono conferma
+	Add: registrazione chiede doppio inserimento password
+	Fix: corretto possibile bug in gestione cookie
+	Change: convertite immagini gif in png
+	Change: ampliamento visuale totale
+	Change: cookie con maggiore durata
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Add: supporto per tag coding
+
+-------------------------------------------------------------------------------
+17/08/2004 10:40	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+flatnuke-2.4.1 (wall lizard)
+
+	* flatnuke:
+
+	Fix: corretto bug visualizzazione sezioni
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Add: supporto tag html per commenti news
+
+	* forum:
+
+	Change: La pagina attualmente letta non ha link
+	Change: una risposta rimanda all'ultima pagina del topic
+	Change: rispondi include la pagina visualizzata
+
+-------------------------------------------------------------------------------
+11/08/2004 15:37	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+flatnuke-2.4 (lizard)
+
+	* flatnuke:
+
+	Fix: corretto bug di ricerca news in archivio news.
+	Add: aggiunto download manager
+	Add: aggiunta stampa anche per sezioni e file
+	Add: aggiunto l'header della news come campo description nel file RSS
+	Add: motd creato automaticamente
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Add: supporto per galleria immagini
+	Change: aggiornamento flatpoll
+	Add: supporto per quoting in forum
+
+	Gringo:
+	Add: traduzione flatnuke in spagnolo
+	Add: traduzione sondaggio in spagnolo
+
+	* forum:
+
+	Add: motore di ricerca anche nel forum
+	Change: l'username non può contenere spazi e deve essere <= 13 caratteri
+
+-------------------------------------------------------------------------------
+20/04/2004 22:45	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+flatnuke-2.3.1 (viper)
+
+	* flatnuke:
+
+	Add: aggiunta funzione ob_start() per velocizzare stampe con buffer
+	Fix: corretto bug su ricerca news con avatar
+	Fix: corretto bug per l'inserimento news da parte di un utente
+	Fix: supporto per avatar argomenti con ogni formato immagine
+	Fix: corretto bug visualizzazione iniziale statistiche
+
+	Marco Segato <segatom@users.sourceforge.net>:
+	Add: supporto lingua tedesco per sondaggio
+
+-------------------------------------------------------------------------------
+23/03/2004 10:57	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-2.3: (viper)
+
+	* FlatNuke:
+
+	Add: Supporto per news in XML
+	Add: Supporto post forum in XML
+	Add: Supporto elimina news
+	Add: Supporto elimina post forum
+	Add: Supporto modifica news
+	Add: Supporto modifica post forum
+	Add: Supporto modifica sezioni e file
+	Add: Supporto per la ricerca nel forum
+
+	Simon Eigeldinger <simon.eigeldinger@vol.at>:
+	Add: Traduzione per il tedesco
+
+-------------------------------------------------------------------------------
+25/02/2004 10:20	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-2.2: (fugu)
+
+	* FlatNuke:
+
+	Add: Supporto per prefisso "none_" anche nei blocchi.
+	Add: Aggiunto FlatPoll nel core di FlatNuke.
+	Add: Supporto per facilitare la costruzione di link a file nello stesso
+	  livello della sezione.
+	Add: Aggiunta sezione di esempio none_Prova.
+	Add: Supporto per personalizzazione della struttura di FlatNuke nei temi
+	Add: Aggiunto supporto per accessi concorrenti in scrittura su
+		- incremento letture news
+		- aggiunta commento news
+		- risposta ai post sul forum
+	Add: Supporto per register_globals=Off
+	Add: Aggiunto controllo ID di sicurezza per procedure
+	Add: Aggiunto FlatStat nel core di FlatNuke
+	Remove: Rimosse variabili globali
+	Remove: Rimosso blocco "Informazioni"
+	Fix: Fissati "eregi" in blocks.
+	Fix: Corretto bug di sicurezza su script POST esterni
+
+	* forum:
+
+	Add: Supporto per register_globals = Off
+	Fix: Fissato bug in elimina account
+	Fix: Fissato bug in codice javascript emoticons
+
+-------------------------------------------------------------------------------
+23/01/2004 10:20	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-2.1:
+
+	* FlatNuke:
+
+	Add: Supporto per il fuso orario
+	Add: News segnalata pubblicata con data di approvazione
+	Add: Aggiunto header ai file php
+	Add: Collegato account admin con forum
+	Add: Supporto eliminazione account
+
+	* forum:
+
+	Add: Supporto per "Re: oggetto" automatico in risposta ad un post
+	Add: Supporto immagine di sfondo uguale al tema
+
+-------------------------------------------------------------------------------
+23/12/2003 16:20	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-2.0:
+
+	* FlatNuke:
+
+	Add: Sviluppato supporto per internazionalizzazione
+	Add: Durante l'inserimento dei commenti viene visualizzata la news
+	Add: Inserite opzioni di configurazione per i permessi dei guest
+	Add: supporto per voci sezioni con spazi
+	Change: Pieno supporto per utenti
+		- Collegamento utenti forum con utenti portale
+		- Inserimento commenti solo a utenti registrati (opzione)
+		- Segnalazione news solo a utenti registrati (opzione)
+	Change: Unico file di configurazione per forum e flatnuke
+	Change: modificato file AUTHOR
+	Fix: Fissate alcune impostazioni di sicurezza
+
+	Salvatore Di Maggio <titanicus@tiscali.it>:
+	Add: Supporto per voci del menu con spazi
+
+	Nicola Cocchiaro <ncocchiaro@users.sf.net>:
+	Add: Traduzione inglese
+
+	* forum:
+
+	Add: Impostazioni inserite nel file config.php di flatnuke
+	Fix: Corretto bug nella scelta dell'avatar.
+
+	Giacomo Rizzo <a_l_t_o_s@yahoo.it>:
+	Add: Supporto per avatar remoti
+
+	Salvatore di Maggio <titanicus@tiscali.it>:
+	Add: Supporto per nuova emoticon (occhiolino)
+	Add: Supporto url senza "http://" iniziale
+
+-------------------------------------------------------------------------------
+02/11/2003 16:20	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-1.8:
+
+	* FlatNuke:
+
+	Fix: Corretto bug sottosezioni in Archivio_News e Segnala_News
+	Fix: Esclusa inclusione dei file nascosti o "CVS"
+	Fix: Corretto bug icona su inserimento news
+
+	* forum:
+
+	Add: Inserimento di emoticons cliccabili
+	Add: Inserita l'ultima pagina di un thread durante la risposta ad un
+	  topic
+	Add: Inserito supporto per gli URL
+	Fix: Corretto ordinamento dei post per data ultima modifica.
+
+-------------------------------------------------------------------------------
+30/08/2003 11:20	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-1.7:
+
+	* FlatNuke:
+
+	Add: Inserita regola per ordinare blocchi
+	Add: Inserita regola per ordinare sottosezioni
+	Add: Inserita regola per ordinare voci del menu (sezioni)
+	Add: Inserita procedura per segnalazione news (e loro amministrazione)
+	Add: Supporto per inserire immagine di sfondo nel BODY nei temi.
+	Add: Inserita divisione per argomenti nell'archivio news
+	Fix: Corretto bug nella preview delle news
+
+	* forum:
+
+	Fix: Corretto ordinamento dei post al contrario
+	Fix: Corrette imperfezioni con gli slashes
+	Fix: Corretto bug dell'avatar
+	Fix: Corretto bug della faccina :/
+
+-------------------------------------------------------------------------------
+30/08/2003 11:20	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-1.6:
+
+	* FlatNuke:
+
+	Add: Il codice adesso è HTML VERAMENTE 4.01 Trasitional.
+	Add: Durante l'inserimento di una news è possibile farne la preview
+
+	* forum:
+
+	Add: Password utenti memorizzate in MD5
+	Fix: Correzione di diversi bug
+
+-------------------------------------------------------------------------------
+24/08/2003 10:59	Simone Vellei	<simone_vellei@users.sourceforge.net>
+
+FlatNuke-1.5:
+
+	* FlatNuke:
+
+	Add: Anche le sottosezioni supportano il "none_"
+	Change: Il codice adesso è HTML 4.01 Trasitional.
+
+	* forum:
+
+	Add: E' stato inserito un forum (FlatForum).
+	Add: FlatForum è collegato a FlatNuke mediante la sezione "Forum".
+	Add: Password utenti memorizzate in MD5

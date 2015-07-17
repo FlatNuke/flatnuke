@@ -1,0 +1,163 @@
+-------------------------
+INSTALLAZIONE (ITALIANO)
+-------------------------
+
+STEP 1
+Decomprimi l'archivio:
+
+	# tar xvfz FlatNuke-x.y.tar.gz
+
+Flatnuke è distribuito in un archivio compresso, avente estensione tar.gz.
+Per aprirlo è necessario un programma capace di leggere questi file, come ad esempio:
+  1. 7-zip: per Windows (http://www.7-zip.org)
+  2. ark o FileRoller: per Linux
+Si raccomanda di NON usare Winzip in quanto non è in grado di estrarre le
+cartelle vuote presenti all'interno di un file compresso.
+
+STEP 2
+Carica tutto il contenuto della directory all'interno della root del tuo sito.
+
+STEP 3
+SOLO SE IL SERVER LO RICHIEDE, imposta i giusti permessi:
+	
+	RICHIESTO
+	-------------------------
+	chmod 777 var/
+	chmod 777 var/firstinstall
+	chmod 777 sections/
+	chmod 777 sections/none_News/
+	
+	CONSIGLIATO
+	-------------------------
+	chmod 777 blocks/dx/
+	chmod 777 blocks/dx/*
+	chmod 777 blocks/sx/
+	chmod 777 blocks/sx/*
+	chmod 777 blocks/center/bottom/
+	chmod 777 blocks/center/top/
+	
+	NECESSARIO PER MODIFICARE LE OPZIONI VIA WEB
+	---------------------------------------------
+	chmod 777 config.php
+	chmod 777 download/
+	chmod 777 download/fdconfig.php
+
+STEP 4
+Accedi al tuo sito.
+
+PRIMO ACCESSO
+Al primo accesso, una semplice procedura automatizzata ti guiderà nel setup iniziale
+e nella creazione del primo account utente con privilegi di amministratore.
+
+Se hai apprezzato Flatnuke, segnala la tua pagina sul sito ufficiale http://flatnuke.org!
+
+
+----------------------
+INSTALLATION (ENGLISH)
+----------------------
+
+STEP 1
+Uncompress the archive:
+
+	# tar xvfz FlatNuke-x.y.tar.gz
+
+Flatnuke is relased in a tar.gz compressed archive.
+To uncompress it, please, use a software like:
+  1. 7-zip: for Windows (http://www.7-zip.org)
+  2. ark or FileRoller: for Linux
+Don't use Winzip because it cannot extract the empty directories inside the compressed file.
+
+STEP 2
+Upload the Flatnuke directory in your site root.
+
+STEP 3
+ONLY IF ASKED/ALLOWED FROM SERVER, set up permissions:
+
+	REQUIRED
+	-------------------------
+	chmod 777 var/
+	chmod 777 var/firstinstall
+	chmod 777 sections/
+	chmod 777 sections/none_News/
+	
+	RECOMMENDED
+	-------------------------
+	chmod 777 blocks/dx/
+	chmod 777 blocks/dx/*
+	chmod 777 blocks/sx/
+	chmod 777 blocks/sx/*
+	chmod 777 blocks/center/bottom/
+	chmod 777 blocks/center/top/
+	
+	REQUIRED FOR EDITING OPTIONS VIA WEB INFERFACE
+	---------------------------------------------
+	chmod 777 config.php
+	chmod 777 download/
+	chmod 777 download/fdconfig.php
+
+STEP 4
+Look at your site.
+
+FIRST ACCESS
+At your first access, a simple automated procedure will guide you through the initial setup
+and will help you in creating the first user account with admin privileges.
+
+If you liked Flatnuke, submit your new website to http://flatnuke.org!
+
+
+-----------------------
+INSTALLATION (FRANCAIS)
+-----------------------
+
+ÉTAPE 1
+Décompresser l'archive :
+	
+	# tar xvfz flatNuke- X.y.tar.gz
+
+Flatnuke est distribué dans une archive compressée en tar.gz.
+Pour l'ouvrir, il est nécessaire d'utiliser un programme capable de décompresser
+ceux-ci, comme par exemple :
+	1. 7-zip : pour Windows (http://www.7-zip.org)
+	2. ark ou FileRoller : pour Linux
+L'utilisation de Winzip est déconseillée, car il rencontre des soucis dans
+l'extraction de dossiers vides.
+
+ÉTAPE 2
+Uploder tout le contenu à la racine du site web.
+
+ÉTAPE 3
+SI LE SERVEUR WEB LE DEMANDE, il faudra donner les permissions suivantes
+(cela dependra de la configuration apache de votre serveur)
+
+	NÉCESSAIRE
+	-------------------------
+	chmod 777 var/
+	chmod 777 var/firstinstall
+	chmod 777 sections/
+	chmod 777 sections/none_News/
+	
+	CONSEILLÉ
+	-------------------------
+	chmod 777 blocks/dx/
+	chmod 777 blocks/dx/*
+	chmod 777 blocks/sx/
+	chmod 777 blocks/sx/*
+	chmod 777 blocks/center/bottom/
+	chmod 777 blocks/center/top/
+	
+	CONSEILLÉ
+	---------------------------------------------
+	chmod 777 config.php
+	chmod 777 download/
+	chmod 777 download/fdconfig.php
+
+ÉTAPE 4
+Connectez-vous à votre site.
+
+PREMIER ACCÈS
+Au premier accès, une procédure automatisée vous guidera à la
+configuration initiale et à la création de l'utilisateur avec privilèges
+d'administrateur.
+
+Si vous appréciez FlatNuke, envoiez votre site à http://flatnuke.org!
+

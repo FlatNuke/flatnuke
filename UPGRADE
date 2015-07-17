@@ -1,0 +1,120 @@
+FLATNUKE: istruzioni per l'aggiornamento da Flatnuke 3.1.2 a 4.0.0
+
+
+ELIMINA I SEGUENTI FILE/CARTELLE:
+----------------------------------
+
+feed.php
+include/rss/rss.php
+themes/flatcry/
+themes/nautica/
+
+
+FAI UN BACKUP DELLE IMPOSTAZIONI PERSONALIZZATE
+-----------------------------------------------
+
+Fai una copia di sicurezza dei seguenti file del tuo sito.
+
+config.php
+download/fdconfig.php
+
+
+SOVRASCRIVI O AGGIUNGI I SEGUENTI FILE/CARTELLE:
+-------------------------------------------------
+
+config.php
+functions.php
+header.php
+index.php
+print.php
+setup.php
+shared.php
+upgrade.php
+
+blocks/dx/02_Login.php
+blocks/dx/03_Utenti.php
+blocks/dx/04_Sondaggio.php
+blocks/sx/01_Servizi.php
+blocks/sx/02_Tags.php
+
+download/*.*
+download/include/*.*
+download/include/phpfunctions/*.*
+
+flatnews/include/*.*
+
+forum/*.*
+forum/include/*.*
+
+gallery/gallery.php
+
+include/autoexec.d/00_security.php
+include/blocks/login/*.*
+include/css/bootstrap.min.css
+include/css/bootstrap-theme.min.css
+include/fonts/*.*
+include/javascripts/bootstrap.min.js
+include/javascripts/bbcodes_editor.js
+include/php_filters/sanitize.php
+include/redefine/*.*
+include/rss/*.*
+include/search/*.*
+include/xmlrpc/*.*
+
+languages/*.*
+languages/fd+lang/*.*
+
+sections/01_Archivio_News/*.*
+sections/Mappa_Sito/section.php
+sections/none_Admin/none_functions/func_operations.php
+sections/none_Admin/none_functions/func_verify.php
+sections/none_Admin/none_plugins/none_HelloWorld_plugin/*.php
+sections/none_Admin/none_tools/webadmin.php
+sections/none_Admin/none_widgets/*.xml
+sections/none_Admin/none_widgets/section.php
+sections/none_Calendar/*.*
+sections/none_Login/*.*
+sections/none_Search/*.*
+sections/none_Sondaggio/section.php
+sections/none_Statistiche/stat.php
+sections/none_Statistiche/download_stats/*.*
+
+themes/fnluke/*.*
+
+
+RIPRISTINA LE IMPOSTAZIONI PERSONALIZZATE
+-----------------------------------------
+
+Riporta nei seguenti file, appena sovrascritti, le impostazioni originali del
+tuo sito dalla copia di sicurezza fatta in precedenza.
+Puoi usare l'editor testuale disponibile dal file manager del pannello di
+controllo.
+
+config.php
+download/fdconfig.php
+
+Nel file config.php imposta manualmente il nuovo tema grafico, cambiando il
+valore della variabile $theme come "fnluke";
+
+
+AGGIORNA GLI EDITOR
+-------------------
+
+Se usi FCKeditor oppure CKeditor, scarica ed usa i nuovi pacchetti aggiornati
+disponibili sul sito.
+
+
+ESEGUI LO SCRIPT DI UPGRADE
+---------------------------
+
+Lo script di aggiornamento convertirà in codifica UTF-8 il contenuto dei file
+aventi le estensioni (.php, .txt, .css, .js, .xml, .html, .htm, .description) o
+senza estensione. Di ogni file modificato sarà creata preventivamente una copia
+di backup con estensione (.pre_conv_to_UTF-8.orig) e ne sarà data notifica
+durante la conversione.
+In questo modo è possibile ripristinare manualmente eventuali file particolari
+di cui si volesse mantenere la codifica originale.
+
+Per eseguire la conversione, apri col tuo browser il file upgrade.php andando
+all'indirizzo
+http://<tuosito>/upgrade.php

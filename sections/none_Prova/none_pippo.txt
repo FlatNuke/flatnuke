@@ -1,0 +1,4 @@
+Questo e' il file <b>none_pippo.txt</b>; e' possibile inserire tag <b>HTML</b>.
+<br/>
+Si noti il titolo della sezione attuale, che permette facilmente di tornare alla
+"radice" dell'argomento che stiamo leggendo.

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget>
+	<info>
+		<id_name>server_info</id_name>
+		<description>Get info from the server</description>
+		<version>20140609</version>
+	</info>
+	<author>
+		<name>Alfredo Cosco</name>
+		<mail>alfredo.cosco@gmail.com</mail>
+		<website>http://www.nelsonweb.it</website>
+	</author>
+	<translations>
+		<title>Server Info</title>
+		<title-it></title-it>
+		<title-en></title-en>
+		<subtitle>host, ip, versions...</subtitle>
+		<subtitle-it></subtitle-it>
+		<subtitle-en></subtitle-en>
+	</translations>
+</widget>
