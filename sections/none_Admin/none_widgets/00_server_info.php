@@ -50,7 +50,6 @@ if (strpos($_SERVER['PHP_SELF'],basename(__FILE__))) {
 	<hr>
 	<div><strong><?php echo _FNCC_PHP?></strong><?php echo phpversion();?> - <a href="<?php echo get_fn_dir("sections")?>/<?php echo $mod?>/none_tools/phpinfo.php" target="new" title="PHP informations">PHPInfo</a></div>
 	<div><strong><?php echo _FNCC_GDLIB?></strong><?php echo $GDinfo;?></div>
-	<div><strong><?php echo _FNCC_FLATNUKE?></strong><?php echo FN_VERSION;?></div>
 	<div><strong>jQuery version:</strong>&nbsp;<span class="fn-jq-version"></span>
 	<script>
 	$(document).ready(function()
