@@ -22,6 +22,7 @@ snapshot:
 	rm -fr $(FILE) $(FILE).md5;\
 	cp -dpR flatnuke$(DEV) flatnuke$(DEV)-$(VER);\
 	find flatnuke$(DEV)-$(VER) -name CVS -exec rm -fr \{\} \; 2>/dev/null;\
+	find flatnuke$(DEV)-$(VER) -name .git -exec rm -fr \{\} \; 2>/dev/null;\
 	find flatnuke$(DEV)-$(VER) -name "\.*" -exec rm -f \{\} \; 2>/dev/null;\
 	rm flatnuke$(DEV)-$(VER)/Makefile;\
 	tar vfzc $(FILE) flatnuke$(DEV)-$(VER) > /dev/null;\
@@ -38,6 +39,7 @@ dist:
 	rm -fr $(FILEDIST);\
 	cp -dpR flatnuke$(DEV) flatnuke$(DEV)-$(VER);\
 	find flatnuke$(DEV)-$(VER) -name CVS -exec rm -fr \{\} \; 2>/dev/null;\
+	find flatnuke$(DEV)-$(VER) -name .git -exec rm -fr \{\} \; 2>/dev/null;\
 	find flatnuke$(DEV)-$(VER) -name "\.*" -exec rm -fr \{\} \; 2>/dev/null;\
 	rm flatnuke$(DEV)-$(VER)/Makefile;\
 	tar vfzc $(FILEDIST) flatnuke$(DEV)-$(VER) > /dev/null;\
@@ -54,6 +56,7 @@ webtest:
 	rm -fr $(WEBDIR)/flatnuke$(DEV)-$(VER);\
 	cp -dpR flatnuke$(DEV) flatnuke$(DEV)-$(VER);\
 	find flatnuke$(DEV)-$(VER) -name CVS -exec rm -fr \{\} \; 2>/dev/null;\
+	find flatnuke$(DEV)-$(VER) -name .git -exec rm -fr \{\} \; 2>/dev/null;\
 	find flatnuke$(DEV)-$(VER) -name "\.*" -exec rm -fr \{\} \; 2>/dev/null;\
 	rm flatnuke$(DEV)-$(VER)/Makefile;\
 	mv flatnuke$(DEV)-$(VER) $(WEBDIR);\
