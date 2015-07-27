@@ -1,15 +1,13 @@
 -------------------------------------------------------------------------------
-XX/XX/XXXX XX:XX    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato  <marco.segato@gmail.com>,
-                    Aldo Boccacci <zorba_@tin.it>
+XX/XX/XXXX XX:XX 	flatnuke-4.0.0 (I need a new name!!)
 
-flatnuke-4.0.0 ()
-	Add: themes are now using Bootstrap, a powerful front-end framework
-	Change: Flatnuke moves to Unicode standard encoding UTF-8
-	Fix: fixed security bug when accessing Admin section
-	Fix: fixed XSS bug (tnx to Canberk Bolat by Mavituna Security)
-	Fix: fixed XSS bug (tnx to Dennis Kelly by Risk Based Security)
-	Fix: fixed XSS bug and Script Injection bug (tnx to Juri Gianni)
+	Marco Segato <marco.segato@gmail.com>
+	- Add: themes are now using Bootstrap, a powerful front-end framework
+	- Change: Flatnuke moves to Unicode standard encoding UTF-8
+	- Fix: fixed security bug when accessing Admin section
+	- Fix: fixed XSS bug (tnx to Canberk Bolat by Mavituna Security)
+	- Fix: fixed XSS bug (tnx to Dennis Kelly by Risk Based Security)
+	- Fix: fixed XSS bug and Script Injection bug (tnx to Juri Gianni)
 
 	Roberto Balbi <roberto.balbi@email.it>
 	- Add: social links on header only news view
@@ -40,7 +38,7 @@ flatnuke-4.0.0 ()
 
 -------------------------------------------------------------------------------
 17/08/2013 10:32    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Marco Segato  <marco.segato@gmail.com>,
                     Aldo Boccacci <zorba_@tin.it>
 
 flatnuke-3.1.2 (Revenge of the Maya)
@@ -57,7 +55,7 @@ flatnuke-3.1.2 (Revenge of the Maya)
 
 -------------------------------------------------------------------------------
 03/03/2013 11:43    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Marco Segato  <marco.segato@gmail.com>,
                     Aldo Boccacci <zorba_@tin.it>
 
 flatnuke-3.1.1 (Revenge of the Maya)
@@ -74,7 +72,7 @@ flatnuke-3.1.1 (Revenge of the Maya)
 
 -------------------------------------------------------------------------------
 07/02/2013 20:58    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Marco Segato  <marco.segato@gmail.com>,
                     Aldo Boccacci <zorba_@tin.it>
 
 flatnuke-3.1.0 (Revenge of the Maya)
@@ -96,7 +94,7 @@ flatnuke-3.1.0 (Revenge of the Maya)
 
 -------------------------------------------------------------------------------
 23/10/2011 15:04    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato  <segatom@users.sourceforge.net>,
+                    Marco Segato  <marco.segato@gmail.com>,
                     Aldo Boccacci <zorba_@tin.it>
 
 flatnuke-3.0.0 (alba)
@@ -140,7 +138,7 @@ flatnuke-3.0.0 (alba)
 
 -------------------------------------------------------------------------------
 04/05/2009 21:33    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato <segatom@users.sourceforge.net>
+                    Marco Segato <marco.segato@gmail.com>
 
 flatnuke-2.7.2 (eagle)
 
@@ -162,7 +160,7 @@ flatnuke-2.7.2 (eagle)
 
 -------------------------------------------------------------------------------
 10/10/2008 22:02    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato <segatom@users.sourceforge.net>
+                    Marco Segato <marco.segato@gmail.com>
 
 flatnuke-2.7.1 (eagle)
 
@@ -205,7 +203,7 @@ flatnuke-2.7.1 (eagle)
 
 -------------------------------------------------------------------------------
 21/11/2007 21:52    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato <segatom@users.sourceforge.net>
+                    Marco Segato <marco.segato@gmail.com>
 
 flatnuke-2.7 (eagle)
 
@@ -249,7 +247,7 @@ flatnuke-2.7 (eagle)
 
 -------------------------------------------------------------------------------
 12/06/2007 09:05    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato <segatom@users.sourceforge.net>
+                    Marco Segato <marco.segato@gmail.com>
 
 flatnuke-2.6.1 (ants)
 
@@ -271,7 +269,7 @@ flatnuke-2.6.1 (ants)
 
 -------------------------------------------------------------------------------
 04/05/2007 08:55    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato <segatom@users.sourceforge.net>
+                    Marco Segato <marco.segato@gmail.com>
 
 flatnuke-2.6 (ants)
 
@@ -321,7 +319,7 @@ flatnuke-2.6 (ants)
 
 -------------------------------------------------------------------------------
 16/10/2006 22:11    Simone Vellei <simone_vellei@users.sourceforge.net>,
-                    Marco Segato <segatom@users.sourceforge.net>
+                    Marco Segato <marco.segato@gmail.com>
 
 flatnuke-2.5.8.1 (butterfly)
 
@@ -349,7 +347,7 @@ flatnuke-2.5.8 (butterfly)
 	Change: Better textarea size
 	Fix: Fixed bug in statistics
 
-	Marco Segato <segatom@users.sourceforge.net>
+	Marco Segato <marco.segato@gmail.com>
 	Add: Load automatically javascript scripts
 	Add: New gallery (v0.6)
 	Add: New function load_php_code() (idea from Aldo Boccacci)
@@ -425,7 +423,7 @@ flatnuke-2.5.7 (butterfly)
 	Remove: Removed possibility to directly insert HTML code into news
 		and comments (only admins can do it)
 
-	Marco Segato <segatom@users.sourceforge.net>
+	Marco Segato <marco.segato@gmail.com>
 	Add: New poll (v2.5)
 	Add: New gallery (v0.5)
 	Add: New footer for news' details with lots of related
@@ -467,7 +465,7 @@ flatnuke-2.5.7 (butterfly)
 	Change: valid users' names can only be alphanumeric
 	Fix: Lots of security fixes
 
-	Marco Segato <segatom@users.sourceforge.net>
+	Marco Segato <marco.segato@gmail.com>
 	Add: added registration agreement terms (taken & modified from http://www.phpbb.com/)
 	Change: Updated help file with the contribute of Massimiliano
 		aka 'Hermes' <infohermes@gmail.com>
@@ -494,7 +492,7 @@ flatnuke-2.5.6 (butterfly)
 	Fix: Fixed some bugs in users registration
 	Remove: Removed block "Validato"
 
-	Marco Segato <segatom@users.sourceforge.net>
+	Marco Segato <marco.segato@gmail.com>
 	Add: New poll (v2.4)
 	Add: New gallery (v0.4.1)
 	Fix: Some accessibility adjustments on footer, module_copyright() and login block
@@ -521,7 +519,7 @@ flatnuke-2.5.5 (butterfly)
 	Fix: RSS link in forum footer
 	Remove: Removed $siteurl from config file
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Add: New gallery (v0.4)
 	Add: New poll (v2.3)
 	Add: API documentation inserted into code
@@ -570,7 +568,7 @@ flatnuke-2.5.4 (butterfly)
 
 	Fix: Corretto bug in registrazione primo utente come admin
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Fix: Supporto per l'inserimento di immagini nei post del forum
 	Fix: Corretto bug accesso diretto a help
 	Fix: Corretto bug accesso diretto a footer
@@ -582,7 +580,7 @@ flatnuke-2.5.3 (butterfly)
 
 	* flatnuke:
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Add: nuovo motore generazione RSS
 
 	* forum:
@@ -632,7 +630,7 @@ flatnuke-2.5 (butterfly)
 	Change: riscritta html_entity_decode() per PHP < 4.3
 	Change: una sezione può anche non contenere section.php
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Change: aggiornamento galleria immagini
 
 
@@ -647,7 +645,7 @@ flatnuke-2.5 (butterfly)
 	Change: ampliamento visuale totale
 	Change: cookie con maggiore durata
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Add: supporto per tag coding
 
 -------------------------------------------------------------------------------
@@ -659,7 +657,7 @@ flatnuke-2.4.1 (wall lizard)
 
 	Fix: corretto bug visualizzazione sezioni
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Add: supporto tag html per commenti news
 
 	* forum:
@@ -681,7 +679,7 @@ flatnuke-2.4 (lizard)
 	Add: aggiunto l'header della news come campo description nel file RSS
 	Add: motd creato automaticamente
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Add: supporto per galleria immagini
 	Change: aggiornamento flatpoll
 	Add: supporto per quoting in forum
@@ -708,7 +706,7 @@ flatnuke-2.3.1 (viper)
 	Fix: supporto per avatar argomenti con ogni formato immagine
 	Fix: corretto bug visualizzazione iniziale statistiche
 
-	Marco Segato <segatom@users.sourceforge.net>:
+	Marco Segato <marco.segato@gmail.com>:
 	Add: supporto lingua tedesco per sondaggio
 
 -------------------------------------------------------------------------------
