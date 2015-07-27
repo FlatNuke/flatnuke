@@ -1,3 +1,6 @@
+# Makefile for Flatnuke building
+#
+
 # Flatnuke version
 VER = "4.0.0"
 DEV ?=
@@ -23,7 +26,7 @@ snapshot:
 	cp -dpR flatnuke$(DEV) flatnuke$(DEV)-$(VER);\
 	find flatnuke$(DEV)-$(VER) -name CVS -exec rm -fr \{\} \; 2>/dev/null;\
 	find flatnuke$(DEV)-$(VER) -name .git -exec rm -fr \{\} \; 2>/dev/null;\
-	find flatnuke$(DEV)-$(VER) -name "\.*" -exec rm -f \{\} \; 2>/dev/null;\
+	find flatnuke$(DEV)-$(VER) -type f \( -iname "\.*" ! -iname "\.htaccess" \) -exec rm -fr \{\} \; 2>/dev/null;\
 	rm flatnuke$(DEV)-$(VER)/Makefile;\
 	tar vfzc $(FILE) flatnuke$(DEV)-$(VER) > /dev/null;\
 	rm -fr flatnuke$(DEV)-$(VER);\
@@ -40,7 +43,7 @@ dist:
 	cp -dpR flatnuke$(DEV) flatnuke$(DEV)-$(VER);\
 	find flatnuke$(DEV)-$(VER) -name CVS -exec rm -fr \{\} \; 2>/dev/null;\
 	find flatnuke$(DEV)-$(VER) -name .git -exec rm -fr \{\} \; 2>/dev/null;\
-	find flatnuke$(DEV)-$(VER) -name "\.*" -exec rm -fr \{\} \; 2>/dev/null;\
+	find flatnuke$(DEV)-$(VER) -type f \( -iname "\.*" ! -iname "\.htaccess" \) -exec rm -fr \{\} \; 2>/dev/null;\
 	rm flatnuke$(DEV)-$(VER)/Makefile;\
 	tar vfzc $(FILEDIST) flatnuke$(DEV)-$(VER) > /dev/null;\
 	rm -fr flatnuke$(DEV)-$(VER);\
@@ -57,7 +60,7 @@ webtest:
 	cp -dpR flatnuke$(DEV) flatnuke$(DEV)-$(VER);\
 	find flatnuke$(DEV)-$(VER) -name CVS -exec rm -fr \{\} \; 2>/dev/null;\
 	find flatnuke$(DEV)-$(VER) -name .git -exec rm -fr \{\} \; 2>/dev/null;\
-	find flatnuke$(DEV)-$(VER) -name "\.*" -exec rm -fr \{\} \; 2>/dev/null;\
+	find flatnuke$(DEV)-$(VER) -type f \( -iname "\.*" ! -iname "\.htaccess" \) -exec rm -fr \{\} \; 2>/dev/null;\
 	rm flatnuke$(DEV)-$(VER)/Makefile;\
 	mv flatnuke$(DEV)-$(VER) $(WEBDIR);\
 	chown -R $(USER):$(USER) $(WEBDIR)/flatnuke$(DEV)-$(VER);
