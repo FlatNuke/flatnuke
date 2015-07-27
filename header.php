@@ -183,8 +183,8 @@ if(file_exists(get_fn_dir("var")."/backend.xml"))
 	echo "\n<link rel=\"alternate\" type=\"application/rss+xml\" href=\"".get_fn_dir("var")."/backend.xml\" title=\"$sitename\">";
 
 // favicon
-if(file_exists("favicon.ico"))
-	echo "\n<link rel=\"shortcut icon\" href=\"favicon.ico\">\n";
+if(file_exists("images/favicon.ico"))
+	echo "\n<link rel=\"shortcut icon\" href=\"images/favicon.ico\">\n";
 
 // loading all JavaScripts that are present in '/include/javascripts' directory
 $path_js = "include/javascripts";

@@ -4,6 +4,7 @@ FLATNUKE: istruzioni per l'aggiornamento da Flatnuke 3.1.2 a 4.0.0
 ELIMINA I SEGUENTI FILE/CARTELLE:
 ----------------------------------
 
+favicon.ico
 feed.php
 include/rss/rss.php
 themes/flatcry/
@@ -47,6 +48,8 @@ forum/*.*
 forum/include/*.*
 
 gallery/gallery.php
+
+images/favicon.ico
 
 include/autoexec.d/00_security.php
 include/blocks/login/*.*
