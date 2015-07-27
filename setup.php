@@ -448,7 +448,7 @@ function fn_main_config() {
 		<tr><td style="width:25%"><?php echo _FNCC_CONFSITENAME?>&nbsp;</td><td><input style="width:100%" type="text" name="sitename" value="<?php echo $sitename?>" /></td></tr>
 		<tr><td><?php echo _FNCC_CONFSITEDESCRIPTION?>&nbsp;</td><td><input style="width:100%" type="text" name="sitedescription" value="<?php echo $sitedescription?>" /></td></tr>
 		<tr><td><?php echo _FNCC_CONFKEYWORDS?>&nbsp;</td><td><textarea style="width:100%" cols="30" rows="14" name="keywords"><?php echo $keywords?></textarea></td></tr>
-		<tr><td><?php echo _FNCC_CONFADMINMAIL?>&nbsp;</td><td><input style="width:100%" type="text" name="emailadmin" value="<?php echo $email?>" /><br><i>(<?php echo _FNCC_CONFADMINMAIL_CONTACT;?>)</i></td></tr>
+		<tr><td><?php echo _FNCC_CONFADMIN_MAIL?>&nbsp;</td><td><input style="width:100%" type="text" name="emailadmin" value="<?php echo $email?>" /><br><i>(<?php echo _FNCC_CONFADMINMAIL_CONTACT;?>)</i></td></tr>
 		<tr>
 			<td><?php echo _FNCC_CONFTHEME?>&nbsp;</td>
 			<td>
