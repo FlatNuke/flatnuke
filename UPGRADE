@@ -1,4 +1,4 @@
-FLATNUKE: istruzioni per l'aggiornamento da Flatnuke 3.1.2 a 4.0.0
+FLATNUKE: istruzioni per l'aggiornamento da Flatnuke 3.1.5 a 4.0.0
 
 
 ELIMINA I SEGUENTI FILE/CARTELLE:
@@ -74,7 +74,7 @@ sections/none_Admin/none_functions/func_verify.php
 sections/none_Admin/none_plugins/none_HelloWorld_plugin/*.php
 sections/none_Admin/none_tools/webadmin.php
 sections/none_Admin/none_widgets/*.xml
-sections/none_Admin/none_widgets/section.php
+sections/none_Admin/none_widgets/*.php
 sections/none_Calendar/*.*
 sections/none_Login/*.*
 sections/none_Search/*.*
