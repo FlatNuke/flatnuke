@@ -28,6 +28,7 @@ functions.php
 header.php
 index.php
 print.php
+robots.txt
 setup.php
 shared.php
 upgrade.php
