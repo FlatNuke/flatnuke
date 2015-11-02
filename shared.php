@@ -842,40 +842,31 @@ include_once("include/php_filters/sanitize.php");
 function is_blocked_ip($ip){
 	if (trim($ip)=="") return FALSE;
 
-	/* lighthttp uses ::ffff:127.0.0.1 */
-	if (strpos($ip, '::') === 0) {
-        	$ip = substr($ip, strrpos($ip, ':')+1);
-	}
-
-	/* deprecated: PHP 5.3 upgrade
-	if (!eregi("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",$ip)){*/
-	if (!preg_match("/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/",$ip)){
+	// test IPV4/IPV6 address
+	if (!preg_match("/(?=(s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*)|(([\w-]+\.)+[\w-]+(\/[\w- .\/?%&amp;=]*)?))/", $ip)){
 		echo "Invalid remote ip adress!<br>";
 		return TRUE;
 	}
-	$blstring ="";
+
+	// test blacklist file existance
 	if (!file_exists("include/blacklists/ipblacklist.php")){
 		fnlog("Flatforum","Blocked ip list file doesn't exists!");
 		return FALSE;
 	}
-	$blstring=get_file("include/blacklists/ipblacklist.php");
+	$blstring = "";
+	$blstring = get_file("include/blacklists/ipblacklist.php");
 
-	$iparray=array();
-	$iparray=explode("\n",$blstring);
-	$item="";
+	// process blackfile content
+	$iparray = array();
+	$iparray = explode("\n",$blstring);
+	$item    = "";
 
 	foreach ($iparray as $item){
-		/* deprecated: PHP 5.3 upgrade
-		if (eregi("^#",trim($item))) continue;
-		if (trim($item)=="") continue;
-		if (eregi("\<",$item)) continue;
-		$item = trim(eregi_replace("\*",".",$item));
-		if (eregi($item,$ip)) return TRUE;*/
 		if (preg_match("/^#/",trim($item))) continue;
 		if (trim($item)=="") continue;
 		if (preg_match("/\</",$item)) continue;
 		$item = trim(preg_replace("/\*/",".",$item));
-		if (preg_match('/$item/',$ip)) return TRUE;
+		if (preg_match('/'.$item.'/',$ip)) return TRUE;
 	}
 	return FALSE;
 }
