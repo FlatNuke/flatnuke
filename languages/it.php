@@ -149,7 +149,7 @@ della tua visita. L&#8217;indirizzo e-mail non viene attualmente utilizzato in n
 sotto accetti queste condizioni."); // taken & modified from PhpBB (http://www.phpbb.com/)
 define("_LEGAL","This is a free software released under the GNU General Public License.");
 define("_NOPUBNEWS","Non ci sono notizie segnalate");
-define("_MOTDMESS","<h1>Hello, FlatNuke!</h1><br><p>Accedi e completa la configurazione del tuo nuovo sito cliccando su \"<a href=\"index.php?mod=none_Admin\">Amministra sito</a>\" nel blocco di Login.<br>Per scoprire tutte le funzionalit&agrave;, leggi il file <a href=\"README\" target=\"_blank\">README</a> e iscriviti al forum su <a href=\"http://flatnuke.org\" target=\"_blank\">http://flatnuke.org</a>.</p>");
+define("_MOTDMESS","<h1>Hello, FlatNuke!</h1><br><p>Accedi e completa la configurazione del tuo nuovo sito cliccando su \"<a href=\"index.php?mod=none_Admin\">Amministra sito</a>\" nel blocco di Login.<br>Per scoprire tutte le funzionalit&agrave;, leggi il file <a href=\"README.md\" target=\"_blank\">README</a> e iscriviti al forum su <a href=\"http://flatnuke.org\" target=\"_blank\">http://flatnuke.org</a>.</p>");
 define("_LEVEL","Livello");
 define("_NOLEVELSECT","Non hai i permessi per visualizzare questa sezione");
 define("_SICURO","Sei sicuro di volerlo fare?");

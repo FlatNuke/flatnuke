@@ -150,7 +150,7 @@ informa&ccedilla;&otilde;es que enviou acima; servem apenas para uma visualiza&c
 fun&ccedilla;&atilde;o autom&aacute;tica.<br><br>Ao clicar em Registar abaixo, assume concordar com estas condi&ccedilla;&otilde;es."); // taken & modified from PhpBB (http://www.phpbb.com/)
 define("_LEGAL"," This is a free software released under the GNU General Public License.");// need translation
 define("_NOPUBNEWS","Nenhumas noticias destacadas");
-define("_MOTDMESS","<h1>Hello, FlatNuke!</h1><br><p>Please complete the configuration of your new website by clicking on \"<a href=\"index.php?mod=none_Admin\">Manage the website</a>\" inside the Login block.<br>To find out everything you can do with your new CMS, have a look to the file <a href=\"README\" target=\"_blank\">README</a> and register to the official forum on <a href=\"http://flatnuke.org\" target=\"_blank\">http://flatnuke.org</a>.</p>");// need translation
+define("_MOTDMESS","<h1>Hello, FlatNuke!</h1><br><p>Please complete the configuration of your new website by clicking on \"<a href=\"index.php?mod=none_Admin\">Manage the website</a>\" inside the Login block.<br>To find out everything you can do with your new CMS, have a look to the file <a href=\"README.md\" target=\"_blank\">README</a> and register to the official forum on <a href=\"http://flatnuke.org\" target=\"_blank\">http://flatnuke.org</a>.</p>");// need translation
 define("_LEVEL","nivel");
 define("_NOLEVELSECT","Utilizador n&atilde;o tem permiss&atilde;o de visualizar esta sec&ccedilla;&atilde;o");
 define("_SICURO","Est&aacute; seguro que o deseja fazer?");

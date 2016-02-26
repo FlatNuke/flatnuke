@@ -147,7 +147,7 @@ any of the information you have entered above; they serve only to improve your v
 actually used in any automatic function.<br><br>By clicking Register below you agree to be bound by these conditions."); // taken & modified from PhpBB (http://www.phpbb.com/)
 define("_LEGAL","This is a free software released under the GNU General Public License.");
 define("_NOPUBNEWS","No highlighted news");
-define("_MOTDMESS","<h1>Hello, FlatNuke!</h1><br><p>Please complete the configuration of your new website by clicking on \"<a href=\"index.php?mod=none_Admin\">Manage the website</a>\" inside the Login block.<br>To find out everything you can do with your new CMS, have a look to the file <a href=\"README\" target=\"_blank\">README</a> and register to the official forum on <a href=\"http://flatnuke.org\" target=\"_blank\">http://flatnuke.org</a>.</p>");// need translation
+define("_MOTDMESS","<h1>Hello, FlatNuke!</h1><br><p>Please complete the configuration of your new website by clicking on \"<a href=\"index.php?mod=none_Admin\">Manage the website</a>\" inside the Login block.<br>To find out everything you can do with your new CMS, have a look to the file <a href=\"README.md\" target=\"_blank\">README</a> and register to the official forum on <a href=\"http://flatnuke.org\" target=\"_blank\">http://flatnuke.org</a>.</p>");// need translation
 define("_LEVEL","Level");
 define("_NOLEVELSECT","You don&#8217;t have right permissions to view this section");
 define("_SICURO","Are you sure you want to do it?");
