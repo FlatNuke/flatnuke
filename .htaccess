@@ -185,6 +185,7 @@ AddDefaultCharset utf-8
 # Force UTF-8 for certain file formats.
 <IfModule mod_mime.c>
     AddCharset utf-8 .atom .css .js .json .jsonld .rss .vtt .webapp .xml
+    AddType 'text/plain; charset=UTF-8' md
 </IfModule>
 
 
