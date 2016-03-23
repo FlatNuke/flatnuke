@@ -7,6 +7,8 @@ ELIMINA I SEGUENTI FILE/CARTELLE:
 favicon.ico
 feed.php
 include/rss/rss.php
+sections/none_Admin/none_widgets/00_*.*
+sections/none_Admin/none_widgets/07_*.*
 themes/flatcry/
 themes/nautica/
 
@@ -23,6 +25,7 @@ download/fdconfig.php
 SOVRASCRIVI O AGGIUNGI I SEGUENTI FILE/CARTELLE:
 -------------------------------------------------
 
+.htaccess
 config.php
 functions.php
 header.php
@@ -32,12 +35,12 @@ robots.txt
 setup.php
 shared.php
 upgrade.php
+verify.php
 
 blocks/dx/02_Login.php
 blocks/dx/03_Utenti.php
 blocks/dx/04_Sondaggio.php
-blocks/sx/01_Servizi.php
-blocks/sx/02_Tags.php
+blocks/sx/*.*
 
 download/*.*
 download/include/*.*
@@ -53,33 +56,46 @@ gallery/gallery.php
 images/favicon.ico
 
 include/autoexec.d/00_security.php
+include/autoexec.d/02_maintenance.php
+include/autoexec.d/03_dashboard.php
 include/blocks/login/*.*
+include/captcha/fncaptcha.php
 include/css/bootstrap.min.css
 include/css/bootstrap-theme.min.css
+include/css/calendar.css
+include/css/none_dashboard.css
 include/fonts/*.*
 include/javascripts/bootstrap.min.js
 include/javascripts/bbcodes_editor.js
+include/javascripts/jqueryfncall.js
+include/javascripts/preview.js
 include/php_filters/sanitize.php
 include/redefine/*.*
 include/rss/*.*
 include/search/*.*
+include/section/header/print_subsections.php
 include/xmlrpc/*.*
 
 languages/*.*
+languages/admin/*.*
 languages/fd+lang/*.*
 
 sections/01_Archivio_News/*.*
+sections/02_Forum/forum
 sections/Mappa_Sito/section.php
-sections/none_Admin/none_functions/func_operations.php
-sections/none_Admin/none_functions/func_verify.php
-sections/none_Admin/none_plugins/none_HelloWorld_plugin/*.php
-sections/none_Admin/none_tools/webadmin.php
+sections/none_Admin/section.php
+sections/none_Admin/none_functions/*.*
+sections/none_Admin/none_plugins/none_HelloWorld_plugin/section.php
+sections/none_Admin/none_tools/*.*
 sections/none_Admin/none_widgets/*.xml
 sections/none_Admin/none_widgets/*.php
 sections/none_Calendar/*.*
+sections/none_Email/*.*
+sections/none_Images/*.*
 sections/none_Login/*.*
 sections/none_Search/*.*
 sections/none_Sondaggio/section.php
+sections/none_Sondaggio/Vecchi_sondaggi/section.php
 sections/none_Statistiche/stat.php
 sections/none_Statistiche/download_stats/*.*
 
