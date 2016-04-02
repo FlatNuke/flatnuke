@@ -204,9 +204,6 @@ if(file_exists($path_js)) {
 	}
 }
 
-//Link to fontAwesomeCDN
-echo "\n<link href=\"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css\" rel=\"stylesheet\">";
-
 // end of HTML headers
 echo "\n\n</head>\n";
 ?>

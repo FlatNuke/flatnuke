@@ -63,6 +63,7 @@ include/captcha/fncaptcha.php
 include/css/bootstrap.min.css
 include/css/bootstrap-theme.min.css
 include/css/calendar.css
+include/css/font-awesome.min.css
 include/css/none_dashboard.css
 include/fonts/*.*
 include/javascripts/bootstrap.min.js
