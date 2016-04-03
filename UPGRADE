@@ -6,6 +6,8 @@ ELIMINA I SEGUENTI FILE/CARTELLE:
 
 favicon.ico
 feed.php
+include/css/none_jquery.jqplot.min.css
+include/javascripts/none_jquery.jqplot.min.js
 include/rss/rss.php
 sections/none_Admin/none_widgets/00_*.*
 sections/none_Admin/none_widgets/07_*.*
