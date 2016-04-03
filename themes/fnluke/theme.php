@@ -90,12 +90,12 @@ function create_block_menu() {
 	// print menu
 	$menu_item = _HOMEMENUTITLE;	// homesite
 	$class = ($mod == "") ? "active":"";
-	echo "\n<a href=\"index.php\" class=\"list-group-item ".$class."\" title=\""._FINDH."\">".$menu_item."<span class=\"glyphicon glyphicon-chevron-right\"></span></a>";
+	echo "\n<a href=\"index.php\" class=\"list-group-item ".$class."\" title=\""._FINDH."\">".$menu_item."<span class=\"fa fa-chevron-right\"></span></a>";
 	for ($i=0; $i < count($menu_links); $i++) {
 		$father_sect = explode("/", $menu_names[$i]);
 		$class = ($father_mod[0] == $father_sect[0]) ? "active":"";
 		// add icons to the right
-		$tmp = str_replace("</a>","<span class=\"glyphicon glyphicon-chevron-right\"></span></a>",$menu_links[$i]);
+		$tmp = str_replace("</a>","<span class=\"fa fa-chevron-right\"></span></a>",$menu_links[$i]);
 		echo str_replace("title=","class=\"list-group-item $class\" title=",$tmp);
 	}
 }

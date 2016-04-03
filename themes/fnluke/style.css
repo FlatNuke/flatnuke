@@ -16,19 +16,19 @@ body {
 /*Bootstrap elements*/
 /* -------------------------------------------------- */
 
-.list-group .glyphicon-chevron-right {
+.list-group .fa-chevron-right {
   float: right;
   margin-top: 2px;
   margin-right: -6px;
   opacity: .25;
 }
 
-.list-group a:hover .glyphicon-chevron-right {
+.list-group a:hover .fa-chevron-right {
   opacity: .5;
 }
 
-.list-group .active .glyphicon-chevron-right,
-.list-group .active a:hover .glyphicon-chevron-right {
+.list-group .active .fa-chevron-right,
+.list-group .active a:hover .fa-chevron-right {
   opacity: 1;
 }
 
@@ -42,7 +42,7 @@ body {
 
 #topleft {
 
-	
+
 }
 
 #topright {
@@ -90,7 +90,7 @@ body {
 
 }
 
-#portalTabs li a:hover { 
+#portalTabs li a:hover {
 
 }
 
@@ -164,7 +164,7 @@ body {
 	width: 23px;
 	height: 25px;
 }
-	
+
 .blocktitle .title {
 	font-family: arial,sans-serif;
 	font-size: 16px;

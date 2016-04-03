@@ -31,7 +31,7 @@ if(preg_match("/_Forum/", $mod)) {
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span></a>
+    <a class="navbar-brand" href="index.php"><span class="fa fa-home"></span></a>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -45,7 +45,7 @@ if(preg_match("/_Forum/", $mod)) {
 	<input name="mod"    type="hidden" value="none_Search">
 	<input name="where"  type="hidden" value="allsite">
       </div>
-      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+      <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
     </form>
   </div><!-- /.navbar-collapse -->
 </nav>
