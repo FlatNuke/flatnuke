@@ -16,12 +16,28 @@
 if (function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
 	@date_default_timezone_set(date_default_timezone_get());
 
+// include Flatnuke APIs
+include_once "config.php";
 include_once "functions.php";
+create_fn_constants();
 
-if (!defined("_FN_MOD")){
-	create_fn_constants();
+// language definition by configuration or by cookie
+$userlang = getparam("userlang", PAR_COOKIE, SAN_FLAT);
+if ($userlang!="" AND is_alphanumeric($userlang) AND file_exists("languages/$userlang.php")) {
+	$lang = $userlang;
+}
+switch($lang) {
+	case "de" OR "es" OR "fr" OR "it" OR "pt":
+		include_once ("languages/$lang.php");
+		include_once ("languages/fd+lang/fd+$lang.php");
+	break;
+	default:
+		include_once ("languages/en.php");
+		include_once ("languages/fd+lang/fd+en.php");
+	break;
 }
 
+// build and print headersite
 include "header.php";
 include_once "themes/$theme/theme.php";
 
@@ -40,7 +56,7 @@ global $home_section;
 
 if ($mod==""){
 	if (trim($home_section)=="")
-	$mod = "none_News";
+		$mod = "none_News";
 	else $mod = $home_section;
 }
 
@@ -58,9 +74,15 @@ if( ($news == "") and ($mod == ""))
 
 
 if (user_can_view_section($mod)){
+	$title = "";
+	$header = "";
+	$body = "";
+	$news_link = "";
+	
 	// print the news
 	if($news!=""){
 		include_once("flatnews/include/news_functions.php");
+		include_once("flatnews/include/news_view.php");
 		if(!file_exists(_FN_SECTIONS_DIR."/$mod/none_newsdata/$news.fn.php")) {
 			OpenTable();
 			print("<div class=\"centeredDiv\"><b>"._NORESULT."</b></div>");
@@ -68,17 +90,10 @@ if (user_can_view_section($mod)){
 			return;
 		}
 		$data = load_news($mod,$news);
-
 		$title = tag2html($data['title']);
 		$header = tag2html($data['header']);
 		$body = tag2html($data['body']);
-
-		echo "<div class=\"centeredDiv\"><h1>$title</h1><br><table width='80%'><tr><td>";
-		echo "<font size='3'>$header<br><br>$body</font>";
-		echo "</td></tr></table>";
-		echo "<br><br><small>"._ARTTR." <b>$sitename</b> - <a href='$url'>$url</a><br>";
-		echo _URLREF." <a href='$url"."index.php?mod=$mod&amp;action=viewnews&amp;news=$news'>$url"."index.php?mod=$mod&amp;action=viewnews&amp;news=$news</a>";
-		echo "</small></div>";
+		$news_link = get_news_link_array($mod,$news);
 	}
 	else {
 		if($file=="") {
@@ -96,23 +111,61 @@ if (user_can_view_section($mod)){
 				return;
 			}
 		}
-
-		$mod_title = preg_replace("/^([0-9]*)_|(none)_/i", "", $mod);
-		$mod_title = str_replace("_", " ", $mod_title);
-		echo "<div class=\"centeredDiv\"><h3>$mod_title</h3><br><table width='90%'><tr><td><font size='3'>" ;
-		if($file=="") {
-			if(file_exists("sections/$mod/section.php"))
-				include("sections/$mod/section.php");
-		} else include("sections/$mod/$file");
-		/* Gestisce la galleria con gallery */
-		if(file_exists("sections/$mod/gallery")) {
-			echo "<br><br>";
-			include("gallery/gallery.php");
-		}
-		echo "</font></td></tr></table>";
-		echo "<br><br><small>"._ARTTR." <b>$sitename</b> - <a href=\"$url\">$url</a><br>";
-		echo _URLREF." <a href=\"$url"."index.php?mod=$mod\">$url"."index.php?mod=$mod</a></small></div>";
+		$title = preg_replace("/^([0-9]*)_|(none)_/i", "", $mod);
+		$title = str_replace("_", " ", $title);
 	}
+
+	?>
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1><span class="fa fa-book"> <?php echo $title ?></span></h1></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<?php
+					// news
+					if($news!="") {
+						echo "<p>$header</p>";
+					}
+					// section / file
+					if($file=="") {
+						if(file_exists("sections/$mod/section.php"))
+							include("sections/$mod/section.php");
+					} else include("sections/$mod/$file");
+					// gallery
+					if(file_exists("sections/$mod/gallery")) {
+						echo "<br><br>";
+						include("gallery/gallery.php");
+					}
+					?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p><?php echo $body ?></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+					<small><?php echo _ARTTR." <b>$sitename</b> - <a href='$url'>$url</a>" ?></small><br/>
+					<?php
+					if($news!=""){
+						?><small><?php echo $news_link['news_infos'] ?></small><br/>
+						<small><?php echo _URLREF." <a href='$url"."index.php?mod=$mod&amp;action=viewnews&amp;news=$news'>$url"."index.php?mod=$mod&amp;action=viewnews&amp;news=$news</a>" ?></small><br/><?php
+					} else {
+						?><small><?php echo _URLREF." <a href='$url"."index.php?mod=$mod'>$url"."index.php?mod=$mod</a>" ?></small><br/><?php
+					}
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+
 }//fine user_can_view_section
 else {
 	OpenTable();
@@ -122,14 +175,14 @@ else {
 }
 ?>
 
-<script type="text/javascript" language="javascript1.2">
-<!--
-// Do print the page
-if (typeof(window.print) != 'undefined') {
-    window.print();
-    }
-    //-->
-    </script>
+<script type="text/javascript">
+	<!--
+	// Do print the page
+	if (typeof(window.print) != 'undefined') {
+		window.print();
+	}
+	//-->
+</script>
 
 </body>
 </html>
