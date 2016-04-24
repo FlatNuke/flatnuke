@@ -41,9 +41,9 @@ if(preg_match("/_Forum/", $mod)) {
     <form class="navbar-form navbar-right" role="search" method="post" action="index.php?mod=none_Search">
       <div class="form-group">
         <input name="find"   type="text"   class="form-control" placeholder="<?php echo _CERCA; ?>">
-	<input name="method" type="hidden" value="AND">
-	<input name="mod"    type="hidden" value="none_Search">
-	<input name="where"  type="hidden" value="allsite">
+        <input name="method" type="hidden" value="AND">
+        <input name="mod"    type="hidden" value="none_Search">
+        <input name="where"  type="hidden" value="allsite">
       </div>
       <button type="submit" class="btn btn-default"><span class="fa fa-search"></span></button>
     </form>
@@ -62,7 +62,7 @@ if(preg_match("/_Forum/", $mod)) {
     </div>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-lg-6 fnpage">
     <div id="fnpage">
       <?php getflopt(); ?>
     </div>
@@ -79,11 +79,10 @@ if(preg_match("/_Forum/", $mod)) {
 
 <div class="container">
   <div class="row">
-    <div class="well well-sm; text-center">
+    <div class="text-center">
       <div id="fnfooter">
-    	<?php CreateFooterSite(); ?>
+        <small><?php CreateFooterSite(); ?></small>
       </div>
     </div>
   </div>
 </div>
-
