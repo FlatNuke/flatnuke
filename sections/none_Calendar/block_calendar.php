@@ -113,12 +113,13 @@ echo "<a href=\"javascript:jQueryFNcall('$baseurl?$next','GET','calendar');\" ti
 echo "\n</div>";
 
 // print list of days-of-week's names
-echo "\n<div class='row'>";
+echo "\n<div>";
 for ($i=1; $i<7; $i++) {
    echo "\n\t<span class='heading'>".substr($giorni[$i],0,2)."</span>";	// from monday to saturday
 }
 echo "\n\t<span class='heading'>".substr($giorni[0],0,2)."</span>";		// sunday
 echo "\n</div>";
+echo "\n<div style='clear:both'></div>";
 
 // print empty days
 $primo = mktime(0,0,0,$mm,1,$aa); // first day of the month
@@ -128,7 +129,8 @@ if($delta == -1) {	// sunday as first day of the month
 	$delta = 6;
 }
 if($delta!=0) {		// start a new week
-	echo "\n<div class='row'>";
+	echo "\n<div style='clear:both'></div>";
+	echo "\n<div>";
 }
 for ($i=0;$i<$delta;$i++) {
 	echo "\n\t<span class='blankDay'>&nbsp;</span>";
@@ -137,7 +139,8 @@ for ($i=0;$i<$delta;$i++) {
 // print all valid days
 for ($i=1;$i<=date("t",$primo);$i++) {
 	if (($i+$delta)%7==1) {		// first day of the week
-		echo "<div class='row'>";
+		echo "\n<div style='clear:both'></div>";
+		echo "\n<div>";
 	}
 	$thereisanews = is_there_a_news(trim($i), $mm, $aa, $arraynews);	// check if there's a news in this day
     if (($i==date("d"))&&($mm==date("n"))&&($aa==date("Y"))) {
@@ -157,6 +160,7 @@ for ($i=1;$i<=date("t",$primo);$i++) {
 
 // print options boxes to change month/year
 echo "\n<div class=\"centeredDiv\">";
+echo "\n<p>&nbsp;</p>";
 echo "\n<form method='get' action='".str_replace("&","&amp;","index.php")."' name='calendar_module'>";
 echo "\n<select name='mm' onchange=\"javascript:jQueryFNcall('$baseurl?aa='+aa.options[aa.selectedIndex].value+'&amp;mm='+this.options[this.selectedIndex].value,'GET','calendar');\">";
 for ($i=1; $i<=12; $i++) {
