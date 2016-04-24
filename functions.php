@@ -4479,4 +4479,86 @@ function create_social_links($link,$title){
 	echo $social;
 }
 
+/**
+ * Define constant variables to be used as standard icons.
+ * It first try to look if the file really exists in theme's directory as an image,
+ * otherwise it uses font-awesome graphic elements.
+ *
+ * @author Marco Segato
+ * @since 4.0.0
+ * 
+ */
+function load_icons() {
+
+	global $theme;
+
+	$icona = "themes/$theme/images/comment.png";
+	if (is_file($icona)) define("_ICONCOMMENT", "<img src='$icona' />");
+	else define("_ICONCOMMENT", "<span class='fa fa-comment'></span>");
+
+	$icona = "themes/$theme/images/delete.png";
+	if (is_file($icona)) define("_ICONDELETE", "<img src='$icona' />");
+	else define("_ICONDELETE", "<span class='fa fa-trash'></span>");
+
+	$icona = "themes/$theme/images/hide.png";
+	if (is_file($icona)) define("_ICONHIDE", "<img src='$icona' />");
+	else define("_ICONHIDE", "<span class='fa fa-eye-close'></span>");
+
+	$icona = "themes/$theme/images/home.png";
+	if (is_file($icona)) define("_ICONHOME", "<img src='$icona' />");
+	else define("_ICONHOME", "<span class='fa fa-globe'></span>");
+
+	$icona = "themes/$theme/images/lock.png";
+	if (is_file($icona)) define("_ICONLOCK", "<img src='$icona' />");
+	else define("_ICONLOCK", "<span class='fa fa-check'></span>");
+
+	$icona = "themes/$theme/images/mail.png";
+	if (is_file($icona)) define("_ICONMAIL", "<img src='$icona' />");
+	else define("_ICONMAIL", "<span class='fa fa-envelope'></span>");
+
+	$icona = "themes/$theme/images/modify.png";
+	if (is_file($icona)) define("_ICONMODIFY", "<img src='$icona' />");
+	else define("_ICONMODIFY", "<span class='fa fa-edit'></span>");
+
+	$icona = "themes/$theme/images/mail.png";
+	if (is_file($icona)) define("_ICONMAIL", "<img src='$icona' />");
+	else define("_ICONMOVE", "<span class='fa fa-move'></span>");
+
+	$icona = "themes/$theme/images/normal.png";
+	if (is_file($icona)) define("_ICONNORMAL", "<img src='$icona' />");
+	else define("_ICONNORMAL", "<span class='fa fa-star-empty'></span>");
+
+	$icona = "themes/$theme/images/ontop.png";
+	if (is_file($icona)) define("_ICONONTOP", "<img src='$icona' />");
+	else define("_ICONONTOP", "<span class='fa fa-star'></span>");
+
+	$icona = "themes/$theme/images/print.png";
+	if (is_file($icona)) define("_ICONPRINT", "<img src='$icona' />");
+	else define("_ICONPRINT", "<span class='fa fa-print'></span>");
+
+	$icona = "themes/$theme/images/profile.png";
+	if (is_file($icona)) define("_ICONPROFILE", "<img src='$icona' />");
+	else define("_ICONPROFILE", "<span class='fa fa-user'></span>");
+
+	$icona = "themes/$theme/images/quote.png";
+	if (is_file($icona)) define("_ICONQUOTE", "<img src='$icona' />");
+	else define("_ICONQUOTE", "<span class='fa fa-align-justify'></span>");
+
+	$icona = "themes/$theme/images/read.png";
+	if (is_file($icona)) define("_ICONREAD", "<img src='$icona' />");
+	else define("_ICONREAD", "<span class='fa fa-book'></span>");
+
+	$icona = "themes/$theme/images/rename.png";
+	if (is_file($icona)) define("_ICONRENAME", "<img src='$icona' />");
+	else define("_ICONRENAME", "<span class='fa fa-pencil'></span>");
+
+	$icona = "themes/$theme/images/show.png";
+	if (is_file($icona)) define("_ICONSHOW", "<img src='$icona' />");
+	else define("_ICONSHOW", "<span class='fa fa-eye-open'></span>");
+
+	$icona = "themes/$theme/images/unlock.png";
+	if (is_file($icona)) define("_ICONUNLOCK", "<img src='$icona' />");
+	else define("_ICONUNLOCK", "<span class='fa fa-share'></span>");
+}
+
 ?>
