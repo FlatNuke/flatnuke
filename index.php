@@ -96,7 +96,6 @@ function getflopt(){
 	$news       = getparam("news",     PAR_GET,SAN_FLAT);
 
 	$fnaction   = getparam("fnaction",  PAR_POST,SAN_FLAT);
-	$newsaction = getparam("newsaction",PAR_POST,SAN_FLAT);
 
 	// check option to execute
 	switch($op){
@@ -104,7 +103,7 @@ function getflopt(){
 		case "":
 			if ($fnaction != "") continue;
 			// no action given ==> display homepage
-			if ($action == "" AND $newsaction == ""){
+			if ($action == ""){
 				// display motd block
 				create_motd_block();
 				// display top central block(s)
