@@ -83,17 +83,20 @@ echo "</body>\n</html>";
  * @author Aldo Boccacci <zorba_@tin.it>
  */
 function getflopt(){
-	global $home_section, $theme;
+	global $home_section;
 
-	$op       = _FN_MOD;
-	$file     = stripslashes(getparam("file",PAR_GET,SAN_FLAT));
-	$id       = getparam("id",       PAR_GET,SAN_FLAT);
-	$fnaction = getparam("fnaction", PAR_POST,SAN_FLAT);
-	$sect     = getparam("sect",     PAR_GET,SAN_FLAT);
-	$fnfile   = getparam("fnfile",   PAR_GET,SAN_FLAT);
-	$fneditor = getparam("fneditor", PAR_GET,SAN_FLAT);
-	$action   = getparam("action",   PAR_GET,SAN_FLAT);
-	$news     = getparam("news",     PAR_GET,SAN_FLAT);
+	$op         = _FN_MOD;
+	$file       = stripslashes(getparam("file",PAR_GET,SAN_FLAT));
+
+	$id         = getparam("id",       PAR_GET,SAN_FLAT);
+	$sect       = getparam("sect",     PAR_GET,SAN_FLAT);
+	$fnfile     = getparam("fnfile",   PAR_GET,SAN_FLAT);
+	$fneditor   = getparam("fneditor", PAR_GET,SAN_FLAT);
+	$action     = getparam("action",   PAR_GET,SAN_FLAT);
+	$news       = getparam("news",     PAR_GET,SAN_FLAT);
+
+	$fnaction   = getparam("fnaction",  PAR_POST,SAN_FLAT);
+	$newsaction = getparam("newsaction",PAR_POST,SAN_FLAT);
 
 	// check option to execute
 	switch($op){
@@ -101,7 +104,7 @@ function getflopt(){
 		case "":
 			if ($fnaction != "") continue;
 			// no action given ==> display homepage
-			if ($action == ""){
+			if ($action == "" AND $newsaction == ""){
 				// display motd block
 				create_motd_block();
 				// display top central block(s)
@@ -168,98 +171,87 @@ function getflopt(){
 	if (_FN_MOD==""){
 		// include flatnews engine
 		include_once "flatnews/include/news_view.php";
+		if($action!="" AND $action!="viewnews" AND $action!="addcommentinterface" AND $action!="viewproposednews") {
+			include_once "flatnews/include/news_admin.php";
+		}
 		// list of actions to perform
 		switch ($action){
 			case "viewnews":
-				if (_FN_MOD==""){
-					view_news("none_News",$news);
-				}
+				OpenTableTitle("");
+				view_news("none_News",$news);
+				CloseTableTitle();
 			break;
 			case "addcommentinterface":
-				if (_FN_MOD==""){
-					OpenTableTitle(_ADDCOMM);
-					add_comment_interface("none_News",$news);
-					CloseTableTitle();
-					}
+				OpenTableTitle(_ADDCOMM);
+				add_comment_interface("none_News",$news);
+				CloseTableTitle();
 			break;
 			case "addnewsinterface":
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle(_ADDNEWS);
 				edit_news_interface("none_News","","add");
 				CloseTableTitle();
 			break;
 			case "editnewsinterface":
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle(_EDITNEWS);
 				edit_news_interface("none_News",$news,"edit");
 				CloseTableTitle();
 			break;
 			case "deletenewsinterface";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle(_DELETENEWS);
 				delete_news_interface("none_News",$news);
 				CloseTableTitle();
 			break;
 			case "movenewsinterface";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle(_MOVENEWS);
 				move_news_interface("none_News",$news);
 				CloseTableTitle();
 			break;
 			case "deletecomment";
-				include_once "flatnews/include/news_admin.php";
 				$comment = getparam("comment",PAR_GET,SAN_FLAT);
 				OpenTableTitle("News");
 				delete_comment("none_News",$news,$comment);
 				CloseTableTitle();
 			break;
 			case "editcommentinterface";
-				include_once "flatnews/include/news_admin.php";
 				$comment = getparam("comment",PAR_GET,SAN_FLAT);
 				OpenTableTitle("News");
 				edit_comment_interface("none_News",$news,$comment);
 				CloseTableTitle();
 			break;
 			case "ontopnews";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle("News");
 				set_news_ontop("none_News",$news,TRUE);
 				CloseTableTitle();
 			break;
 			case "normalnews";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle("News");
 				set_news_ontop("none_News",$news,FALSE);
 				CloseTableTitle();
 			break;
 			case "hidenews";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle("News");
 				hide_news("none_News",$news,TRUE);
 				CloseTableTitle();
 			break;
 			case "shownews";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle("News");
 				hide_news("none_News",$news,FALSE);
 				CloseTableTitle();
 			break;
 			case "proposenewsinterface";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle(_SEGNEWS);
 				edit_news("none_News","","propose");
 				CloseTableTitle();
 			break;
 			case "manageproposednews";
-				include_once "flatnews/include/news_admin.php";
 				OpenTableTitle(_SEGNNOTIZIE);
 				manage_proposed_news_interface();
 				CloseTableTitle();
 			break;
 			case "viewproposednews":
-				if (_FN_MOD==""){
-					view_news("none_News",$news,TRUE);
-				}
+				OpenTableTitle("");
+				view_news("none_News",$news,TRUE);
+				CloseTableTitle();
 			break;
 		}
 	}
