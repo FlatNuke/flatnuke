@@ -118,9 +118,8 @@ function CreateFooterSite() {
 
 function create_motd_block(){
 	global $theme;
-	// print motd content if exists and if $postaction is not set!
-	$postaction = getparam("newsaction",PAR_POST,SAN_FLAT);
-	if(file_exists(get_fn_dir("var")."/motd.php") AND trim(get_file(get_fn_dir("var")."/motd.php"))!="" and $postaction=="") {
+	// print motd content if exists
+	if(file_exists(get_fn_dir("var")."/motd.php") AND trim(get_file(get_fn_dir("var")."/motd.php"))!="") {
 		echo "<div class=\"container col-lg-12 \">";
 		echo "<div class=\"jumbotron\">";
 		echo "<div id=\"fnmotd\">";

@@ -12,9 +12,9 @@ if(strstr($req,"myforum="))
 // check if you're in the forum sections
 $mod = getparam("mod", PAR_GET, SAN_FLAT);
 if(preg_match("/_Forum/", $mod)) {
-	$into_forum = TRUE;
+  $into_forum = TRUE;
 } else {
-	$into_forum = FALSE;
+  $into_forum = FALSE;
 }
 
 ?>
@@ -22,6 +22,7 @@ if(preg_match("/_Forum/", $mod)) {
 
 <!-- THEME STRUCTURE START -->
 
+<!-- NAVIGATION BAR -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -50,33 +51,56 @@ if(preg_match("/_Forum/", $mod)) {
   </div><!-- /.navbar-collapse -->
 </nav>
 
-
+<!-- BODY OF THE PAGE -->
 <div class="row; grid-gutter-width: 5px;">
 
+  <!-- LEFT -->
+  <?php
+    if(!$into_forum) {
+  ?>
   <div class="col-lg-3">
     <div id="fnleftcolumn" >
       <div class="list-group">
         <?php create_block_menu(); ?>
       </div>
-      <?php create_blocks("sx"); ?>
+      <?php
+        create_blocks("sx");
+      ?>
     </div>
   </div>
+  <?php
+    }
+  ?>
 
-  <div class="col-lg-6 fnpage">
+  <!-- CENTER -->
+  <?php
+    if($into_forum) {
+      echo "<div class=\"col-lg-12 fnpage\">";
+    } else {
+      echo "<div class=\"col-lg-6 fnpage\">";
+    }
+  ?>
     <div id="fnpage">
       <?php getflopt(); ?>
     </div>
   </div>
 
+  <!-- RIGHT -->
+  <?php
+    if(!$into_forum) {
+  ?>
   <div class="col-lg-3">
     <div id="fnrightcolumn">
       <?php create_blocks("dx"); ?>
     </div>
   </div>
+  <?php
+    }
+  ?>
 
 </div>
 
-
+<!-- FOOTER -->
 <div class="container">
   <div class="row">
     <div class="text-center">
