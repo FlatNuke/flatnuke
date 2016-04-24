@@ -25,7 +25,9 @@ include_once "functions.php";
 // first microtime to calculate time generation page
 $time1 = get_microtime();
 
+// load some constant variables
 create_fn_constants();
+load_icons();
 
 // language definition by configuration or by cookie
 $userlang = getparam("userlang", PAR_COOKIE, SAN_FLAT);
@@ -50,81 +52,10 @@ if ($usertheme!="" AND !stristr("..",$usertheme) AND is_dir("themes/$usertheme")
 }
 include_once "themes/$theme/theme.php";
 
-
-// define icons
-$icona = "themes/$theme/images/comment.png";
-if (is_file($icona)) define("_ICONCOMMENT", "<img src='$icona' />");
-else define("_ICONCOMMENT", "<span class='fa fa-comment'></span>");
-
-$icona = "themes/$theme/images/delete.png";
-if (is_file($icona)) define("_ICONDELETE", "<img src='$icona' />");
-else define("_ICONDELETE", "<span class='fa fa-trash'></span>");
-
-$icona = "themes/$theme/images/hide.png";
-if (is_file($icona)) define("_ICONHIDE", "<img src='$icona' />");
-else define("_ICONHIDE", "<span class='fa fa-eye-close'></span>");
-
-$icona = "themes/$theme/images/home.png";
-if (is_file($icona)) define("_ICONHOME", "<img src='$icona' />");
-else define("_ICONHOME", "<span class='fa fa-globe'></span>");
-
-$icona = "themes/$theme/images/lock.png";
-if (is_file($icona)) define("_ICONLOCK", "<img src='$icona' />");
-else define("_ICONLOCK", "<span class='fa fa-check'></span>");
-
-$icona = "themes/$theme/images/mail.png";
-if (is_file($icona)) define("_ICONMAIL", "<img src='$icona' />");
-else define("_ICONMAIL", "<span class='fa fa-envelope'></span>");
-
-$icona = "themes/$theme/images/modify.png";
-if (is_file($icona)) define("_ICONMODIFY", "<img src='$icona' />");
-else define("_ICONMODIFY", "<span class='fa fa-edit'></span>");
-
-$icona = "themes/$theme/images/mail.png";
-if (is_file($icona)) define("_ICONMAIL", "<img src='$icona' />");
-else define("_ICONMOVE", "<span class='fa fa-move'></span>");
-
-$icona = "themes/$theme/images/normal.png";
-if (is_file($icona)) define("_ICONNORMAL", "<img src='$icona' />");
-else define("_ICONNORMAL", "<span class='fa fa-star-empty'></span>");
-
-$icona = "themes/$theme/images/ontop.png";
-if (is_file($icona)) define("_ICONONTOP", "<img src='$icona' />");
-else define("_ICONONTOP", "<span class='fa fa-star'></span>");
-
-$icona = "themes/$theme/images/print.png";
-if (is_file($icona)) define("_ICONPRINT", "<img src='$icona' />");
-else define("_ICONPRINT", "<span class='fa fa-print'></span>");
-
-$icona = "themes/$theme/images/profile.png";
-if (is_file($icona)) define("_ICONPROFILE", "<img src='$icona' />");
-else define("_ICONPROFILE", "<span class='fa fa-user'></span>");
-
-$icona = "themes/$theme/images/quote.png";
-if (is_file($icona)) define("_ICONQUOTE", "<img src='$icona' />");
-else define("_ICONQUOTE", "<span class='fa fa-align-justify'></span>");
-
-$icona = "themes/$theme/images/read.png";
-if (is_file($icona)) define("_ICONREAD", "<img src='$icona' />");
-else define("_ICONREAD", "<span class='fa fa-book'></span>");
-
-$icona = "themes/$theme/images/rename.png";
-if (is_file($icona)) define("_ICONRENAME", "<img src='$icona' />");
-else define("_ICONRENAME", "<span class='fa fa-pencil'></span>");
-
-$icona = "themes/$theme/images/show.png";
-if (is_file($icona)) define("_ICONSHOW", "<img src='$icona' />");
-else define("_ICONSHOW", "<span class='fa fa-eye-open'></span>");
-
-$icona = "themes/$theme/images/unlock.png";
-if (is_file($icona)) define("_ICONUNLOCK", "<img src='$icona' />");
-else define("_ICONUNLOCK", "<span class='fa fa-share'></span>");
-
-
 //Correct the X-UA-Compatible validation bug
 //see http://www.validatethis.co.uk/news/fix-bad-value-x-ua-compatible-once-and-for-all/
 //NOT VERIFIED
-if (isset($_SERVER['HTTP_USER_AGENT']) && 
+if (isset($_SERVER['HTTP_USER_AGENT']) &&
     (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false))
         header('X-UA-Compatible: IE=edge,chrome=1');
 
@@ -169,48 +100,20 @@ function getflopt(){
 		// no option given: display homepage
 		case "":
 			if ($fnaction != "") continue;
+			// no action given ==> display homepage
 			if ($action == ""){
-				// print motd content if exists and if $postaction is not set!
-				$postaction = getparam("newsaction",PAR_POST,SAN_FLAT);
-				if(file_exists(get_fn_dir("var")."/motd.php") AND trim(get_file(get_fn_dir("var")."/motd.php"))!="" and $postaction=="") {
-					//OpenTable();
-					//echo "<div class=\"motd\">";
-					echo "<div class=\"container col-lg-12\"><div class=\"jumbotron\">";
-					echo "<div id=\"fnmotd\">";
-					// print motd image if exists
-					if(file_exists("themes/$theme/images/motd.png")) {
-						echo "<img src='themes/$theme/images/motd.png' class=\"motd\" alt='Motd' />";
-					} else echo "<!-- MOTD image \"themes/$theme/images/motd.png\" not found -->";
-					include (get_fn_dir("var")."/motd.php");
-
-					//fix: when motd text is too short the image goes out of her area
-					echo "<div style=\"clear:both;\"></div>";
-
-					if (_FN_IS_ADMIN){
-						global $news_editor;
-						echo "<br /><a href=\"index.php?mod=modcont&amp;from=index.php&amp;file="._FN_VAR_DIR."%2Fmotd.php";
-						if ($news_editor=="fckeditor" AND file_exists("include/plugins/editors/FCKeditor/fckeditor.php"))
-							echo "&amp;fneditor=fckeditor";
-						else if ($news_editor=="ckeditor" AND file_exists("include/plugins/editors/ckeditor/ckeditor.php"))
-							echo "&amp;fneditor=ckeditor";
-						echo " \" title=\""._MODIFICA."\">"._ICONMODIFY._MODIFICA."</a>";
-					}
-					echo "</div>";
-					echo "</div></div>";
-				}
+				// display motd block
+				create_motd_block();
 				// display top central block(s)
-				load_php_code("blocks/center/top");
-			}
-			if(($home_section == "") or !isset($home_section)){
-				if ($action == ""){
+				create_central_blocks("top");
+				// display news or home-section in homepage
+				if(($home_section == "") or !isset($home_section)){
 					include("flatnews/flatnews.php");
- 					// display bottom central block(s)
-					load_php_code("blocks/center/bottom");
+				} else {
+					view_section($home_section);
 				}
-			} else {
-				view_section($home_section);	// display section in homepage
 				// display bottom central block(s)
-				load_php_code("blocks/center/bottom");
+				create_central_blocks("bottom");
 			}
 		break;
 		// modify a file
@@ -218,9 +121,7 @@ function getflopt(){
 			if(is_admin())
 				edit_content($file,$fneditor);
 			else {
-				OpenTable();
-				print("<div class=\"centeredDiv\"><b>"._NOLEVELSECT."</b></div>");
-				CloseTable();
+				echo "<div class=\"centeredDiv alert alert-danger\"><b>"._NOLEVELSECT."</b></div>";
 				return;
 			}
 		break;
