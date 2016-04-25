@@ -72,6 +72,8 @@ include "themes/$theme/structure.php";
 
 echo "</body>\n</html>";
 
+ob_end_flush();
+
 
 /**
  * Flatnuke MAIN function
