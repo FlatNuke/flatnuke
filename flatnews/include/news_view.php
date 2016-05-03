@@ -610,8 +610,8 @@ function get_news_link_array($section,$news,$newsdata=""){
 	}
 
 	// link to read the full news
-	$ret_strings['link_read'] = "<a href='".CleanString($title).".".$news."' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
-//vecchio link  $ret_strings['link_read'] = "<a href='index.php?$modstring"."action=viewnews&amp;news=$news' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
+	$ret_strings['link_read'] = "<a href='index.php?$modstring"."action=viewnews&amp;news=$news' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
+// bozza sostituzione con permalink	$ret_strings['link_read'] = "<a href='".CleanString($title).".".$news."' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
 
 	// link to comment the news
 	$ret_strings['link_addcomment'] = "<a href='index.php?$modstring"."action=addcommentinterface&amp;news=$news' title=\""._ADDCOMM." news: $title\">"._ICONCOMMENT."&nbsp;"._ADDCOMM."</a><br>";
