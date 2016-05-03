@@ -39,13 +39,14 @@ if(trim($mod)!="" AND $action!="viewnews" AND $action!="addcommentinterface") {
 	$page_title = str_replace("_", " ", $page_title);
 	$title = "$sitename &raquo; $page_title";
 }
+$pagedescription = $sitedescription; // set page description to site description
 if(($action=="viewnews" OR $action=="addcommentinterface") AND file_exists("$news_dir/$news.fn.php")) {
 	// build title for a news
 	$newsfile   = get_file("$news_dir/$news.fn.php");
 	$page_title = get_xml_element("title",$newsfile);
 	$keywords   = preg_replace('/[\.]*[[:alpha:]]+$/i','',get_xml_element("category",$newsfile)).", $keywords";
-	$sitedescription = substr(strip_tags(get_xml_element("header",$newsfile)), 0, 200);
-	$sitedescription = _FLEGGI." &#58; $sitedescription";
+	$pagedescription = substr(strip_tags(get_xml_element("header",$newsfile)), 0, 200); // set page description to news header
+	$pagedescription = _FLEGGI." &#58; $pagedescription";
 	$title = "$sitename &raquo; $page_title";
 }
 
@@ -69,7 +70,7 @@ define("_FN_TITLE",$title);
 echo "<meta name=\"author\" content=\"$admin\">\n";
 //echo "<meta name=\"copyright\" content=\"Copyright (c) ".date("Y",time())." by $sitename\">\n";
 echo "<meta name=\"keywords\" content=\"$keywords\">\n";
-echo "<meta name=\"description\" content=\"$sitedescription\">\n";
+echo "<meta name=\"description\" content=\"$pagedescription\">\n";
 if (file_exists(_FN_SECTIONS_DIR."/"._FN_MOD."/noindex"))
 	echo "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
 else echo "<meta name=\"robots\" content=\"index, follow\">\n";
