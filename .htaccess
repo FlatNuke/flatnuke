@@ -665,7 +665,7 @@ FileETag None
 #    </FilesMatch>
 # </IfModule>
 
-# rewrite permalinks
-<IfModule mod_rewrite.c>
-RewriteRule ^([a-zA-Z0-9-]+).([0-9]{10})$ /index.php?action=viewnews&news=$2 [L]
-</IfModule>
+# rewrite permalinks (work in progress)
+#<IfModule mod_rewrite.c>
+#RewriteRule ^([a-zA-Z0-9-]+).([0-9]{10})$ /index.php?action=viewnews&news=$2 [L]
+#</IfModule>
