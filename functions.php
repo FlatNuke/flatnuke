@@ -3701,7 +3701,8 @@ function choose_sect_type_interface($mod){
 			echo " selected=\"selected\"";
 		echo ">"._DOWNLOADMAIN."</option>
 		<option value=\"downloadsection\" title=\""._DOWNLOADSINGLETITLE."\"";
-		//fine funzione create_social_linksif (file_exists(get_fn_dir("sections")."/$mod/downloadsection"))
+		//fine funzione create_social_links
+		if (file_exists(get_fn_dir("sections")."/$mod/downloadsection"))
 			echo " selected=\"selected\"";
 		echo ">"._DOWNLOADSINGLE."</option>
 		<option value=\"forum\"";
