@@ -152,12 +152,13 @@ if (file_exists("include/redefine/".__FUNCTION__.".php")){
  * @author Aldo Boccacci
  */
 function fd_view_file($filename){
-$GLOBALS['filename'] = $filename;
 
-if (file_exists("include/redefine/".__FUNCTION__.".php")){
-	include("include/redefine/".__FUNCTION__.".php");
-	return;
-}
+	$GLOBALS['filename'] = $filename;
+
+	if (file_exists("include/redefine/".__FUNCTION__.".php")){
+		include("include/redefine/".__FUNCTION__.".php");
+		return;
+	}
 	if (!fd_check_path($filename,"sections/","")) {
 		fdlogf("\$filename \"".strip_tags($filename)."\" is not valid! FDview: ".__LINE__);
 		return;
@@ -166,255 +167,255 @@ if (file_exists("include/redefine/".__FUNCTION__.".php")){
 	if ($extsig=="") $extsig="sig";
 	$extensions_array=array();
 	$extensions_array = explode(",",strtolower($extensions));
-//estraggo l'estensione
-		$fileinfo = array();
-		$fileinfo = pathinfo($filename);
-		$ext ="";
-		if (isset($fileinfo['extension'])) $ext = $fileinfo['extension'];
+	//estraggo l'estensione
+	$fileinfo = array();
+	$fileinfo = pathinfo($filename);
+	$ext ="";
+	if (isset($fileinfo['extension'])) $ext = $fileinfo['extension'];
+	else return;
+
+	if (!in_array(strtolower($ext),$extensions_array)){
+		return;
+	}
+
+	//se è un file php ritorno
+	if (preg_match("/php/i",$ext)) {
+		return;
+	}
+
+	/*
+		* Apre il relativo file di descrizione "<$filename>.descrizione"
+		* se non esiste lo creo io.
+		*/
+	if (!file_exists($filename.".description")){
+		$data = array();
+		$data['time'] = filemtime($filename);
+		save_description($filename,$data);
+
+	}
+
+
+	/* Calcola la grandezza del file */
+	$size="";
+	$size = round(filesize($filename)/1024)."Kb";
+
+
+	//NUOVA FUNZIONE PER IL CARICAMENTO DELLA DESCRIZIONE
+	$description=array();
+	$description= load_description($filename);
+
+	//solo gli amministratori possono vedere i file nascosti
+	if ($description['hide']=="true" and !fd_is_admin()) return;
+	//controllo se il livello dell'utente è adeguato a quello del file
+	$myforum="";
+	$myforum=_FN_USERNAME;
+	if ($description['level']!="-1"){
+		if (trim($myforum)!="" and versecid($myforum)){
+			if ($description['level']>_FN_USERLEVEL){
+				return;
+			}
+		}
 		else return;
 
-		if (!in_array(strtolower($ext),$extensions_array)){
-			return;
-		}
-
-		//se è un file php ritorno
-		if (preg_match("/php/i",$ext)) {
-			return;
-		}
-
-		/*
-		 * Apre il relativo file di descrizione "<$filename>.descrizione"
-		 * se non esiste lo creo io.
-		 */
-		if (!file_exists($filename.".description")){
-			$data = array();
-			$data['time'] = filemtime($filename);
-			save_description($filename,$data);
-
-		}
-
-
-		/* Calcola la grandezza del file */
-		$size="";
-		$size = round(filesize($filename)/1024)."Kb";
-
-
-		//NUOVA FUNZIONE PER IL CARICAMENTO DELLA DESCRIZIONE
-		$description=array();
-		$description= load_description($filename);
-
-		//solo gli amministratori possono vedere i file nascosti
-		if ($description['hide']=="true" and !fd_is_admin()) return;
-		//controllo se il livello dell'utente è adeguato a quello del file
-		$myforum="";
-		$myforum=_FN_USERNAME;
-		if ($description['level']!="-1"){
-			if (trim($myforum)!="" and versecid($myforum)){
-				if ($description['level']>_FN_USERLEVEL){
-					return;
-				}
-			}
-			else return;
-
-		}
-		$newfilestring="";
-		//Calcolo se inserire l'icona per il nuovo file
-		if (file_exists("images/mime/new.gif")){
-			if ((time()-$description['time'])<$newfiletime*3600) {
-				if (strrchr($fileinfo['dirname'],"/")!="/".$archivedir){
-				$newfilestring = "&nbsp;<img src=\"images/mime/new.gif\" alt=\"new file!\">";
-				}
+	}
+	$newfilestring="";
+	//Calcolo se inserire l'icona per il nuovo file
+	if (file_exists("images/mime/new.gif")){
+		if ((time()-$description['time'])<$newfiletime*3600) {
+			if (strrchr($fileinfo['dirname'],"/")!="/".$archivedir){
+			$newfilestring = "&nbsp;<img src=\"images/mime/new.gif\" alt=\"new file!\">";
 			}
 		}
+	}
 
-		else $newfilestring = "";
+	else $newfilestring = "";
 
-		$string_title="";
-		/* Generazione Tabella */
-		echo "<br><br>";
-		if (ltrim($description['name'])==""){
-			$string_title = "<a id=\"".create_id($filename)."\" title=\"mime icon\">".getIcon($ext,$icon_style)."</a>".basename($filename);
-			if ($description['hide']=="true") $string_title = "<span style=\"color : #ff0000; text-decoration : line-through;\">".$string_title."</span>";
-			OpenTableTitle($string_title.$newfilestring);
+	$string_title="";
+	/* Generazione Tabella */
+	echo "<br><br>";
+	if (ltrim($description['name'])==""){
+		$string_title = getIcon($ext,$icon_style)."&nbsp;".basename($filename);
+	}
+	else if (ltrim($description['name'])!=""){
+		$string_title = getIcon($ext,$icon_style)."&nbsp;".$description['name'];
+	}
+	echo "<div style='margin-bottom:35px'><a id=\"".create_id($filename)."\"></a></div>";
+	if ($description['hide']=="true") {
+		$string_title = "<span style=\"color : #ff0000; text-decoration : line-through;\">".$string_title."</span>";
+	}
+	OpenTableTitle($string_title.$newfilestring);
+
+	?>
+	<p align="left">
+	<table style="border-style : hidden;" width="100%" cellpadding="0" cellspacing="4" class="download">
+		<?php fd_load_php_code("download/include/autoinclude/fd_view_file/header"); ?>
+		<tr>
+			<td align="left" width="20%"><b><?php echo _FDNAME;?></b></td>
+			<td><?php
+
+			//ora è possibile scaricare il file anche cliccando sul suo nome
+			if (ltrim($description['name'])==""){
+// 					echo basename($filename);
+				echo "<b><u><a href=\"index.php?mod=none_Fdplus&amp;fdaction=download&amp;url=".rawurlencodepath($filename)."\" title=\""._FDDOWNLOADFILE.basename($filename)."\">".basename($filename)."</a></u></b>";
+				//inserisco la chiave
+				if (file_exists($filename.".$extsig")){
+					echo " | (<b><a href=\"$filename.$extsig\" title=\""._FDGPGSIGNTITLE.basename($filename)."\">"._FDGPGSIGN."</a></b>)";
+				}
+			}
+
+			else if (ltrim($description['name'])!=""){
+// 					echo $description['name'];
+				echo "<b><u><a href=\"index.php?mod=none_Fdplus&amp;fdaction=download&amp;url=$filename\" title=\""._FDDOWNLOADFILE.basename($filename)."\">".$description['name']."</a></u></b>";
+				//inserisco la chiave
+				if (file_exists($filename.".$extsig")){
+					echo " | (<b><a href=\"$filename.$extsig\" title=\""._FDGPGSIGNTITLE."\">"._FDGPGSIGN."</a></b>)";
+				}
+				}
+			?></td>
+		</tr>
+		<?php
+		global $showuploader;
+		if ($showuploader =="1" and trim($description['uploadedby'])!=""){
+			if (is_alphanumeric(trim($description['uploadedby']))){
+				if (file_exists(get_fn_dir("users")."/".trim($description['uploadedby']).".php")){
+					echo "<tr><td align=\"left\" valign=\"top\"><b>"._FDUPLOADER."</b></td>
+					<td><a href=\"index.php?mod=none_Login&action=viewprofile&user=".$description['uploadedby']."\" title=\""._FDUPLOADERTITLE."\">".$description['uploadedby']."</a></td></tr>";
+				}
+				else {
+					echo "<tr><td align=\"left\" valign=\"top\"><b>"._FDUPLOADER."</b></td>
+					<td>".$description['uploadedby']."</td></tr>";
+				}
+			}
+			else if (trim($description['uploadedby'])!=""){
+				fdlogf("Uploader field is invalid (".$description['uploadedby'].")FDview: ".__LINE__);
+			}
+
 		}
 
-		else if (ltrim($description['name'])!=""){
-			$string_title = "<a id=\"".create_id($filename)."\">".getIcon($ext,$icon_style)."</a>".$description['name'];
-			if ($description['hide']=="true") $string_title = "<span style=\"color : #ff0000; text-decoration : line-through;\">".$string_title."</span>";
-			OpenTableTitle("$string_title".$newfilestring);
+		$desc = preg_replace("/<br \/>/i","",$description['desc']);
+		$desc = preg_replace("/<br \/>/i","", $desc);
+		if (ltrim($desc)!=""){
+		echo "<tr><td align=\"left\" valign=\"top\"><b>"._FDDESC."</b></td>
+			<td>".$description['desc']."</td>
+		</tr>";
+		}
+		//se non è nullo mostro anche il campo "versione"
+		if (trim($description['version'])!=""){
+			echo "<tr><td align=\"left\"><b>"._FDVERSION."</b></td>";
+			echo "<td>".$description['version']."</td></tr>";
+		}
+
+		//se sono entrambi settati mostro i campi personalizzati
+		if (trim($description['userlabel'])!="" and trim($description['uservalue'])!=""){
+			echo "<tr><td align=\"left\"><b>".$description['userlabel']."</b></td>";
+			echo "<td>".$description['uservalue']."</td></tr>";
+
+		}
+
+		//se non è nullo mostro anche il campo "md5"
+		if (ltrim($description['md5'])!=""){
+			echo "<tr><td align=\"left\"><b>md5</b></td>";
+			echo "<td>".$description['md5']."</td></tr>";
+		}
+
+		//se non è nullo mostro anche il campo "sha1"
+		if (ltrim($description['sha1'])!=""){
+			echo "<tr><td align=\"left\"><b>sha1</b></td>";
+			echo "<td>".$description['sha1']."</td></tr>";
+		}
+
+		//se esiste lo screenshot
+		global $extscreenshot;
+		if (file_exists("$filename.$extscreenshot")){
+			echo "<tr><td style=\"vertical-align : top;\"><b>Screenshot</b></td><td>";
+
+			fd_show_screenshot($filename);
+// 				echo "<a rel=\"lightbox\" href=\"$filename.$extscreenshot\" title=\""._FDSCREENSHOT.basename($filename)."\"><img src=\"$filename.$extscreenshot\" style=\"max-height : 100px;max-width : 100px;\"></a>";
+			echo "</td></tr>";
+		}
+
+
+
+		//se si tratta di un file immagine:
+		if (preg_match("/\.gif$|\.jpeg$|\.jpg$|\.png$|\.bmp$/i",$filename)){
+			//se contemporaneamente non esiste uno screenshot:
+			if (!file_exists("$filename.$extscreenshot")){
+				echo "<tr><td style=\"vertical-align : top;\"><b>Screenshot</b></td><td>";
+				echo "<a rel=\"lightbox\" href=\"$filename\" title=\""._FDSCREENSHOT.basename($filename)."\"><img src=\"$filename\" style=\"max-height : 100px;\" alt=\"thumb\"></a>";
+				echo "</td></tr>";
+			}
 		}
 
 		?>
-		<p align="left">
-		<table style="border-style : hidden;" width="100%" cellpadding="0" cellspacing="4" class="download">
-			<?php fd_load_php_code("download/include/autoinclude/fd_view_file/header"); ?>
-			<tr>
-				<td align="left" width="20%"><b><?php echo _FDNAME;?></b></td>
-				<td><?php
-
-				//ora è possibile scaricare il file anche cliccando sul suo nome
-				if (ltrim($description['name'])==""){
-// 					echo basename($filename);
-					echo "<b><u><a href=\"index.php?mod=none_Fdplus&amp;fdaction=download&amp;url=".rawurlencodepath($filename)."\" title=\""._FDDOWNLOADFILE.basename($filename)."\">".basename($filename)."</a></u></b>";
-					//inserisco la chiave
-					if (file_exists($filename.".$extsig")){
-						echo " | (<b><a href=\"$filename.$extsig\" title=\""._FDGPGSIGNTITLE.basename($filename)."\">"._FDGPGSIGN."</a></b>)";
-					}
-				}
-
-				else if (ltrim($description['name'])!=""){
-// 					echo $description['name'];
-					echo "<b><u><a href=\"index.php?mod=none_Fdplus&amp;fdaction=download&amp;url=$filename\" title=\""._FDDOWNLOADFILE.basename($filename)."\">".$description['name']."</a></u></b>";
-					//inserisco la chiave
-					if (file_exists($filename.".$extsig")){
-						echo " | (<b><a href=\"$filename.$extsig\" title=\""._FDGPGSIGNTITLE."\">"._FDGPGSIGN."</a></b>)";
-					}
-					}
-				?></td>
-			</tr>
-			<?php
-			global $showuploader;
-			if ($showuploader =="1" and trim($description['uploadedby'])!=""){
-				if (is_alphanumeric(trim($description['uploadedby']))){
-					if (file_exists(get_fn_dir("users")."/".trim($description['uploadedby']).".php")){
-						echo "<tr><td align=\"left\" valign=\"top\"><b>"._FDUPLOADER."</b></td>
-						<td><a href=\"index.php?mod=none_Login&action=viewprofile&user=".$description['uploadedby']."\" title=\""._FDUPLOADERTITLE."\">".$description['uploadedby']."</a></td></tr>";
-					}
-					else {
-						echo "<tr><td align=\"left\" valign=\"top\"><b>"._FDUPLOADER."</b></td>
-						<td>".$description['uploadedby']."</td></tr>";
-					}
-				}
-				else if (trim($description['uploadedby'])!=""){
-					fdlogf("Uploader field is invalid (".$description['uploadedby'].")FDview: ".__LINE__);
-				}
-
-			}
-
-			$desc = preg_replace("/<br \/>/i","",$description['desc']);
-			$desc = preg_replace("/<br \/>/i","", $desc);
-			if (ltrim($desc)!=""){
-			echo "<tr><td align=\"left\" valign=\"top\"><b>"._FDDESC."</b></td>
-				<td>".$description['desc']."</td>
-			</tr>";
-			}
-			//se non è nullo mostro anche il campo "versione"
-			if (trim($description['version'])!=""){
-				echo "<tr><td align=\"left\"><b>"._FDVERSION."</b></td>";
-				echo "<td>".$description['version']."</td></tr>";
-			}
-
-			//se sono entrambi settati mostro i campi personalizzati
-			if (trim($description['userlabel'])!="" and trim($description['uservalue'])!=""){
-				echo "<tr><td align=\"left\"><b>".$description['userlabel']."</b></td>";
-				echo "<td>".$description['uservalue']."</td></tr>";
-
-			}
-
-			//se non è nullo mostro anche il campo "md5"
-			if (ltrim($description['md5'])!=""){
-				echo "<tr><td align=\"left\"><b>md5</b></td>";
-				echo "<td>".$description['md5']."</td></tr>";
-			}
-
-			//se non è nullo mostro anche il campo "sha1"
-			if (ltrim($description['sha1'])!=""){
-				echo "<tr><td align=\"left\"><b>sha1</b></td>";
-				echo "<td>".$description['sha1']."</td></tr>";
-			}
-
-			//se esiste lo screenshot
-			global $extscreenshot;
-			if (file_exists("$filename.$extscreenshot")){
-				echo "<tr><td style=\"vertical-align : top;\"><b>Screenshot</b></td><td>";
-
-				fd_show_screenshot($filename);
-// 				echo "<a rel=\"lightbox\" href=\"$filename.$extscreenshot\" title=\""._FDSCREENSHOT.basename($filename)."\"><img src=\"$filename.$extscreenshot\" style=\"max-height : 100px;max-width : 100px;\"></a>";
-				echo "</td></tr>";
-			}
-
-
-
-			//se si tratta di un file immagine:
-			if (preg_match("/\.gif$|\.jpeg$|\.jpg$|\.png$|\.bmp$/i",$filename)){
-				//se contemporaneamente non esiste uno screenshot:
-				if (!file_exists("$filename.$extscreenshot")){
-					echo "<tr><td style=\"vertical-align : top;\"><b>Screenshot</b></td><td>";
-					echo "<a rel=\"lightbox\" href=\"$filename\" title=\""._FDSCREENSHOT.basename($filename)."\"><img src=\"$filename\" style=\"max-height : 100px;\" alt=\"thumb\"></a>";
-					echo "</td></tr>";
-				}
-			}
-
-			?>
-			<?php if (trim($description['url'])==""){ ?>
-			<tr>
-				<td align="left"><b><?php echo _FDSIZE; ?></b></td>
-				<td><?php echo $size; ?></td>
-			</tr>
-			<?php
-			}//fine controllo size
-			?>
-			<tr>
-				<td align="left" nowrap><b><?php echo _FDDATE; ?></b></td>
-				<td><?php echo date(_FDDATEFORMAT, $description['time']) ?></td>
-			</tr>
-
-			<?php
-			$track="";
-			$track = $description['hits'];
-			//se esiste un contatore
-			if ($track!=""){
-				?>
-				<tr>
-				<td align="left"><b><?php echo _FDHITS; ?></b></td>
-				<td><?php echo $track; ?></td>
-				</tr>
-
-				<?php
-			}
-
-			if (isset($_POST['fdvote'])){
-				if (function_exists("fd_add_vote"))
-					fd_add_vote();
-				//ricarico l'array con i dati in modo che vengano mostrati quelli aggiornati
-				$description = load_description($filename);
-				// se ho aggiunto un voto devo ricaricare la pagina per mostrarlo
-				// -> (non è più necessario essendo stato inserito il codice prima che vengano
-				// mostrati i dati
-// 				echo "<meta http-equiv=\"Refresh\" content=\"1; URL=index.php?mod=$mod\">";
-			}
-
-			echo "<tr>";
-			echo "<td style=\"vertical-align : top;\">";
-			echo "<b>"._FDRATING."&nbsp;</b>";//$voteaverage";
-			echo "<br>(<i>".$description['totalvote']." "._FDVOTES."</i>)";
-			echo "</td>";
-
-			echo "<td style=\"vertical-align : top;\">";
-
-			fd_show_vote($filename,$description);
-
-			echo "</td>";
-
-			echo "</tr>";
-
-			//inserisco i plugin
-			fd_load_php_code("download/include/autoinclude/fd_view_file/footer/"); ?>
-
-
-
-			<?php
-// 				echo "<tr><td></td><td></td></tr>";
-				if ($showdownloadlink=="1")echo "<tr><th colspan=\"2\"><div align='center'><a href=\"index.php?mod=none_Fdplus&amp;fdaction=download&amp;url=".rawurlencodepath($filename)."\" title=\""._FDDOWNLOADFILE.basename($filename)."\">"._FDDOWNLOAD."</a></div></th></tr>";
-
-			//controlla se l'utente è admin
-			if(fd_is_admin()){
-				file_admin_panel($filename,$description);
-			}
-			?>
-		</table>
+		<?php if (trim($description['url'])==""){ ?>
+		<tr>
+			<td align="left"><b><?php echo _FDSIZE; ?></b></td>
+			<td><?php echo $size; ?></td>
+		</tr>
 		<?php
-		CloseTableTitle();
+		}//fine controllo size
+		?>
+		<tr>
+			<td align="left" nowrap><b><?php echo _FDDATE; ?></b></td>
+			<td><?php echo date(_FDDATEFORMAT, $description['time']) ?></td>
+		</tr>
+
+		<?php
+		$track="";
+		$track = $description['hits'];
+		//se esiste un contatore
+		if ($track!=""){
+			?>
+			<tr>
+			<td align="left"><b><?php echo _FDHITS; ?></b></td>
+			<td><?php echo $track; ?></td>
+			</tr>
+
+			<?php
+		}
+
+		if (isset($_POST['fdvote'])){
+			if (function_exists("fd_add_vote"))
+				fd_add_vote();
+			//ricarico l'array con i dati in modo che vengano mostrati quelli aggiornati
+			$description = load_description($filename);
+			// se ho aggiunto un voto devo ricaricare la pagina per mostrarlo
+			// -> (non è più necessario essendo stato inserito il codice prima che vengano
+			// mostrati i dati
+// 				echo "<meta http-equiv=\"Refresh\" content=\"1; URL=index.php?mod=$mod\">";
+		}
+
+		echo "<tr>";
+		echo "<td style=\"vertical-align : top;\">";
+		echo "<b>"._FDRATING."&nbsp;</b>";//$voteaverage";
+		echo "<br>(<i>".$description['totalvote']." "._FDVOTES."</i>)";
+		echo "</td>";
+
+		echo "<td style=\"vertical-align : top;\">";
+
+		fd_show_vote($filename,$description);
+
+		echo "</td>";
+
+		echo "</tr>";
+
+		//inserisco i plugin
+		fd_load_php_code("download/include/autoinclude/fd_view_file/footer/"); ?>
+
+
+
+		<?php
+// 				echo "<tr><td></td><td></td></tr>";
+			if ($showdownloadlink=="1")echo "<tr><th colspan=\"2\"><div align='center'><a href=\"index.php?mod=none_Fdplus&amp;fdaction=download&amp;url=".rawurlencodepath($filename)."\" title=\""._FDDOWNLOADFILE.basename($filename)."\">"._FDDOWNLOAD."</a></div></th></tr>";
+
+		//controlla se l'utente è admin
+		if(fd_is_admin()){
+			file_admin_panel($filename,$description);
+		}
+		?>
+	</table>
+	<?php
+	CloseTableTitle();
 }
 
 /**
