@@ -137,7 +137,7 @@ function list_files($dirbase){
 		}
 
 	}
-
+	sort($files);
 	return $files;
 }
 
