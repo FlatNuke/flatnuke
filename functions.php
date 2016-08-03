@@ -4160,7 +4160,7 @@ function fn_is_system_dir($mod){
 	if (!check_path($mod,"","false")) return TRUE;
 	$mod = preg_replace("/^\//","",$mod);
 	$mod = preg_replace("/\/$/","",$mod);
-	if (preg_match("/^none_Login$|^none_Admin$|^none_Admin\/none_.*$|^none_Calendar$|^none_Search$|^none_Fdplus$|^none_Images$|^none_News$|none_newsdata|^none_Email$/i",$mod)){
+	if (preg_match("/^Mappa_Sito$|^01_Archivio_News$|^none_Login$|^none_Admin$|^none_Admin\/none_.*$|^none_Calendar$|^none_Search$|^none_Fdplus$|^none_Images$|^none_News$|none_newsdata|^none_Email$/i",$mod)){
 		return TRUE;
 	}
 	else return FALSE;
