@@ -51,7 +51,7 @@ $where = getparam("where",PAR_POST,SAN_FLAT);
 	else {
 		echo "<h4>Sezioni:</h4>";
 	}
-
+	echo "<div align='left'>"; // restore align to the left (from justify) for content list.
 	foreach ($files as $file){
 	$last_update="";
 	$last_update = filemtime($file);
@@ -65,7 +65,7 @@ $where = getparam("where",PAR_POST,SAN_FLAT);
 
 		}
 	}
-
+	echo "</div>";
 }
 
 
