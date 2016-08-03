@@ -550,4 +550,5 @@ define("_GUEST","guest");//need translation
 define("_CREATEGROUPS","You have to create one or more groups");//need translation
 define("_NOTOPICS","No topics");//need translation
 define("_CREATEARGUMENTS","You have to create one or more arguments");//need translation
+define("_SECTIONS","Sections");//need translation
 ?>

@@ -528,4 +528,5 @@ define("_GUEST","visiteur");
 define("_CREATEGROUPS","Vous devez cr&eacute;er un ou plusieurs groupes");
 define("_CREATEARGUMENTS","Vous devez cr&eacute;er un ou plusieurs arguments");
 define("_NOTOPICS","Aucun sujet");
+define("_SECTIONS","Sections");
 ?>

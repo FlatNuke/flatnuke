@@ -551,4 +551,5 @@ define("_GUEST","ospite");
 define("_CREATEGROUPS","Devi prima creare uno o pi&ugrave; gruppi");
 define("_CREATEARGUMENTS","Devi prima creare uno o pi&ugrave; argomenti");
 define("_NOTOPICS","Nessuna discussione");
+define("_SECTIONS","Sezioni");
 ?>

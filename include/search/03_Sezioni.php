@@ -49,7 +49,7 @@ $where = getparam("where",PAR_POST,SAN_FLAT);
 		else echo "<br><b>"._FP_RISULTATI.":</b><br><br>";
 	}
 	else {
-		echo "<h4>Sezioni:</h4>";
+		echo "<h4>"._SECTIONS.":</h4>";
 	}
 	echo "<div align='left'>"; // restore align to the left (from justify) for content list.
 	foreach ($files as $file){
