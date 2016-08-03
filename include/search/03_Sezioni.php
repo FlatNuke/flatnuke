@@ -57,11 +57,11 @@ $where = getparam("where",PAR_POST,SAN_FLAT);
 	$last_update = filemtime($file);
 		if (preg_match("/section\.php$/i",$file)){
 			$file = preg_replace("/\/\//","/",$file);
-			echo "<img src=\"themes/$theme/images/section.png\" alt=\"section\" />&nbsp;<a href=\"index.php?mod=".rawurlencodepath(preg_replace("/^sections\//i","",dirname($file)))."\"  title=\""._GOTOSECTION.": ".preg_replace("/^sections\//i","",dirname($file))."\">".preg_replace("/^sections\//u","",preg_replace("/none_/i","",dirname($file)))."</a> (".date("d/m/Y - H:i",$last_update).")<br>";
+			echo "<img src=\"themes/$theme/images/section.png\" alt=\"section\" />&nbsp;<a href=\"index.php?mod=".rawurlencodepath(preg_replace("/^sections\//i","",dirname($file)))."\"  title=\""._GOTOSECTION.": ".preg_replace("/^sections\//i","",dirname($file))."\">".preg_replace("/^sections\//u","",preg_replace("/none_/i","",preg_replace("/_/"," ",dirname($file))))."</a> (".date("d/m/Y - H:i",$last_update).")<br>";
 		}
 		else {
 			$file = preg_replace("/\/\//","/",$file);
-			echo "<img src=\"themes/$theme/images/section.png\" alt=\"section\" />&nbsp;<a href=\"index.php?mod=".rawurlencodepath(preg_replace("/^sections\//i","",dirname($file)))."&amp;file=".rawurlencodepath(basename($file))."\" title=\""._GOTOSECTION.": ".preg_replace("/sections\//i","",$file)."\">".preg_replace("/sections\//i","",preg_replace("/none_/i","",$file))."</a> (".date("d/m/Y - H:i",$last_update).") <br>";
+			echo "<img src=\"themes/$theme/images/section.png\" alt=\"section\" />&nbsp;<a href=\"index.php?mod=".rawurlencodepath(preg_replace("/^sections\//i","",dirname($file)))."&amp;file=".rawurlencodepath(basename($file))."\" title=\""._GOTOSECTION.": ".preg_replace("/sections\//i","",$file)."\">".preg_replace("/sections\//i","",preg_replace("/none_/i","",preg_replace("/_/"," ",$file)))."</a> (".date("d/m/Y - H:i",$last_update).") <br>";
 
 		}
 	}
