@@ -44,11 +44,34 @@ function view_news_header($section,$news){
 
 // 	if (!user_can_view_news($section,$news)) return;
 
-	$data = load_news_header($section,$news);
+	$data  = load_news($section,$news);
+	$title = $data['title'];
+
+	//se la news è in evidenza metto un'icona accanto al titolo
+	if (news_is_ontop($news))
+		$titolo = _ICONONTOP."&nbsp;".$data['title'];
+	else $titolo = $data['title'];
+
+	$mod= _FN_MOD;
+	$modstring ="";
+	if ($mod!="") $modstring="mod=$mod&amp;";
+
+	global $theme, $mesi, $giorni, $fuso_orario, $newspp;
 
 	if(defined('_THEME_VER')) {
-			if(_THEME_VER > 0)
-				$ntitle = $data['title'];
+		if(_THEME_VER > 0)
+			//$ntitle = $data['title'];
+			$ntitle = "<div class=\"section\">" .
+				"<div class=\"color-swatch text-center\">
+					<div>
+						<span class='color-swatch-bold'>".date("d",$data['date']+(3600*$fuso_orario))."</span>&nbsp;"
+						.substr($mesi[date("m",$data['date']+(3600*$fuso_orario)) - 1],0,3)."
+					</div>
+						<span class='color-swatch-bold'>".date("Y",$data['date']+(3600*$fuso_orario))."</span>
+				</div>".
+				//$data['title'].
+				$titolo.
+				"</div>";
 	} else $ntitle = "<img src=\"themes/$theme/images/news.png\" alt=\"News\" />&nbsp;".$data['title'];
 
 	//controllo se è nascosta
@@ -56,8 +79,8 @@ function view_news_header($section,$news){
 		$ntitle = "<span style=\"color : #ff0000; text-decoration : line-through;\">$ntitle</span>";
 	//se la news è in evidenza metto un'icona accanto al titolo
 	$ontopstring="";
-	if (news_is_ontop($news))
-		$ontopstring = _ICONONTOP."&nbsp;";
+	//if (news_is_ontop($news))
+	//	$ontopstring = _ICONONTOP."&nbsp;";
 	//se esiste uso la nuova funzione per aprire le news in home
 	if (function_exists("OpenNewsHeader"))
 		OpenNewsHeader($ontopstring.$ntitle);
@@ -71,15 +94,18 @@ function view_news_header($section,$news){
 		echo "<img src=\"images/nonews.png\" style='padding-left:10px;padding-bottom:10px; float:right' alt=\"$w3c_title\" title=\"$w3c_title\" />";
 	else echo "<div style='text-align:right;padding-left:10px;padding-bottom:10px;'>$w3c_title</div>";
 	echo "</a>";
+	echo "<span class='fa fa-user'></span> <a href=\"index.php?mod=none_Login&amp;action=viewprofile&amp;user=".$data['by']."\" title=\""._VIEW_USERPROFILE."\"><span class='label label-default'>".$data['by']."</span></a> | ";
+	echo _ICONSHOW." <span class='label label-default'>".$data['reads']."</span> | ";
+	echo _ICONCOMMENT." <span class='label label-default'>".count($data['comments'])."</span> | ";
 	//se ci sono dei tag da mostrare
 	if (count($data['tags'])>0){
-		echo "<b>Tags:</b> ";
+		echo "<span class='fa fa-tags'></span> ";
 	// 	print_r($data['tags']);
 		for ($n=0;$n<count($data['tags']);$n++){
 			if (trim($data['tags'][$n])!=""){
-				echo " <a href=\"index.php?mod=none_Search&amp;where=news&amp;tags=".$data['tags'][$n]."\" title=\""._SEARCHTAG."\">".$data['tags'][$n]."</a>";
-				if ($n<(count($data['tags'])-1))
-					echo ",";
+				echo " <a href=\"index.php?mod=none_Search&amp;where=news&amp;tags=".$data['tags'][$n]."\" title=\""._SEARCHTAG."\"><span class='label label-default'>".$data['tags'][$n]."</span></a>";
+				//if ($n<(count($data['tags'])-1))
+				//	echo ",";
 			}
 		}
 		echo "<br><br>";
@@ -90,13 +116,25 @@ function view_news_header($section,$news){
 // 	else echo "<div style=\" height: auto !important;height: 60px; min-height: 60px;\">";
 	echo stripslashes(tag2html($data['header']));
 
-	//creo i link per i siti sociali
-	echo "<div class='social-links' style='text-align:right;margin-left:10px;margin-bottom:10px;/*border:1px;border-left-style: solid; border-bottom-style: solid;border-color: #d5d6d7;*/'>";
-// 	echo "<div class='social-links'>";
+	echo "<div class='row' style='margin-top:15px;margin-bottom:15px;'>";
+
+	// pulsanti di lettura completa della notizia + aggiunta commento
+	echo "<div class='col-lg-6'>";
+	if(trim($data['body'])!=""){
+		echo "<a href='index.php?$modstring"."action=viewnews&amp;news=$news' title=\""._FLEGGI." news: $title\"><button class='btn btn-xs btn-primary'>"._LEGGITUTTO." <span class='fa fa-caret-right'></span></button></a>&nbsp;";
+	}
+	echo "<a href='index.php?$modstring"."action=viewnews&amp;news=$news#comments' title=\""._ADDCOMM." news: $title\"><button class='btn btn-xs btn-primary'>"._ADDCOMM." <span class='fa fa-caret-right'></span></button></a>";
+	echo "</div>";
+
+	//creo i link per i siti social
+	echo "<div class='col-lg-6 social-links text-right'>";
+	echo "<a href=\"print.php?news=$news\" title=\""._STAMPA."\" target=\"_blank\"><i class=\"fa fa-print fa-2x\"></i></a>";
 	create_social_links($_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI']."?action=viewnews&news=".$news,_FN_TITLE.": ".$data['title']);
 	echo "</div>";
 
-// 	echo "</div>";
+ 	echo "</div>";
+
+	// chiudo la struttura contenente la news
 	create_footer_news($section,$news,$data);
 	if (function_exists("CloseNewsHeader"))
 		CloseNewsHeader();
@@ -196,8 +234,11 @@ function view_news_section($section){
  *
  */
 function view_news($section, $news, $proposed=FALSE){
-	$section = getparam($section,PAR_NULL,SAN_FLAT);
-	$news = getparam($news,PAR_NULL,SAN_FLAT);
+	$section = getparam($section,PAR_NULL,SAN_NULL);
+	$news = getparam($news,PAR_NULL,SAN_NULL);
+	$newsfile = get_news_file($section,$news);
+	if (!check_path($newsfile,_FN_SECTIONS_DIR,TRUE)) flatnews_die("\$newsfile is not valid!".strip_tags($newsfile),__FILE__,__LINE__);
+
 	$proposed = getparam($proposed,PAR_NULL,SAN_FLAT);
 	if (!check_var($proposed,"boolean")){
 		$proposed = FALSE;
@@ -208,104 +249,104 @@ function view_news($section, $news, $proposed=FALSE){
 		$newsfile = get_proposed_news_file($section,$news);
 	else $newsfile = get_news_file($section,$news);
 
-	if (!check_path($newsfile,_FN_SECTIONS_DIR,TRUE)) flatnews_die("\$newsfile is not valid!".strip_tags($newsfile),__FILE__,__LINE__);
-
 	if (!is_file($newsfile)) return;
 
-	if (!user_can_view_news($section,$news)) {
-		global $theme;
-		OpenTable("");
-		print("<div class=\"centeredDiv\"><b>"._NOLEVELSECT."</b></div><br><br>");
-		if (file_exists("themes/$theme/fn_denied.php")) {
-			include(stripslashes("themes/$theme/fn_denied.php"));
-		} else {
-			echo "<div style=\"text-align:center;\"><img src=\"images/fn_denied.png\" alt=\""._NOLEVELSECT."\" title=\""._NOLEVELSECT."\"/></div>";
-		}
-		CloseTable();
-		return;
-	}
+// 	if (!user_can_view_news($section,$news)) return;
 
-	$mod= _FN_MOD;
 	if ($proposed==TRUE)
 		$data = load_news($section,$news,TRUE);
 	else $data = load_news($section,$news);
+	$title = $data['title'];
 
+	//se la news è in evidenza metto un'icona accanto al titolo
+	if (news_is_ontop($news))
+		$titolo = _ICONONTOP."&nbsp;".$data['title'];
+	else $titolo = $data['title'];
+
+	$mod= _FN_MOD;
 	$modstring ="";
 	if ($mod!="") $modstring="mod=$mod&amp;";
 
 	global $theme, $mesi, $giorni, $fuso_orario, $newspp;
-	$news    = getparam($news,     PAR_NULL,   SAN_FLAT);
-	// check if the news really exists
-	if(!file_exists($newsfile)) {
-		print("<div class=\"centeredDiv\"><b>"._NORESULT."</b></div>");
-		return;
-	}
-	// add 1 visit to the news (if you aren't admin or moderator)
-	if (!_FN_IS_ADMIN and !_FN_IS_NEWS_MODERATOR)
-		news_add_read($section,$news);
-	// read news contents
-	$title    = $data['title'];
-	$category = $data['category'];
-	$header   = $data['header'];
-	$body     = $data['body'];
-	// print news
-	if (preg_match("/^hide_/i",$news))
-		$title = "<span style=\"color : #ff0000; text-decoration : line-through;\">$title</span>";
-	//controllo se la news è nascosta
-	if(defined('_THEME_VER')) {
-		if(_THEME_VER > 0){
-			//se esiste uso la nuova funzione per aprire le news
-			if (function_exists("OpenNews"))
-				OpenNews(news_is_ontop($news) ? _ICONONTOP."&nbsp;".$title : _ICONREAD."&nbsp;".$title);
-			else OpenTableTitle(news_is_ontop($news) ? _ICONONTOP."&nbsp;".$title : _ICONREAD."&nbsp;".$title);
-		}
-	}
-	else {
-		//se esiste uso la nuova funzione per aprire le news
-		if (function_exists("OpenNews"))
-			OpenNews(news_is_ontop($news) ? _ICONONTOP."&nbsp;".$title : _ICONREAD."&nbsp;".$title);
-		else OpenTableTitle(news_is_ontop($news) ? _ICONONTOP."&nbsp;".$title : _ICONREAD."&nbsp;".$title);
 
-	}
-	// topic
-	$w3c_title = _ARGOMENTO.": ".preg_replace("/\.png$|\.gif$|\.jpeg$|\.jpg$/i","",$category);
+	if(defined('_THEME_VER')) {
+		if(_THEME_VER > 0)
+			//$ntitle = $data['title'];
+			$ntitle = "<div class=\"section\">" .
+				"<div class=\"color-swatch text-center\">
+					<div>
+						<span class='color-swatch-bold'>".date("d",$data['date']+(3600*$fuso_orario))."</span>&nbsp;"
+						.substr($mesi[date("m",$data['date']+(3600*$fuso_orario)) - 1],0,3)."
+					</div>
+						<span class='color-swatch-bold'>".date("Y",$data['date']+(3600*$fuso_orario))."</span>
+				</div>".
+				//$data['title'].
+				$titolo.
+				"</div>";
+	} else $ntitle = "<img src=\"themes/$theme/images/news.png\" alt=\"News\" />&nbsp;".$data['title'];
+
+	//controllo se è nascosta
+	if (news_is_hidden($news))
+		$ntitle = "<span style=\"color : #ff0000; text-decoration : line-through;\">$ntitle</span>";
+	//se la news è in evidenza metto un'icona accanto al titolo
+	$ontopstring="";
+	//if (news_is_ontop($news))
+	//	$ontopstring = _ICONONTOP."&nbsp;";
+	//se esiste uso la nuova funzione per aprire le news in home
+	if (function_exists("OpenNewsHeader"))
+		OpenNewsHeader($ontopstring.$ntitle);
+	else OpenTableTitle($ontopstring.$ntitle);
+	$w3c_title = _ARGOMENTO.": ".preg_replace("/\.png$|\.gif$|\.jpeg$|\.jpg$/i","",$data['category']);
 	echo "<a href=\"index.php?mod=none_Search&amp;where=news&amp;category=".$data['category']."\">";
 	if(file_exists("images/news/".$data['category'])) {
-		echo "<img src=\"images/news/".$data['category']."\" alt=\"$w3c_title\" title=\"$w3c_title\" style=\"float:right\" />";
+		echo "<img src=\"images/news/".$data['category']."\" style='padding-left:10px;padding-bottom:10px;float:right;' alt=\"$w3c_title\" title=\"$w3c_title\" />";
 	}
 	else if ($data['category']=="nonews.png")
-		echo "<img src=\"images/nonews.png\" alt=\"$w3c_title\" title=\"$w3c_title\" style=\"float:right\" />";
-	else echo "<div style='text-align:right;padding-bottom:5px;'>$w3c_title</div>";
+		echo "<img src=\"images/nonews.png\" style='padding-left:10px;padding-bottom:10px; float:right' alt=\"$w3c_title\" title=\"$w3c_title\" />";
+	else echo "<div style='text-align:right;padding-left:10px;padding-bottom:10px;'>$w3c_title</div>";
 	echo "</a>";
+	echo "<span class='fa fa-user'></span> <a href=\"index.php?mod=none_Login&amp;action=viewprofile&amp;user=".$data['by']."\" title=\""._VIEW_USERPROFILE."\"><span class='label label-default'>".$data['by']."</span></a> | ";
+	echo _ICONSHOW." <span class='label label-default'>".$data['reads']."</span> | ";
+	echo _ICONCOMMENT." <span class='label label-default'>".count($data['comments'])."</span> | ";
 	//se ci sono dei tag da mostrare
 	if (count($data['tags'])>0){
-		echo "<b>Tags:</b> ";
+		echo "<span class='fa fa-tags'></span> ";
 	// 	print_r($data['tags']);
 		for ($n=0;$n<count($data['tags']);$n++){
 			if (trim($data['tags'][$n])!=""){
-				echo " <a href=\"index.php?mod=none_Search&amp;where=news&amp;tags=".$data['tags'][$n]."\" title=\""._SEARCHTAG."\">".$data['tags'][$n]."</a>";
-				if ($n<(count($data['tags'])-1))
-					echo ",";
+				echo " <a href=\"index.php?mod=none_Search&amp;where=news&amp;tags=".$data['tags'][$n]."\" title=\""._SEARCHTAG."\"><span class='label label-default'>".$data['tags'][$n]."</span></a>";
+				//if ($n<(count($data['tags'])-1))
+				//	echo ",";
 			}
 		}
+		echo "<br><br>";
 	}
-echo "<br><br>";
+// 	echo "<br>";
+// 	if (count($data['tags'])>0)
+// 		echo "<div style=\" height: auto !important;height: 30px; min-height: 30px;\">";
+// 	else echo "<div style=\" height: auto !important;height: 60px; min-height: 60px;\">";
+	echo stripslashes(tag2html($data['header']))."<br><br>".stripslashes(tag2html($data['body']));
 
+	echo "<div class='row' style='margin-top:15px;margin-bottom:15px;'>";
 
-	print stripslashes(tag2html($header))."<br><br>".stripslashes(tag2html($body));
-	echo "<div class='social-links' style='text-align:right;margin-left:10px;margin-bottom:10px;/*border:1px;
-border-left-style: solid; border-bottom-style: solid;border-color: #d5d6d7;*/'>";
-// 	echo "<div class='social-links'>";
-	create_social_links($_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI'],_FN_TITLE);
+	// pulsanti di lettura completa della notizia + aggiunta commento
+	echo "<div class='col-lg-6'>";
+	//if(trim($data['body'])!=""){
+	//	echo "<a href='index.php?$modstring"."action=viewnews&amp;news=$news' title=\""._FLEGGI." news: $title\"><button class='btn btn-xs btn-primary'>"._LEGGITUTTO." <span class='fa fa-caret-right'></span></button></a>&nbsp;";
+	//}
+	//echo "<a href='index.php?$modstring"."action=viewnews&amp;news=$news#comments' title=\""._ADDCOMM." news: $title\"><button class='btn btn-xs btn-primary'>"._ADDCOMM." <span class='fa fa-caret-right'></span></button></a>";
 	echo "</div>";
-	// footer
-	echo "<div class='footnews'>\n";
+
+	//creo i link per i siti social
+	echo "<div class='col-lg-6 social-links text-right'>";
+	echo "<a href=\"print.php?news=$news\" title=\""._STAMPA."\" target=\"_blank\"><i class=\"fa fa-print fa-2x\"></i></a>";
+	create_social_links($_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI']."?action=viewnews&news=".$news,_FN_TITLE.": ".$data['title']);
+	echo "</div>";
+
+	// pulsanti di amministrazione
+	echo "<div class='footnews'>";
 	$news_link = get_news_link_array($section,$news,$data);
-	echo $news_link['news_infos']."<br>";
-	if ($proposed==FALSE){
-		echo $news_link['link_comment']." ";
-		echo $news_link['link_print']." ";
-	}
+	//echo $news_link['news_infos']."<br>";
 	if (_FN_IS_ADMIN or _FN_IS_NEWS_MODERATOR) {
 		if ($proposed==FALSE){
 			echo $news_link['link_modify']." ";
@@ -335,15 +376,16 @@ border-left-style: solid; border-bottom-style: solid;border-color: #d5d6d7;*/'>"
 		}
 	}
 	echo "</div>\n";
+
 	// comments
 	echo "<h3 id=\"comments\" >"._COMMENTI."</h3>";
-	echo $news_link['link_addcomment'];
+	//echo $news_link['link_addcomment'];
 // 	echo "<a href=\"#addcomment\" title=\""._ADDCOMM."\">"._ADDCOMM."</a><br>";
 	$comments=$data['comments'];
 	for($count_comment=0;$count_comment<count($comments);$count_comment++){
-		print "<br>";
+		//print "<br>";
 		$user=$comments[$count_comment]['cmby'];
-		print "<div class='comment' style='height: auto !important;height: 100px; min-height: 100px;'>";
+		print "<div class='well' style='height: auto !important;height: 100px; min-height: 100px;'>";
 		// avatar into the comment
 		if(file_exists(_FN_USERS_DIR."/$user.php")){
 			$userdata = array();
@@ -407,9 +449,14 @@ border-left-style: solid; border-bottom-style: solid;border-color: #d5d6d7;*/'>"
 		print "</div>";
 	}
 	//se ci sono commenti stampo il link anche alla fine
-	if (count($comments)>0)
-		echo "<br>".$news_link['link_addcomment'];
-	echo "<br><hr>";
+	//if (count($comments)>0)
+	//	echo "<br>".$news_link['link_addcomment'];
+	//echo "<br><hr>";
+	// pulsante aggiunta commento
+	echo "<p>";
+	echo "<a href='index.php?$modstring"."action=addcommentinterface&amp;news=$news' title=\""._ADDCOMM." news: $title\"><button class='btn btn-xs btn-primary'>"._ADDCOMM." <span class='fa fa-caret-right'></span></button></a>";
+	//echo $news_link['link_addcomment'];
+	echo "</p>";
 
 	// search previous and next news
 	if (_FN_IS_ADMIN or _FN_IS_NEWS_MODERATOR)
@@ -479,6 +526,15 @@ border-left-style: solid; border-bottom-style: solid;border-color: #d5d6d7;*/'>"
 		echo "<img src='images/$category' alt='$category' style=\"border:0\" /></a>";
 	else echo "<img src='images/news/$category' alt='$category' style=\"border:0\" /></a>";
 	echo "</div></div>";
+
+ 	echo "</div>";
+
+	// chiudo la struttura contenente la news
+	/*create_footer_news($section,$news,$data);
+	if (function_exists("CloseNewsHeader"))
+		CloseNewsHeader();
+	else CloseTableTitle($newsfile);*/
+
 	//se esiste uso la nuova funzione per chiudere le news
 	if (function_exists("CloseNews"))
 		CloseNews();
@@ -511,15 +567,15 @@ function create_footer_news($section,$news,$data){
 // 	layout fix by ZEBDEMON
 	echo "<div class='footnews' style=\"clear: both;\">\n";
 	$news_link = get_news_link_array($section,$news,$data);
-	echo $news_link['news_infos']."<br>";
+	//echo $news_link['news_infos']."<br>";
 	//only if there is a body
 	//Al momento non è possibile nascondere il link "leggi tutto"
 	//perchè non vi è un titolo cliccabile alternativo per leggere
 	//la news
 // 	if (trim($data['body'])!="")
-		echo $news_link['link_read']." ";
-	echo $news_link['link_comment']." ";
-	echo $news_link['link_print']." ";
+	//echo $news_link['link_read']." ";
+	//echo $news_link['link_comment']." ";
+	//echo $news_link['link_print']." ";
 	if (_FN_IS_ADMIN or _FN_IS_NEWS_MODERATOR) {
 // 		echo "<br><div style=\"text-align: left;\">";
 		echo $news_link['link_modify']." ";
@@ -611,7 +667,7 @@ function get_news_link_array($section,$news,$newsdata=""){
 
 	// link to read the full news
 	$ret_strings['link_read'] = "<a href='index.php?$modstring"."action=viewnews&amp;news=$news' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
-// bozza sostituzione con permalink	$ret_strings['link_read'] = "<a href='".CleanString($title).".".$news."' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
+  	// bozza sostituzione con permalink	$ret_strings['link_read'] = "<a href='".CleanString($title).".".$news."' title=\""._FLEGGI." news: $title\">"._ICONREAD._LEGGITUTTO."</a>";
 
 	// link to comment the news
 	$ret_strings['link_addcomment'] = "<a href='index.php?$modstring"."action=addcommentinterface&amp;news=$news' title=\""._ADDCOMM." news: $title\">"._ICONCOMMENT."&nbsp;"._ADDCOMM."</a><br>";
