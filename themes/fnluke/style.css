@@ -188,12 +188,30 @@ body {
 }
 
 .sectioncontent {
-
+  margin-bottom: 30px;
 }
 
 /*---------------------------------
   flatnuke elements
 ---------------------------------*/
+
+.color-swatch {
+  width: 70px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: #42A6ED;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+  padding-top: 15px;
+  margin-right: 5px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.color-swatch-bold {
+  font-weight: bold;
+}
 
 .comment {
 	border-bottom-style: solid;
@@ -218,7 +236,7 @@ body {
 
 img.motd {
 	float: left;
-	padding: 0px 10px 10px 0px;
+  padding: 0px 10px 10px 0px;
 }
 
 .ffinput {

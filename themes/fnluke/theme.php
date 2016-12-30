@@ -132,7 +132,7 @@ function create_motd_block(){
 		//fix: when motd text is too short the image goes out of her area
 		echo "<div style=\"clear:both;\"></div>";
 
-		// print administration button o modify motd content
+		// print administration button to modify motd content
 		if (_FN_IS_ADMIN){
 			global $news_editor;
 			echo "<br /><a href=\"index.php?mod=modcont&amp;from=index.php&amp;file="._FN_VAR_DIR."%2Fmotd.php";
@@ -150,11 +150,25 @@ function create_motd_block(){
 
 function create_central_blocks($where) {
 	$where = getparam($where, PAR_NULL, SAN_FLAT);
-	echo "<div class='well'>";
-	echo "<p>";
-	load_php_code("blocks/center/".$where);
-	echo "</p>";
-	echo "</div>";
+	$path_phpcode = _FN_BLOCKS_DIR."/center/".$where;
+	if(file_exists($path_phpcode)) {
+		$dir_phpcode = opendir($path_phpcode);
+		$file_phpcode = 0;
+		while ($filename_phpcode = readdir($dir_phpcode)) {
+			if(preg_match('/[\.]php$/', $filename_phpcode) AND $filename_phpcode!="." AND $filename_phpcode!=".." AND !preg_match("/^none_/i", $filename_phpcode) AND !preg_match("/^\./", $filename_phpcode)) {
+				$file_phpcode++;
+			}
+		}
+		closedir($dir_phpcode);
+		if($file_phpcode>0) {
+			echo "<div class='well'>";
+			echo "<p>";
+			load_php_code(_FN_BLOCKS_DIR."/center/".$where);
+			echo "</p>";
+			echo "</div>";
+		}
+	}
+
 }
 
 ?>
