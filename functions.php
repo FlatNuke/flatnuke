@@ -3701,7 +3701,6 @@ function choose_sect_type_interface($mod){
 			echo " selected=\"selected\"";
 		echo ">"._DOWNLOADMAIN."</option>
 		<option value=\"downloadsection\" title=\""._DOWNLOADSINGLETITLE."\"";
-		//fine funzione create_social_links
 		if (file_exists(get_fn_dir("sections")."/$mod/downloadsection"))
 			echo " selected=\"selected\"";
 		echo ">"._DOWNLOADSINGLE."</option>
@@ -4430,9 +4429,9 @@ function fn_stripslashes($string){
  * @param string $title il titolo (non viene utilizzato da tutti i siti)
  * @author Aldo Boccacci
  * @since 3.0.1
- * Edited by Alfredo Cosco (05/2014): 
+ * Edited by Alfredo Cosco (05/2014):
  * valid HTML5 $link
- * 
+ *
  */
 function create_social_links($link,$title){
 	// you can redefine create_social_links() function
@@ -4455,7 +4454,7 @@ function create_social_links($link,$title){
 	$social = "";
 	// share content with Facebook
 	if (file_exists("images/social/facebook.png"))
-		$social = "<a href=\"http://www.facebook.com/share.php?u=$link&amp;t='$title'\" title=\"Facebook\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\"></i></a>&nbsp;";
+		$social .= "<a href=\"http://www.facebook.com/share.php?u=$link&amp;t='$title'\" title=\"Facebook\" target=\"_blank\"><i class=\"fa fa-facebook-square fa-2x\"></i></a>&nbsp;";
 	// share content with Twitter
 	if (file_exists("images/social/twitter.png"))
 		$social .= "<a href=\"https://twitter.com/home?status=$title%20-%20$link\" title=\"Twitter\" target=\"_blank\"><i class=\"fa fa-twitter-square fa-2x\"></i></a>&nbsp;";
@@ -4487,7 +4486,7 @@ function create_social_links($link,$title){
  *
  * @author Marco Segato
  * @since 4.0.0
- * 
+ *
  */
 function load_icons() {
 
@@ -4495,7 +4494,7 @@ function load_icons() {
 
 	$icona = "themes/$theme/images/comment.png";
 	if (is_file($icona)) define("_ICONCOMMENT", "<img src='$icona' />");
-	else define("_ICONCOMMENT", "<span class='fa fa-comment'></span>");
+	else define("_ICONCOMMENT", "<span class='fa fa-comments'></span>");
 
 	$icona = "themes/$theme/images/delete.png";
 	if (is_file($icona)) define("_ICONDELETE", "<img src='$icona' />");
@@ -4503,7 +4502,7 @@ function load_icons() {
 
 	$icona = "themes/$theme/images/hide.png";
 	if (is_file($icona)) define("_ICONHIDE", "<img src='$icona' />");
-	else define("_ICONHIDE", "<span class='fa fa-eye-close'></span>");
+	else define("_ICONHIDE", "<span class='fa fa-eye-slash'></span>");
 
 	$icona = "themes/$theme/images/home.png";
 	if (is_file($icona)) define("_ICONHOME", "<img src='$icona' />");
@@ -4523,11 +4522,11 @@ function load_icons() {
 
 	$icona = "themes/$theme/images/mail.png";
 	if (is_file($icona)) define("_ICONMAIL", "<img src='$icona' />");
-	else define("_ICONMOVE", "<span class='fa fa-move'></span>");
+	else define("_ICONMOVE", "<span class='fa fa-arrows-alt'></span>");
 
 	$icona = "themes/$theme/images/normal.png";
 	if (is_file($icona)) define("_ICONNORMAL", "<img src='$icona' />");
-	else define("_ICONNORMAL", "<span class='fa fa-star-empty'></span>");
+	else define("_ICONNORMAL", "<span class='fa fa-star-o'></span>");
 
 	$icona = "themes/$theme/images/ontop.png";
 	if (is_file($icona)) define("_ICONONTOP", "<img src='$icona' />");
@@ -4555,7 +4554,7 @@ function load_icons() {
 
 	$icona = "themes/$theme/images/show.png";
 	if (is_file($icona)) define("_ICONSHOW", "<img src='$icona' />");
-	else define("_ICONSHOW", "<span class='fa fa-eye-open'></span>");
+	else define("_ICONSHOW", "<span class='fa fa-eye'></span>");
 
 	$icona = "themes/$theme/images/unlock.png";
 	if (is_file($icona)) define("_ICONUNLOCK", "<img src='$icona' />");
