@@ -201,7 +201,9 @@ function save_ip_log_data($data){
 		}
 	}
 	$datastring .= "\n</votelog>";
-	if (preg_match("/\<\?/",$datastring) or preg_match("/\?\>/",$datastring)) continue;
+
+	if (preg_match("/\<\?/",$datastring) or preg_match("/\?\>/",$datastring)) return;
+
 	fnwrite($fdiplogfile, "<?xml version='1.0' encoding='UTF-8'?>\n".$datastring,"w",array("nonull")); // ISO-8859-1 to UTF-8
 }
 
