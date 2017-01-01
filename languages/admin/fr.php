@@ -27,7 +27,7 @@ define ("_FNCC_THEMESTRUCTURE",	"Structure du th&egrave;me");
 define ("_FNCC_THEMESTYLE",	"Style th&egrave;me");
 define ("_FNCC_CSSTHEME",	"CSS th&egrave;me");
 define ("_FNCC_CSSFORUM",	"CSS forum");
-define ("_FNCC_NOGDLIB",	"Extension pas install&eacute;e (<a href=\"http://www.libgd.org/FAQ_PHP\" target=\"_blank\">?</a>)");
+define ("_FNCC_NOGDLIB",	"Extension pas install&eacute;e (<a href=\"https://libgd.github.io/pages/faq.html\" target=\"_blank\">?</a>)");
 define ("_FNCC_SERVERINFO",	"Informations sur le Serveur");
 define ("_FNCC_SITEURL",	"Adresse de l&#8217;H&ocirc;te: ");
 define ("_FNCC_OS",	"Syst&egrave;me op&eacute;ratoire: ");
