@@ -18,6 +18,26 @@ if (preg_match("/header.php/i",$_SERVER['PHP_SELF'])) {
     die();
 }
 
+// load constants and language if not defined
+create_fn_constants();
+load_icons();
+
+// language definition by configuration or by cookie
+$userlang = getparam("userlang", PAR_COOKIE, SAN_FLAT);
+if ($userlang!="" AND is_alphanumeric($userlang) AND file_exists("languages/$userlang.php")) {
+	$lang = $userlang;
+}
+switch($lang) {
+	case "de" OR "es" OR "fr" OR "it" OR "pt":
+		include_once ("languages/$lang.php");
+		include_once ("languages/fd+lang/fd+$lang.php");
+	break;
+	default:
+		include_once ("languages/en.php");
+		include_once ("languages/fd+lang/fd+en.php");
+	break;
+}
+
 // dynamically build page's title and meta tags
 $mod    = _FN_MOD;
 $action = getparam("action",  PAR_GET, SAN_FLAT);

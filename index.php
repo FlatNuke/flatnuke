@@ -25,26 +25,6 @@ include_once "functions.php";
 // first microtime to calculate time generation page
 $time1 = get_microtime();
 
-// load some constant variables
-create_fn_constants();
-load_icons();
-
-// language definition by configuration or by cookie
-$userlang = getparam("userlang", PAR_COOKIE, SAN_FLAT);
-if ($userlang!="" AND is_alphanumeric($userlang) AND file_exists("languages/$userlang.php")) {
-	$lang = $userlang;
-}
-switch($lang) {
-	case "de" OR "es" OR "fr" OR "it" OR "pt":
-		include_once ("languages/$lang.php");
-		include_once ("languages/fd+lang/fd+$lang.php");
-	break;
-	default:
-		include_once ("languages/en.php");
-		include_once ("languages/fd+lang/fd+en.php");
-	break;
-}
-
 // theme definition by configuration or by cookie
 $usertheme = getparam("usertheme", PAR_COOKIE, SAN_FLAT);
 if ($usertheme!="" AND !stristr("..",$usertheme) AND is_dir("themes/$usertheme")) {
