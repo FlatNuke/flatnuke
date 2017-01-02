@@ -3178,7 +3178,7 @@ function rename_file_interface($file){
 // 	print_r($pathinfo);
 
 	$filename= "";
-	$filename = preg_replace("/\./".$pathinfo['extension']."$","",basename($file));
+	$filename = $pathinfo['filename'];
 
 	echo "<b>"._FNRENAMEFILE.":</b><br><br>";
 	echo "<form action=\"index.php\" method=\"POST\">";
