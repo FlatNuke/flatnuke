@@ -123,7 +123,9 @@ function view_news_header($section,$news){
 	if(trim($data['body'])!=""){
 		echo "<a href='index.php?$modstring"."action=viewnews&amp;news=$news' title=\""._FLEGGI." news: $title\"><button class='btn btn-xs btn-primary'>"._LEGGITUTTO." <span class='fa fa-caret-right'></span></button></a>&nbsp;";
 	}
-	echo "<a href='index.php?$modstring"."action=viewnews&amp;news=$news#comments' title=\""._ADDCOMM." news: $title\"><button class='btn btn-xs btn-primary'>"._ADDCOMM." <span class='fa fa-caret-right'></span></button></a>";
+	$txt_comments = (count($data['comments'])==0) ? _ADDCOMM : _COMMENTI;
+	$lnk_comments = (count($data['comments'])==0) ? "action=addcommentinterface&news=$news" : "action=viewnews&amp;news=$news#comments";
+	echo "<a href='index.php?$modstring"."$lnk_comments' title=\"".$txt_comments." news: $title\"><button class='btn btn-xs btn-primary'>".$txt_comments." <span class='fa fa-caret-right'></span></button></a>";
 	echo "</div>";
 
 	//creo i link per i siti social
