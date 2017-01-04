@@ -9,27 +9,27 @@
 function fncc_modgeneralconf() {
 	// security checks
 	$conf_file         = getparam("conf_file",        PAR_POST, SAN_FLAT);
-	$sitename          = getparam("sitename",         PAR_POST, SAN_FLAT);
-	$sitedescription   = getparam("sitedescription",  PAR_POST, SAN_FLAT);
-	$keywords          = getparam("keywords",         PAR_POST, SAN_FLAT);
-	$theme             = getparam("theme",            PAR_POST, SAN_FLAT);
-	$newspp            = getparam("newspp",           PAR_POST, SAN_FLAT);
-	$admin             = getparam("admin",            PAR_POST, SAN_FLAT);
-	$admin_mail        = getparam("admin_mail",       PAR_POST, SAN_FLAT);
-	$lang              = getparam("lang",             PAR_POST, SAN_FLAT);
-	$reguser           = getparam("reguser",          PAR_POST, SAN_FLAT);
-	$guestnews         = getparam("guestnews",        PAR_POST, SAN_FLAT);
-	$guestcomment      = getparam("guestcomment",     PAR_POST, SAN_FLAT);
-	$remember_login    = getparam("remember_login",   PAR_POST, SAN_FLAT);
-	$fuso_orario       = getparam("fuso_orario",      PAR_POST, SAN_FLAT);
-	$maintenance       = getparam("maintenance",      PAR_POST, SAN_FLAT);
-	$home_section      = getparam("home_section",     PAR_POST, SAN_FLAT);
-	$topicperpage      = getparam("topicperpage",     PAR_POST, SAN_FLAT);
-	$postperpage       = getparam("postperpage",      PAR_POST, SAN_FLAT);
-	$memberperpage     = getparam("memberperpage",    PAR_POST, SAN_FLAT);
-	$forum_moderators  = getparam("forum_moderators", PAR_POST, SAN_FLAT);
-	$news_editor       = getparam("newseditor",       PAR_POST, SAN_FLAT);
-	$news_moderators   = getparam("news_moderators",  PAR_POST, SAN_FLAT);
+	$sitename          = getparam("sitename",         PAR_POST, SAN_SYST);
+	$sitedescription   = getparam("sitedescription",  PAR_POST, SAN_SYST);
+	$keywords          = getparam("keywords",         PAR_POST, SAN_SYST);
+	$theme             = getparam("theme",            PAR_POST, SAN_SYST);
+	$newspp            = getparam("newspp",           PAR_POST, SAN_PARA);
+	$admin             = getparam("admin",            PAR_POST, SAN_SYST);
+	$admin_mail        = getparam("admin_mail",       PAR_POST, SAN_SYST);
+	$lang              = getparam("lang",             PAR_POST, SAN_PARA);
+	$reguser           = getparam("reguser",          PAR_POST, SAN_PARA);
+	$guestnews         = getparam("guestnews",        PAR_POST, SAN_PARA);
+	$guestcomment      = getparam("guestcomment",     PAR_POST, SAN_PARA);
+	$remember_login    = getparam("remember_login",   PAR_POST, SAN_PARA);
+	$fuso_orario       = getparam("fuso_orario",      PAR_POST, SAN_PARA);
+	$maintenance       = getparam("maintenance",      PAR_POST, SAN_PARA);
+	$home_section      = getparam("home_section",     PAR_POST, SAN_SYST);
+	$topicperpage      = getparam("topicperpage",     PAR_POST, SAN_PARA);
+	$postperpage       = getparam("postperpage",      PAR_POST, SAN_PARA);
+	$memberperpage     = getparam("memberperpage",    PAR_POST, SAN_PARA);
+	$forum_moderators  = getparam("forum_moderators", PAR_POST, SAN_SYST);
+	$news_editor       = getparam("news_editor",      PAR_POST, SAN_SYST);
+	$news_moderators   = getparam("news_moderators",  PAR_POST, SAN_SYST);
 	// build new file
 	$file = file($conf_file);
 	$new_file = "";
@@ -40,19 +40,19 @@ function fncc_modgeneralconf() {
 		//remove comments before value declaration
 		$conf_line = trim(preg_replace("/^\/\*.*\*\//i","",$conf_line));
 		if(preg_match("/^\\$"."sitename/i",$conf_line)) {
-			$new_file .= "$"."sitename = \"".stripslashes($sitename)."\";\n";
+			$new_file .= "$"."sitename = ".stripslashes($sitename).";\n";
 		} elseif(preg_match("/^\\$"."sitedescription/i",$conf_line)) {
-			$new_file .= "$"."sitedescription = \"".$sitedescription."\";\n";
+			$new_file .= "$"."sitedescription = ".$sitedescription.";\n";
 		} elseif(preg_match("/^\\$"."keywords/i",$conf_line)) {
-			$new_file .= "$"."keywords = \"".$keywords."\";\n";
+			$new_file .= "$"."keywords = ".$keywords.";\n";
 		} elseif(preg_match("/^\\$"."theme/i",$conf_line)) {
-			$new_file .= "$"."theme = \"".$theme."\";\n";
+			$new_file .= "$"."theme = ".$theme.";\n";
 		} elseif(preg_match("/^\\$"."newspp/i",$conf_line)) {
 			$new_file .= "$"."newspp = ".$newspp.";\n";
 		} elseif(preg_match("/^\\$"."admin.*=/i",$conf_line) AND !preg_match("/\\$"."admin_/i",$conf_line)) {
-			$new_file .= "$"."admin = \"".$admin."\";\n";
+			$new_file .= "$"."admin = ".$admin.";\n";
 		} elseif(preg_match("/^\\$"."admin_mail/i",$conf_line)) {
-			$new_file .= "$"."admin_mail = \"".$admin_mail."\";\n";
+			$new_file .= "$"."admin_mail = ".$admin_mail.";\n";
 		} elseif(preg_match("/^\\$"."lang/i",$conf_line)) {
 			$new_file .= "$"."lang = \"".$lang."\";\n";
 		} elseif(preg_match("/^\\$"."reguser/i",$conf_line)) {
@@ -68,7 +68,7 @@ function fncc_modgeneralconf() {
 		} elseif(preg_match("/^\\$"."maintenance/i",$conf_line)) {
 			$new_file .= "$"."maintenance = ".$maintenance.";\n";
 		} elseif(preg_match("/^\\$"."home_section/i",$conf_line)) {
-			$new_file .= "$"."home_section = \"".$home_section."\";\n";
+			$new_file .= "$"."home_section = ".$home_section.";\n";
 		} elseif(preg_match("/^\\$"."topicperpage/i",$conf_line)) {
 			$new_file .= "$"."topicperpage = ".$topicperpage.";\n";
 		} elseif(preg_match("/^\\$"."postperpage/i",$conf_line)) {
@@ -76,11 +76,11 @@ function fncc_modgeneralconf() {
 		} elseif(preg_match("/^\\$"."memberperpage/i",$conf_line)) {
 			$new_file .= "$"."memberperpage = ".$memberperpage.";\n";
 		} elseif(preg_match("/^\\$"."forum_moderators/i",$conf_line)) {
-			$new_file .= "$"."forum_moderators = \"".$forum_moderators."\";\n";
+			$new_file .= "$"."forum_moderators = ".$forum_moderators.";\n";
 		} elseif(preg_match("/^\\$"."news_editor/i",$conf_line)) {
-			$new_file .= "$"."news_editor = \"".$news_editor."\";\n";
+			$new_file .= "$"."news_editor = ".$news_editor.";\n";
 		} elseif(preg_match("/^\\$"."news_moderators/i",$conf_line)) {
-			$new_file .= "$"."news_moderators = \"".$news_moderators."\";\n";
+			$new_file .= "$"."news_moderators = ".$news_moderators.";\n";
 		} else $new_file .= $file[$id];
 	}
 	// write the new file

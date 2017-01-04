@@ -9,6 +9,7 @@ XX/XX/XXXX XX:XX 	flatnuke-4.0.0 (I need a new name!!)
 	- Fix: fixed XSS bug (tnx to Dennis Kelly by Risk Based Security)
 	- Fix: fixed XSS bug and Script Injection bug (tnx to Juri Gianni)
 	- Fix: fixed IP filtering blacklist (that now supports both IPv4 and IPv6)
+	- Fix: prevent usage of dangerous characters in configuration file
 
 	Roberto Balbi <roberto.balbi@email.it>
 	- Add: social links on header only news view

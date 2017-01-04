@@ -506,7 +506,6 @@ function changepic(theme) {
  */
 function fn_ready_to_install() {
 	global $step, $tot_steps, $lang;
-	$ip = "IP unknown";
 
 	$nome    = getparam("nome",    PAR_POST, SAN_FLAT);
 	$regpass = getparam("regpass", PAR_POST, SAN_FLAT);
@@ -523,11 +522,11 @@ function fn_ready_to_install() {
 	}
 
 	$conf_file = "config.php";
-	$sitename        = getparam("sitename",        PAR_POST, SAN_FLAT);
-	$sitedescription = getparam("sitedescription", PAR_POST, SAN_FLAT);
-	$keywords        = getparam("keywords",        PAR_POST, SAN_FLAT);
-	$emailadmin      = getparam("emailadmin",      PAR_POST, SAN_FLAT);
-	$theme           = getparam("theme",           PAR_POST, SAN_FLAT);
+	$sitename        = getparam("sitename",        PAR_POST, SAN_SYST);
+	$sitedescription = getparam("sitedescription", PAR_POST, SAN_SYST);
+	$keywords        = getparam("keywords",        PAR_POST, SAN_SYST);
+	$emailadmin      = getparam("emailadmin",      PAR_POST, SAN_SYST);
+	$theme           = getparam("theme",           PAR_POST, SAN_SYST);
 
 	// update configuration file
 	if($sitename!="" AND $theme!="") {
@@ -535,15 +534,15 @@ function fn_ready_to_install() {
 		$new_file = "";
 		for($id=0;$id<count($file);$id++) {
 			if(preg_match("/^\\$"."sitename/i", $file[$id])) {
-				$new_file .= "$"."sitename = \"".stripslashes($sitename)."\";\n";
+				$new_file .= "$"."sitename = ".stripslashes($sitename).";\n";
 			} elseif(preg_match("/^\\$"."sitedescription/i", $file[$id])) {
-				$new_file .= "$"."sitedescription = \"".$sitedescription."\";\n";
+				$new_file .= "$"."sitedescription = ".$sitedescription.";\n";
 			} elseif(preg_match("/^\\$"."keywords/i", $file[$id])) {
-				$new_file .= "$"."keywords = \"".$keywords."\";\n";
+				$new_file .= "$"."keywords = ".$keywords.";\n";
 			} elseif(preg_match("/^\\$"."admin_mail/i", $file[$id])) {
-				$new_file .= "$"."admin_mail = \"".$emailadmin."\";\n";
+				$new_file .= "$"."admin_mail = ".$emailadmin.";\n";
 			} elseif(preg_match("/^\\$"."theme/i", $file[$id])) {
-				$new_file .= "$"."theme = \"".$theme."\";\n";
+				$new_file .= "$"."theme = ".$theme.";\n";
 			} else $new_file .= $file[$id];
 		}
 		// write the new file
