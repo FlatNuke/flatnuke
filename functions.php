@@ -168,14 +168,6 @@ function view_section($section){
 		OpenTableTitle("<a title=\"\" accesskey=\"0\"><img src='$section_image' alt='Section' /></a>&nbsp;".stripslashes($tit));
 	}
 
-	//creo i link per i siti sociali (se non siamo in una sezione di notizie)
-	if (!file_exists(_FN_SECTIONS_DIR."/"._FN_MOD."/news")){
-	echo "<div class='social-links' style='float:right;margin-left:10px;margin-bottom:10px;/*border:1px;border-left-style: solid; border-bottom-style: solid;border-color: #d5d6d7;*/'>";
-// 	echo "<div class='social-links'>";
-	create_social_links($_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI'],_FN_TITLE);
-	echo "</div>";
-	}
-
 	// Include code for section's header
 	load_php_code("include/section/header");
 
@@ -218,14 +210,21 @@ function view_section($section){
 	// Include code for section's footer
 	load_php_code("include/section/footer");
 
-	// link to print current section
-	$options = "?";
-	foreach ($_GET as $key => $value) {
-		$value   .= getparam($value, PAR_GET, SAN_FLAT);
-		$options .= "$key=$value&amp;";
+	//creo i link per i siti sociali (se non siamo in una sezione di notizie)
+	if (!file_exists(_FN_SECTIONS_DIR."/"._FN_MOD."/news")){
+		echo "<div class='col-lg-12 social-links text-right'>";
+		// link to print current section
+		$options = "?";
+		foreach ($_GET as $key => $value) {
+			$value   .= getparam($value, PAR_GET, SAN_FLAT);
+			$options .= "$key=$value&amp;";
+		}
+		$options = getparam($options,PAR_NULL, SAN_HTML);
+		echo "<a href=\"print.php".$options."\" title=\""._STAMPA."\" target=\"_blank\"><i class=\"fa fa-print fa-2x\"></i></a>";
+		// social
+		create_social_links($_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI'],_FN_TITLE);
+		echo "</div>";
 	}
-	$options = getparam($options,PAR_NULL, SAN_HTML);
-	echo "<div style=\"text-align:right\"><a href='print.php".$options."' target='new' title=\""._STAMPA."\">"._ICONPRINT."</a></div>";
 
 	// Administration of the section (visible only to administrtaors)
 	echo "<hr>";
