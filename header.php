@@ -18,11 +18,8 @@ if (preg_match("/header.php/i",$_SERVER['PHP_SELF'])) {
     die();
 }
 
-// load constants and language if not defined
-create_fn_constants();
-load_icons();
-
 // language definition by configuration or by cookie
+global $lang;
 $userlang = getparam("userlang", PAR_COOKIE, SAN_FLAT);
 if ($userlang!="" AND is_alphanumeric($userlang) AND file_exists("languages/$userlang.php")) {
 	$lang = $userlang;
@@ -39,6 +36,7 @@ switch($lang) {
 }
 
 // dynamically build page's title and meta tags
+global $sitename, $sitedescription, $keywords;
 $mod    = _FN_MOD;
 $action = getparam("action",  PAR_GET, SAN_FLAT);
 $news   = getparam("news",  PAR_GET, SAN_FLAT);
