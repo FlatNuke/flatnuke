@@ -2090,6 +2090,7 @@ function list_news_categories(){
 	}
 
 	closedir($handle);
+	sort($array);
 	return $array;
 }
 
