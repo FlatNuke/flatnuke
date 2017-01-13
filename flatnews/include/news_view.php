@@ -96,10 +96,10 @@ function view_news_header($section,$news){
 	echo "</a>";
 	echo "<span class='fa fa-user'></span> <a href=\"index.php?mod=none_Login&amp;action=viewprofile&amp;user=".$data['by']."\" title=\""._VIEW_USERPROFILE."\"><span class='label label-default'>".$data['by']."</span></a> | ";
 	echo _ICONSHOW." <span class='label label-default'>".$data['reads']."</span> | ";
-	echo _ICONCOMMENT." <span class='label label-default'>".count($data['comments'])."</span> | ";
+	echo _ICONCOMMENT." <span class='label label-default'>".count($data['comments'])."</span>";
 	//se ci sono dei tag da mostrare
 	if (count($data['tags'])>0){
-		echo "<span class='fa fa-tags'></span> ";
+		echo " | <span class='fa fa-tags'></span> ";
 	// 	print_r($data['tags']);
 		for ($n=0;$n<count($data['tags']);$n++){
 			if (trim($data['tags'][$n])!=""){
@@ -309,10 +309,10 @@ function view_news($section, $news, $proposed=FALSE){
 	echo "</a>";
 	echo "<span class='fa fa-user'></span> <a href=\"index.php?mod=none_Login&amp;action=viewprofile&amp;user=".$data['by']."\" title=\""._VIEW_USERPROFILE."\"><span class='label label-default'>".$data['by']."</span></a> | ";
 	echo _ICONSHOW." <span class='label label-default'>".$data['reads']."</span> | ";
-	echo _ICONCOMMENT." <span class='label label-default'>".count($data['comments'])."</span> | ";
+	echo _ICONCOMMENT." <span class='label label-default'>".count($data['comments'])."</span>";
 	//se ci sono dei tag da mostrare
 	if (count($data['tags'])>0){
-		echo "<span class='fa fa-tags'></span> ";
+		echo " | <span class='fa fa-tags'></span> ";
 	// 	print_r($data['tags']);
 		for ($n=0;$n<count($data['tags']);$n++){
 			if (trim($data['tags'][$n])!=""){
