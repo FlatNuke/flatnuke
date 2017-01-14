@@ -135,31 +135,33 @@ function view_news_archive_section(){
 	}
 
 	if (getparam("year",PAR_GET,SAN_FLAT)==""){
-		echo "<h2>Per tags:</h2>";
 		$tags = load_tags_list();
-
-		// Questo codice è parzialmente tratto da Wordpress 2.2
-		// WP CODE
-		$largest = 20;
-		$smallest = 8;
-		if (is_array($tags) and count($tags)>0)
-			$min_count = min( $tags );
-		else $min_count=0;
-		if (is_array($tags) and count($tags)>0)
-			$spread = max( $tags ) - $min_count;
-		else $spread =1;
-		if ( $spread <= 0 )
-			$spread = 1;
-		$font_spread = $largest - $smallest;
-		if ( $font_spread < 0 )
-			$font_spread = 1;
-		$font_step = $font_spread / $spread;
-		//FINE WP CODE
-		if (is_array($tags)){
-			foreach ($tags as $tag => $count){
-				if ($count>0)
-					echo "<span style=\"font-size: ".( $smallest + ( ( $count - $min_count ) * $font_step ) )."pt;\"><a href=\"index.php?mod=none_Search&amp;where=news&amp;tags=$tag\" title=\"$count  news\">$tag</a> </span>";
-			// 		echo "&#187;&nbsp;<a href=\"index.php\">$tag</a>&nbsp;($count)<br>";
+		if(count($tags)>0) {
+			echo "<h2>Per tags:</h2>";
+		
+			// Questo codice è parzialmente tratto da Wordpress 2.2
+			// WP CODE
+			$largest = 20;
+			$smallest = 8;
+			if (is_array($tags) and count($tags)>0)
+				$min_count = min( $tags );
+			else $min_count=0;
+			if (is_array($tags) and count($tags)>0)
+				$spread = max( $tags ) - $min_count;
+			else $spread =1;
+			if ( $spread <= 0 )
+				$spread = 1;
+			$font_spread = $largest - $smallest;
+			if ( $font_spread < 0 )
+				$font_spread = 1;
+			$font_step = $font_spread / $spread;
+			//FINE WP CODE
+			if (is_array($tags)){
+				foreach ($tags as $tag => $count){
+					if ($count>0)
+						echo "<span style=\"font-size: ".( $smallest + ( ( $count - $min_count ) * $font_step ) )."pt;\"><a href=\"index.php?mod=none_Search&amp;where=news&amp;tags=$tag\" title=\"$count  news\">$tag</a> </span>";
+				// 		echo "&#187;&nbsp;<a href=\"index.php\">$tag</a>&nbsp;($count)<br>";
+				}
 			}
 		}
 		echo "<h2>"._PERARGOMENTI.":</h2>";
