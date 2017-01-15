@@ -32,7 +32,7 @@ if(preg_match("/_Forum/", $mod)) {
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.php"><span class="fa fa-home"></span></a>
+    <a class="navbar-brand" href="index.php" title="<?php echo _FINDH; ?>"><span class="fa fa-home"></span></a>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
