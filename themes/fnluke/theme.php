@@ -70,9 +70,6 @@ function create_menu_horiz() {
 	if($menu_links == null)
 		return;
 	// print menu
-	$menu_item = _HOMEMENUTITLE;	// homesite
-	$class = ($mod == "") ? "active":"";
-	echo "\n<li class=\"".$class."\"><a href=\"index.php\" title=\""._FINDH."\">".$menu_item."</a></li>";
 	for ($i=0; $i < count($menu_links); $i++) {
 		$father_sect = explode("/", $menu_names[$i]);
 		$class = ($father_mod[0] == $father_sect[0]) ? "active":"";
