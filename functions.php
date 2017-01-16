@@ -1884,9 +1884,9 @@ function save_user_profile($user, $data_array,$mail_activation=0){
 		if (check_var(trim($data_array['regdate']),"digit")){
 			$clean_data['regdate'] = strip_tags(trim($data_array['regdate']));
 		}
-		else $clean_data['regdate'] = "0";
+		else $clean_data['regdate'] = time();
 	}
-	else $clean_data['regdate'] = "0";
+	else $clean_data['regdate'] = time();
 
 	//regcode
 	if (isset($data_array['regcode'])){
