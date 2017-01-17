@@ -222,7 +222,7 @@ function fncc_generalconf() {
 
 		//render disabled radio for fckeditor and ckeditor if they are not installed
 		$.ajax({
-		url:'include/plugins/editors/FCKeditor/fckeditor.php',
+		url:'include/plugins/editors/FCKeditor/fckeditor.js',
 		type:'HEAD',
 		error:
 		function(){
@@ -232,7 +232,7 @@ function fncc_generalconf() {
 		});
 
 		$.ajax({
-		url:'include/plugins/editors/ckeditor/ckeditor.php',
+		url:'include/plugins/editors/ckeditor/ckeditor.js',
 		type:'HEAD',
 		error:
 		function(){
