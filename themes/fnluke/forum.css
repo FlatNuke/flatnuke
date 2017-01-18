@@ -189,9 +189,10 @@ text-align:center;
 	background-color: #efefef;
 }
 
-.forum-new {
+/* replaced by "btn btn-default bt-xs" from bootstrap
+ * .forum-new {
 	font-size: 8px;
 	border: 1px solid #cccccc;
 	text-decoration: none;
 	background-color: #efefef;
-}
+}*/

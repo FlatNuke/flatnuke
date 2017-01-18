@@ -150,12 +150,12 @@ function forum_view_argument($root,$group,$argument){
 	if (!_FN_IS_GUEST){
 		if (argument_is_locked(get_forum_root(),$group,$argument)){
 			if (is_forum_moderator()){
-				echo "<div><span class=\"forum-new\" >"._ICONLOCK."<a style=\"font-size: 120%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic\"  title='"._FCREATOP."'/>"._FNUOVOTOP."</a></span></div>";
+				echo "<div><span class=\"btn btn-default btn-xs\" >"._ICONLOCK."<a style=\"font-size: 120%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic\"  title='"._FCREATOP."'/>"._FNUOVOTOP."</a></span></div>";
 			}
 			else echo "<div><span title=\""._ARGUMENTLOCKED."\">"._ICONLOCK."</span>&nbsp;"._ARGUMENTLOCKED."<br><br></div>";
 		}
 		else {
-			echo "<div><br><span class='forum-new'><a style='font-size: 120%;' href='index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic' title='"._FCREATOP."'>"._FNUOVOTOP."</a></span><br><br></div>";
+			echo "<div><br><span class='btn btn-default btn-xs'><a style='font-size: 120%;' href='index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic' title='"._FCREATOP."'>"._FNUOVOTOP."</a></span><br><br></div>";
 		}
 	}//fine controllo guest
 
@@ -359,12 +359,12 @@ function forum_view_argument($root,$group,$argument){
 	if (!_FN_IS_GUEST){
 		if (argument_is_locked(get_forum_root(),$group,$argument)){
 			if (is_forum_moderator()){
-				echo "<div><span class=\"forum-new\" >"._ICONLOCK."<a style=\"font-size: 120%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic\" title='"._FCREATOP."' />"._FNUOVOTOP."</a></span></div>";
+				echo "<div><span class=\"btn btn-default btn-xs\" >"._ICONLOCK."<a style=\"font-size: 120%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic\" title='"._FCREATOP."' />"._FNUOVOTOP."</a></span></div>";
 			}
 			else echo "<div><span title=\""._ARGUMENTLOCKED."\">"._ICONLOCK."</span>&nbsp;"._ARGUMENTLOCKED."<br><br></div>";
 		}
 		else {
-			echo "<div><br><span class='forum-new'><a style='font-size: 120%;' href='index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic' title='"._FCREATOP."'>"._FNUOVOTOP."</a></span><br><br></div>";
+			echo "<div><br><span class='btn btn-default btn-xs'><a style='font-size: 120%;' href='index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;ffaction=newtopic' title='"._FCREATOP."'>"._FNUOVOTOP."</a></span><br><br></div>";
 		}
 	}//fine controllo guest
 	echo "</td></tr></table>";
@@ -591,7 +591,7 @@ function forum_view_topic($root,$group,$argument,$topic){
 			echo "<div>";
 			if (is_forum_moderator() and topic_is_locked($topicpath))
 				echo "<span title='"._TOPICLOCKED."'>"._ICONLOCK."</span>&nbsp;";
-			echo "<span class=\"forum-new\"><a style=\"font-size: 140%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;topic=$topic&amp;ffaction=newpost\" title=\""._FRISP."\">"._FRISP."</a>";
+			echo "<span class=\"btn btn-default btn-xs\"><a style=\"font-size: 140%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;topic=$topic&amp;ffaction=newpost\" title=\""._FRISP."\">"._FRISP."</a>";
 			echo "</span></div>";
 		}
 	}
@@ -700,7 +700,7 @@ function forum_view_topic($root,$group,$argument,$topic){
 			echo "<div align=\"right\">";
 			if (is_forum_moderator() and topic_is_locked($topicpath))
 				echo "<span title='"._TOPICLOCKED."'>"._ICONLOCK."</span>&nbsp;";
-			echo "<span class=\"forum-new\"><a style=\"font-size: 140%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;topic=$topic&amp;ffaction=newpost\" title=\""._FRISP."\">"._FRISP."</a>";
+			echo "<span class=\"btn btn-default btn-xs\"><a style=\"font-size: 140%;\" href=\"index.php?mod=".rawurlencodepath($mod)."&amp;group=".rawurlencodepath($group)."&amp;argument=".rawurlencodepath($argument)."&amp;topic=$topic&amp;ffaction=newpost\" title=\""._FRISP."\">"._FRISP."</a>";
 			echo "</span></div>";
 		}
 	}
