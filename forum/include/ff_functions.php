@@ -802,14 +802,9 @@ function save_topic($topicfile,$data){
 		</post>";
 	}
 
-	//controllo se l'argomento è bloccato
+	//devo essere nella cartella di un argomento (deve esistere il file argument.php)
 	$dir ="";
 	$dir = dirname($topicfile);
-	if (file_exists("$dir/lock") and !_FN_IS_ADMIN and !is_forum_moderator()){
-		echo "L'argomento e' bloccato";
-		return;
-	}
-	//devo essere nella cartella di un argomento (deve esistere il file argument.php)
 	if (!file_exists("$dir/argument.php")){
 		echo "Non mi trovo all'interno di un argomento";
 		return;
