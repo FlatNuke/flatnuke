@@ -232,7 +232,7 @@ function view_section($section){
 	}
 
 	// Administration of the section (visible only to administrtaors)
-	echo "<hr>";
+	
 	if(_FN_IS_ADMIN AND is_writeable("sections/$section") AND !fn_is_system_dir($section)) {
 		section_admin_panel();
 	}
