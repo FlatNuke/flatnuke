@@ -691,25 +691,25 @@ function get_news_link_array($section,$news,$newsdata=""){
 	if(_FN_IS_ADMIN or _FN_IS_NEWS_MODERATOR) {
 
 		// link to modify the news
-		$ret_strings['link_modify'] = "<a href='index.php?$modstring"."action=editnewsinterface&amp;news=$news' title=\""._EDITNEWS.": $title\">"._ICONMODIFY._MODIFICA."</a>";
+		$ret_strings['link_modify'] = "<a href='index.php?$modstring"."action=editnewsinterface&amp;news=$news' title=\""._EDITNEWS.": $title\"><span class='btn btn-xs btn-primary'>"._ICONMODIFY." "._MODIFICA."</a></span>";
 
 		// link to delete the news
-		$ret_strings['link_delete'] = "<a href='index.php?$modstring"."action=deletenewsinterface&amp;news=$news' title=\""._DELETENEWS.": $title\">"._ICONDELETE._ELIMINA."</a>";
+		$ret_strings['link_delete'] = "<a href='index.php?$modstring"."action=deletenewsinterface&amp;news=$news' title=\""._DELETENEWS.": $title\"><span class='btn btn-xs btn-primary'>"._ICONDELETE." "._ELIMINA."</a></span>";
 
 		// link to hide the news
-		$ret_strings['link_hide'] = "<a href='index.php?$modstring"."action=hidenews&amp;news=$news' title=\""._HIDE." news: $title\">"._ICONHIDE._HIDE."</a>";
+		$ret_strings['link_hide'] = "<a href='index.php?$modstring"."action=hidenews&amp;news=$news' title=\""._HIDE." news: $title\"><span class='btn btn-xs btn-primary'>"._ICONHIDE." "._HIDE."</a></span>";
 
 		// link to un-hide the news
-		$ret_strings['link_show'] = "<a href='index.php?$modstring"."action=shownews&amp;news=$news' title=\""._SHOW." news: $title\">"._ICONSHOW._SHOW."</a>";
+		$ret_strings['link_show'] = "<a href='index.php?$modstring"."action=shownews&amp;news=$news' title=\""._SHOW." news: $title\"><span class='btn btn-xs btn-primary'>"._ICONSHOW." "._SHOW."</a></span>";
 
 		// link to set on top the news
-		$ret_strings['link_ontop'] = "<a href='index.php?$modstring"."action=ontopnews&amp;news=$news' title=\""._STICKYNEWS.": $title\">"._ICONONTOP._STICKY."</a>";
+		$ret_strings['link_ontop'] = "<a href='index.php?$modstring"."action=ontopnews&amp;news=$news' title=\""._STICKYNEWS.": $title\"><span class='btn btn-xs btn-primary'>"._ICONONTOP." "._STICKY."</a></span>";
 
 		// link to hide the news
-		$ret_strings['link_normal'] = "<a href='index.php?$modstring"."action=normalnews&amp;news=$news' title=\""._UNSTICKYNEWS.": $title\">"._ICONNORMAL._NORMAL."</a>";
+		$ret_strings['link_normal'] = "<a href='index.php?$modstring"."action=normalnews&amp;news=$news' title=\""._UNSTICKYNEWS.": $title\"><span class='btn btn-xs btn-primary'>"._ICONNORMAL." "._NORMAL."</a></span>";
 
 		// link to move the news
-		$ret_strings['link_move'] = "<a href='index.php?$modstring"."action=movenewsinterface&amp;news=$news' title=\""._MOVENEWS.": $title\">"._ICONMOVE._MOVE."</a>";
+		$ret_strings['link_move'] = "<a href='index.php?$modstring"."action=movenewsinterface&amp;news=$news' title=\""._MOVENEWS.": $title\"><span class='btn btn-xs btn-primary'>"._ICONMOVE." "._MOVE."</a></span>";
 	}
 
 	return($ret_strings);
