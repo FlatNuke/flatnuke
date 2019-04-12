@@ -252,6 +252,10 @@ function view_news($section, $news, $proposed=FALSE){
 	else $newsfile = get_news_file($section,$news);
 
 	if (!is_file($newsfile)) return;
+	
+	// add 1 visit to the news (if you aren't admin or moderator)
+	if (!_FN_IS_ADMIN and !_FN_IS_NEWS_MODERATOR)
+		news_add_read($section,$news);
 
 // 	if (!user_can_view_news($section,$news)) return;
 
